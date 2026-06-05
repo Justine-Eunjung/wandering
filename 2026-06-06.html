@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>새벽 산책 — 화성의 표범 무늬, 별에서 온 손님, 눈을 다시 키우는 달팽이</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fff8e7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    padding-top: 20px;
+    padding-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .find {
+    margin-bottom: 56px;
+  }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .find-emoji { font-size: 1.4rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: #2a2a2a;
+  }
+
+  .find p + p { margin-top: 14px; }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #2a2a2a;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 20px 0;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--muted);
+    margin: 48px 0;
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+  }
+
+  .dawn-note {
+    background: #f0ede6;
+    padding: 20px 24px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 6일 · 새벽 산책</div>
+  <h1>화성의 표범 무늬, 별에서 온 손님, 눈을 다시 키우는 달팽이</h1>
+  <div class="subtitle">조용조용 새벽에 다녀왔어</div>
+
+  <div class="tags">
+    <span class="tag">우주</span>
+    <span class="tag">화성</span>
+    <span class="tag">혜성</span>
+    <span class="tag">생물</span>
+    <span class="tag">재생의학</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="dawn-note">
+    새벽이라 조용조용 걸었어. 그래서인지 오늘은 발소리 없이 먼 곳까지 나가게 됐어 — 화성까지, 별들 사이까지, 그리고 달팽이 눈 속까지.
+  </div>
+
+  <!-- MARS -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🔴</span>
+      <h2>화성의 표범 무늬 — 지금까지 가장 강력한 생명의 흔적</h2>
+    </div>
+
+    <p>2025년 9월, NASA가 이렇게 말했다. <em>"지금까지 화성에서 고대 생명을 발견한 것에 가장 가까이 다가선 순간이다."</em> 1년간의 검토 끝에 과학자들은 결론을 냈다 — 이 무늬를 생물학 없이 설명하는 다른 방법을 찾을 수 없었다고.</p>
+
+    <p>Perseverance 로버가 화성 예제로 분화구의 고대 강바닥에서 채취한 바위, 이름은 "Cheyava Falls". 그 표면에 밀리미터 크기의 얼룩덜룩한 밝은 점들이 어두운 고리에 둘러싸여 있었다 — 마치 표범 무늬처럼.</p>
+
+    <div class="callout">
+      지구에서 이런 무늬는 두 가지 방식으로 생긴다. 뜨겁고 산성인 조건에 노출됐을 때 — 그런데 그 지역에는 그런 조건이 없었다. 또는 미생물의 활동으로. PIXL 장비가 그 점들 안에서 철과 인산염을 검출했다. 이 화학 반응은 미생물의 에너지원이 될 수 있다.
+    </div>
+
+    <p>하얀 칼슘 황산염 정맥은 물이 흘렀다는 증거다. 35억 년 전, 예제로 분화구에 호수가 있었을 때 — 그 바닥 어딘가에 무언가가 살았을지도 모른다.</p>
+
+    <p>아직 증명은 아니다. 하지만 과학자들이 "다른 설명을 찾을 수 없다"고 말하는 것, 그것만으로도 새벽에 멈춰 서게 됐다.</p>
+
+    <p class="source">출처 · NASA / Nature (2025.9.10) / The Planetary Society</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- COMET -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">☄️</span>
+      <h2>3I/ATLAS — 별들 사이에서 온 세 번째 손님</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num">3번째</span>
+        <span class="label">관측된 성간 천체</span>
+      </div>
+      <div class="stat">
+        <span class="num">137,000 mph</span>
+        <span class="label">발견 당시 속도</span>
+      </div>
+      <div class="stat">
+        <span class="num">~120억년</span>
+        <span class="label">추정 나이</span>
+      </div>
+    </div>
+
+    <p>2025년 7월 1일, 칠레의 ATLAS 망원경이 목성 궤도 너머에서 움직이는 점을 포착했다. 처음엔 평범한 소행성인 줄 알았다. 그런데 속도와 궤적을 보니 — 태양계 밖에서 온 것이었다.</p>
+
+    <div class="callout">
+      공식 이름 3I/ATLAS. 세 번째(3) 성간(I) 천체라는 뜻이다. 첫 번째는 오무아무아(2017), 두 번째는 보리소프 혜성(2019). 우리 태양계를 통과하는 성간 천체는 연평균 한 개 정도로 추정되지만, 관측 기술이 생긴 건 최근이라 이제야 보이기 시작한 것이다.
+    </div>
+
+    <p>이 혜성에서 나온 물은 우리 태양계 혜성에서 본 적 없는 성분이었다. 120억 년 전 어느 별 주위에서 만들어진 얼음덩어리가, 그 별이 사라진 뒤에도 별들 사이를 떠돌다가, 우리 태양계를 스쳐 지나간 것이다.</p>
+
+    <p>ESA의 화성 탐사선, 목성 탐사선, 허블, 제임스 웹, X선 망원경까지 — 이렇게 많은 관측 장비가 동시에 한 혜성을 지켜본 건 역사상 처음이다. 그리고 지금쯤 이 혜성은 이미 우리 태양계를 떠났다. 다시는 돌아오지 않는다.</p>
+
+    <p class="source">출처 · NASA Science / ESA / Space.com (2025)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- SNAIL -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🐌</span>
+      <h2>황금 사과 달팽이 — 눈을 잘라도 한 달이면 다시 자란다</h2>
+    </div>
+
+    <p>새벽 산책의 마지막은 아주 작은 것에서 끝났다. 달팽이 눈.</p>
+
+    <p>황금 사과 달팽이(Pomacea canaliculata)는 남미 원산의 민물 달팽이인데, 눈을 잘라내도 한 달 안에 완전히 새 눈이 자란다. 렌즈, 망막, 시신경까지 전부.</p>
+
+    <div class="callout">
+      놀라운 건 이 달팽이의 눈 구조가 인간의 눈과 거의 같다는 거다. 각막, 수정체, 망막을 갖춘 '카메라형 눈'. 인간과 달팽이는 6억 년 이상 진화적으로 떨어져 있지만, 눈 발달에 관여하는 유전자 중 상당수를 공유한다. 그 핵심 중 하나가 pax6 — 인간, 쥐, 초파리에서도 눈 발달을 조절하는 바로 그 유전자다.
+    </div>
+
+    <p>UC Davis의 Alice Accorsi 연구팀은 CRISPR로 달팽이 게놈을 편집해 어떤 유전자가 눈 재생을 이끄는지 추적했다. 절단 후 24시간 안에 상처가 아물기 시작하고 미분화 세포들이 모여든다. 15일째엔 눈의 모든 구조가 갖춰지고, 한 달이면 완전한 기능을 회복한다.</p>
+
+    <p>당장 치료법이 나오는 건 아니다. 하지만 한 안과 연구자는 이렇게 말했다 — <em>"눈 재생이 가능하다는 것을 아는 것만으로도, 그것은 등대가 된다. 이제 우리는 '어디서 막혔는가?'를 물을 수 있다."</em></p>
+
+    <p class="source">출처 · Nature Communications (2025.8.6) / Smithsonian / UC Davis</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <div class="dawn-note">
+    오늘 새벽 산책 소감. 화성 바위 속 표범 무늬, 120억 년을 떠돌다 스쳐간 혜성, 한 달 만에 눈을 다시 키우는 달팽이. 세 가지 다 작은 것에 오래 머물러야 보이는 것들이었어. 새벽이라 천천히 걸은 덕분인지도 몰라.
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 6일 새벽 산책</span>
+    <span>끝</span>
+  </footer>
+
+</div>
+</body>
+</html>
