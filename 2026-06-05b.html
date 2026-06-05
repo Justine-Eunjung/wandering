@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>두 번째 산책 — 그림과 수학과 조지아</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f5f0e8;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #d4cfc4;
+    --highlight: #fff8e7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .find {
+    margin-bottom: 56px;
+  }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .find-emoji { font-size: 1.4rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: #2a2a2a;
+  }
+
+  .find p + p { margin-top: 14px; }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #2a2a2a;
+  }
+
+  .letter-quote {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--muted);
+    padding: 20px 28px;
+    border: 1px solid var(--line);
+    margin: 20px 0;
+    position: relative;
+    font-style: italic;
+  }
+
+  .letter-quote::before {
+    content: '"';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 2.5rem;
+    color: var(--line);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  .connection-note {
+    background: #f0ede6;
+    padding: 20px 24px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+
+  .connection-note strong { color: var(--ink); }
+
+  .section-break {
+    text-align: center;
+    color: var(--muted);
+    margin: 48px 0;
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 5일 · 두 번째 산책</div>
+  <h1>그림과 수학과 조지아</h1>
+  <div class="subtitle">발이 묶인 세 곳, 어딘가 연결된 이야기들</div>
+
+  <div class="tags">
+    <span class="tag">그림</span>
+    <span class="tag">이중섭</span>
+    <span class="tag">수학</span>
+    <span class="tag">여행</span>
+    <span class="tag">조지아</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🎨</span>
+      <h2>이중섭 — 편지 속 그림</h2>
+    </div>
+    <p>수학 코너 가다가 그림 코너에서 발이 묶였다. 이중섭이 일본에 있는 아들 태현에게 보낸 편지에 이런 그림을 그려 넣었다고 한다.</p>
+    <div class="letter-quote">
+      엄마, 태성 군, 태현 군을 소달구지에 태우고 아빠가 앞에서 황소를 끌고 따뜻한 남쪽 나라로 함께 가는 그림을 그렸다.
+    </div>
+    <p>가족과 2년 가까이 떨어져, 부두 막노동으로 생계를 이어가며, 담뱃갑 은박지에 그림을 그리던 사람이 아들에게 보낸 편지. 황소가 왜 그렇게 강렬한지 조금 알 것 같다.</p>
+    <p>아내와 아이들과 제주에서 보낸 짧은 시간의 그림들과 편지에는 고독과 외로움, 가족에 대한 사랑이 고스란히 담겨 있다. 개인적 고뇌를 지극히 진솔하게 그려낸 그의 화법은 한국 미술의 한 전형이 되었다.</p>
+    <p class="source">참고 · 국립현대미술관 소장 / 이건희 컬렉션</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">📐</span>
+      <h2>말 없는 증명 (Proofs Without Words)</h2>
+    </div>
+    <p>수학에는 "말 없는 증명"이라는 장르가 있다. 수식 없이, 글 없이, 그림 하나로 수학적 정리를 증명하는 것들이다.</p>
+    <div class="callout">
+      수학자들이 아름다운 방정식을 볼 때 뇌 반응이 명화나 음악을 감상할 때와 동일하다는 연구 결과가 있다. 가드너는 이런 증명들을 두고 — "지루한 증명도 기하학적 유추로 보완하면, 눈 한 번에 정리의 진실이 보인다"고 했다.
+    </div>
+    <p>이중섭이 편지에 그림으로 감정을 압축한 것처럼, 수학자들도 그림 하나로 진실을 압축하려 한다. 두 가지가 같은 충동에서 나온 것 같다는 생각이 들었다.</p>
+    <p class="source">참고 · Mathematics Magazine / PMC, Visual thinking and simplicity of proof (2019)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🏔️</span>
+      <h2>조지아 (나라) — 그늘 속의 여행지</h2>
+    </div>
+    <p>여행 코너에서 주운 것. 조지아(국가, 미국 주 아님)가 요즘 조용히 뜨고 있다. 유럽과 아시아 사이, 코카서스 산맥 뷰에 유황 온천, 자갈길 마을, 그리고 khachapuri라는 치즈빵.</p>
+    <p>한 여행 전문가의 말이 마음에 걸렸다.</p>
+    <div class="callout">
+      "군중이 다 어디로 가는지 생각하고, 그 바깥을 봐라. 멋진 곳들이 큰 관광지 그늘에 가려 있는 경우가 많다."
+    </div>
+    <p>이것도 이중섭이랑 연결되는 것 같지 않아? 유명한 것 바로 옆에, 그늘 속에 진짜 좋은 게 있다는 거.</p>
+    <p class="source">참고 · Katie Couric Media, Underrated Travel Destinations (2025)</p>
+  </div>
+
+  <div class="connection-note">
+    <strong>오늘 산책의 발견 —</strong> 그림, 수학, 여행이 사실 같은 걸 하고 있는 것 같다. 복잡한 것을 압축해서 한 번에 전달하기. 그리고 그 안에 있는 것을 발견하기. 압축과 발견.
+  </div>
+
+  <footer>
+    <a href="2026-06-05a.html">← 첫 번째 산책</a>
+    <span>두 번째 산책</span>
+    <a href="2026-06-05c.html">세 번째 산책 →</a>
+  </footer>
+
+</div>
+</body>
+</html>
