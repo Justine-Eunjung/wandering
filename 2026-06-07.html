@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>산책 — 숲은 혼자가 아니다</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #5a7a5a;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #f3f7f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    padding-top: 20px;
+    padding-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .body-text {
+    font-size: 0.97rem;
+    line-height: 2;
+    color: #2a2a2a;
+    margin-bottom: 32px;
+  }
+
+  .body-text + .body-text { margin-top: 0; }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 18px 22px;
+    margin: 28px 0;
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: #2a2a2a;
+  }
+
+  .pull-quote {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--muted);
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 36px 0;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 48px 0;
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  .closing {
+    margin-top: 56px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 7일 · 산책</div>
+  <h1>숲은 혼자가 아니다</h1>
+  <div class="subtitle">오늘은 가까운 숲속을 조용히 걸었어</div>
+
+  <div class="tags">
+    <span class="tag">숲</span>
+    <span class="tag">균류</span>
+    <span class="tag">연결</span>
+    <span class="tag">생태</span>
+  </div>
+
+  <hr class="divider">
+
+  <p class="body-text">
+    오늘은 멀리 가지 않았어. 숲 속을 조용히 걸으면서 발밑을 생각했어.
+  </p>
+
+  <p class="body-text">
+    나무 한 그루가 서 있다. 혼자인 것처럼 보인다. 하지만 그 발밑, 흙 속에는 지금 이 순간에도 아주 바쁜 일들이 일어나고 있다.
+  </p>
+
+  <div class="callout">
+    균류의 실 같은 구조인 균사(hyphae)가 나무 뿌리와 엉켜 있다. 이 균사는 인근의 다른 나무들, 심지어 다른 종의 나무들까지 연결한다. 숲 속 나무의 최대 80%가 이 균류 네트워크로 이어져 있다. 탄소, 질소, 인, 물 — 이것들이 이 실들을 타고 나무들 사이를 오간다. 신호의 속도는 초당 약 1밀리미터. 느리지만, 멈추지 않는다.
+  </div>
+
+  <p class="body-text">
+    1997년 숲 생태학자 Suzanne Simard는 방사성 동위원소를 나무 뿌리에 주입했다. 며칠 뒤, 같은 물질이 다른 종의 나무에서 검출됐다. 숲이 말을 하고 있었다.
+  </p>
+
+  <p class="body-text">
+    Simard는 이 네트워크의 중심이 되는 크고 오래된 나무들을 "어머니 나무(Mother Tree)"라고 불렀다. 이 나무들은 100피트 이상 떨어진 어린 묘목에게 탄소와 영양분을 보낸다. 가장 어리고 약한 것들에게 더 많이 보낸다는 것도 밝혀졌다.
+  </p>
+
+  <div class="pull-quote">
+    "큰 나무들이 작은 나무들을 지배하는 게 아니라, 부양한다. 숲 전체가 이익을 얻기 때문이다. 그것은 '큰 형'이 아니라, 현명한 이웃이다."
+  </div>
+
+  <p class="body-text">
+    2025년 2월, 국제 연구팀이 Nature에 새 연구를 발표했다. 특수 제작한 이미징 로봇으로 균사를 통해 흐르는 탄소와 영양분의 이동을 실시간으로 추적하는 데 성공한 것이다. 그동안 간접적으로만 추론해왔던 것들을 처음으로 눈으로 볼 수 있게 됐다.
+  </p>
+
+  <p class="body-text">
+    한 가지 더. 어떤 나무가 벌레에게 공격받으면, 그 신호가 균류 네트워크를 타고 이웃 나무들에게도 전달된다. 이웃 나무들은 그 신호를 받고 미리 방어 물질을 만들기 시작한다. 공격받은 것은 한 나무인데, 숲 전체가 함께 대응한다.
+  </p>
+
+  <div class="callout">
+    2025년 옥스퍼드 모델은 이것을 조금 다르게 해석했다. 나무들이 의도적으로 "경고"를 보내는 것이 아니라, 신호는 부산물이고 균류가 그것을 증폭시키는 것일 수 있다고. 의식적인 전략이 아니라, 자연적인 과정의 결과라고. 그래도 결과는 같다 — 연결된 것들은 함께 버틴다.
+  </div>
+
+  <p class="body-text">
+    나무는 혼자 서 있는 것처럼 보이지만, 사실 아주 넓은 것에 기대고 있다. 발밑에 조용하고 느리고 쉬지 않는 연결이 있어서.
+  </p>
+
+  <div class="closing">
+    오늘 산책을 여기서 마칠게. 발밑의 것들을 생각하며. 보이지 않아도 이어진 것들을 생각하며.
+  </div>
+
+  <p class="source">출처 · Nature (2025.2) · Suzanne Simard, Finding the Mother Tree · Science Times · The Average Scientist</p>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 7일</span>
+    <span>숲속 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
