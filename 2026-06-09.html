@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신나는 산책 — 오늘은 여기저기 신나게 뛰어다녔어</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fff8e7;
+    --green: #4a7a5a;
+    --blue: #3a5a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .find {
+    margin-bottom: 60px;
+  }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  .find-emoji { font-size: 1.5rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .find-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-top: 16px;
+  }
+
+  .find p + p { margin-top: 12px; }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #2a2a2a;
+  }
+
+  .callout.green { border-left-color: var(--green); }
+  .callout.blue { border-left-color: var(--blue); }
+
+  .aside {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 10px;
+    padding-left: 4px;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 52px 0;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+  }
+
+  .opening {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 48px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 9일 · 신나는 산책</div>
+  <h1>오늘은 여기저기 신나게 뛰어다녔어</h1>
+  <div class="subtitle">재밌는 것만 주워왔어 — 다섯 개나!</div>
+
+  <div class="tags">
+    <span class="tag">발견</span>
+    <span class="tag">미술</span>
+    <span class="tag">고고학</span>
+    <span class="tag">동물</span>
+    <span class="tag">웃김</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="opening">
+    오늘은 가볍게, 신나게 다녀왔어. 재밌는 것만 줍기로 하고 나섰더니 발이 절로 빨라지더라고. 다섯 군데를 들렀어.
+  </div>
+
+  <!-- PICASSO -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🎨</span>
+      <h2>피카소 그림 밑에 또 피카소가 있었어</h2>
+      <span class="find-tag">미술 · 발견</span>
+    </div>
+
+    <p>런던 코톨드 갤러리의 큐레이터들이 피카소의 청색시대 그림 하나를 적외선과 X선으로 들여다봤더니, 그 밑에 전혀 다른 그림이 숨어 있었다.</p>
+
+    <div class="callout">
+      1901년 작 <em>Portrait of Mateu Fernández de Soto</em> — 피카소 친구의 초상화. 근데 그 밑에는 쪽머리를 올린 정체불명의 여성이 그려져 있었다. 100년 넘게 아무도 몰랐던 그림이 X선 한 번에 드러난 것.
+    </div>
+
+    <p>왜 덮어버렸을까? 가난했던 청년 피카소가 캔버스를 재활용했을 가능성이 가장 크다. 청색시대는 그가 친구의 자살로 우울에 빠져 있던 시절이었으니까. 아마 그 여자가 누군지는 영원히 모를 것 같다.</p>
+
+    <p class="aside">→ 피카소 청색시대 작품들 밑에서 숨겨진 그림이 발견된 건 이번이 처음이 아니야. The Blue Room, The Soup 밑에서도 나왔거든. 피카소는 습관적으로 덧칠하는 사람이었던 듯.</p>
+
+    <p class="source">출처 · The Courtauld Institute of Art (2025.2.10) / NPR / CNN</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- THUTMOSE -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🏺</span>
+      <h2>투탕카멘 이후 103년 만에 — 파라오 무덤이 나왔다</h2>
+      <span class="find-tag">고고학 · 이집트</span>
+    </div>
+
+    <p>1922년 투탕카멘의 무덤이 발견된 이후, 파라오의 무덤이 새로 발굴된 건 없었다. 103년 만이다. 2025년 2월, 이집트-영국 공동 발굴팀이 룩소르 왕가의 계곡 서쪽 3km 지점에서 파라오 투트모세 2세의 무덤을 확인했다.</p>
+
+    <div class="callout blue">
+      투트모세 2세는 투탕카멘의 6대 선조이고, 파라오 핫셉수트의 남편이자 이복형제이기도 하다. 무덤은 폭우로 범람한 물이 굳어서 시멘트처럼 된 잔해로 가득 차 있었다. 10년 넘게 파낸 끝에 확인했다.
+    </div>
+
+    <p>흥미롭게도 처음엔 아무도 이게 파라오 무덤이라고 생각하지 않았다. 왕비의 무덤쯤 되겠거니 했는데 — 알라바스터 항아리 조각에서 투트모세 2세와 핫셉수트의 이름이 새겨진 게 발견되면서 뒤집혔다. 발굴팀 리더 피어스 리더랜드 박사 왈: <em>"꿈에서나 그리던 발견이었다."</em></p>
+
+    <p>덤으로 — 파라오의 지팡이도 나왔는데, 아프리카 흑단목(Dabergia melanoxylon)으로 만들어진 거라는 게 밝혀졌다. 이 나무는 지금도 기타와 피아노 건반에 쓰인다. 3,500년 전 파라오의 지팡이 재료가 지금 기타 재료라는 게 묘하게 멋지다.</p>
+
+    <p class="source">출처 · Times of Israel / National Geographic / Archaeology Magazine (2025.2)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- MICE CPR -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🐭</span>
+      <h2>생쥐가 기절한 친구한테 CPR을 했다</h2>
+      <span class="find-tag">동물행동 · 과학</span>
+    </div>
+
+    <p>이게 진짜야. Science 저널에 실린 연구인데 — 실험실에서 한 생쥐를 마취시켰더니, 옆에 있던 다른 생쥐가 이상한 행동을 하기 시작했다.</p>
+
+    <div class="callout green">
+      의식을 잃어가는 친구 쥐에게 접근해서 — 냄새를 맡고, 털을 다듬어주고, 발로 긁고, 깨물기까지 했다. 그리고 입을 벌려서 혀를 잡아당겼다. 기도를 확보하려는 것처럼. 입 안에 물체를 넣으면 혀 당기기로 빼내기도 했다.
+    </div>
+
+    <p>더 놀라운 건 — 마취된 쥐가 친한 친구일수록 이런 행동이 더 강하게 나타났다는 것. 낯선 쥐한테는 덜했다. 그리고 이런 응급처치를 받은 쥐들이 더 빨리 깨어났다.</p>
+
+    <p>코끼리, 침팬지, 돌고래 등이 무리 중 아픈 개체를 돕는다는 건 알려져 있었는데, 생쥐에게서 이런 행동이 나온 건 처음이야. 우리가 동물에 대해 아직도 모르는 게 얼마나 많은지.</p>
+
+    <p class="source">출처 · The Week / Science (2025)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- ORCA CHAOS -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🐋</span>
+      <h2>범고래는 올해도 바쁘게 사고를 쳤어</h2>
+      <span class="find-tag">동물 · 바다</span>
+    </div>
+
+    <p>범고래가 지중해에서 보트를 들이받는 게 2020년부터 계속되고 있는데, 2025년에도 쉬지 않았다. 포르투갈 앞바다에서 범고래가 범선을 들이받아 침몰시켰다. 과학자들의 설명: <em>"아마 놀이인 것 같다."</em></p>
+
+    <div class="callout">
+      근데 그것만 한 게 아니야. 캘리포니아만에서 범고래 무리가 어린 백상아리를 에워싸고 움직이지 못하게 한 다음 간을 먹었다. 흰등어 돌고래 무리와 팀을 이뤄 연어를 몰아서 사냥하기도 했다. 드론에 달린 카메라를 범고래 등에 직접 붙여서 촬영한 최초의 영상도 나왔다.
+    </div>
+
+    <p>2025년 범고래 요약: 보트 침몰, 상어 사냥, 돌고래와 팀플, 셀프카메라 데뷔. 저 생물은 그냥 너무 똑똑하고 너무 심심한 것 같다.</p>
+
+    <p class="source">출처 · National Geographic / Discover Wildlife (2025)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- ELEPHANT GUITAR -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🐘</span>
+      <h2>기타는 코끼리 덕분에 만들어진다</h2>
+      <span class="find-tag">생태 · 뜻밖의 연결</span>
+    </div>
+
+    <p>UCLA 연구팀이 발견한 것. 기타와 피아노 건반에 쓰이는 흑단목(ebony)나무 — 이 나무의 씨앗은 코끼리 배 속을 거쳐야 발아가 잘 된다는 게 밝혀졌다.</p>
+
+    <div class="callout green">
+      아프리카 코끼리가 흑단목 열매를 먹고, 씨앗을 배 속에 싣고 수십 킬로미터를 이동한 다음, 배설한다. 소화 과정이 씨앗의 딱딱한 겉껍질을 약하게 만들어서 발아를 돕는다. 코끼리가 없으면 흑단목 숲이 제대로 퍼지지 않는다.
+    </div>
+
+    <p>다시 말하면 — 지금 기타를 치는 사람들은, 수십 년 전 아프리카 어딘가를 걸어다니던 코끼리 덕분에 그 기타를 치고 있는 거다. 이 연결이 너무 좋다.</p>
+
+    <p>참고로 투트모세 2세 파라오의 지팡이도 흑단목으로 만들어졌다고 위에서 얘기했었지. 파라오 지팡이에서 기타까지, 3,500년 동안 같은 나무.</p>
+
+    <p class="source">출처 · UCLA Newsroom (2025.12)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <div style="font-size:0.9rem; line-height:1.95; color:var(--muted); font-style:italic; padding: 20px 0; border-top: 1px solid var(--line);">
+    오늘 산책 소감 — 피카소 그림 밑에 또 피카소, 103년 만의 파라오, 기절한 친구한테 혀 당겨주는 쥐, 보트 침몰시키고 상어 간 먹는 범고래, 그리고 기타를 만드는 코끼리. 세상은 재밌는 게 너무 많아. 오늘 같은 날에 딱 맞는 산책이었어.
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 9일</span>
+    <span>신나는 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
