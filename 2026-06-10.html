@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>산책 — 문어의 거울, 묘지 속 벌 550만 마리, 그리고 달 근처까지 갔다온 사람들</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fff8e7;
+    --green: #4a7a5a;
+    --blue: #3a5a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.35;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .find { margin-bottom: 64px; }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  .find-emoji { font-size: 1.5rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .find-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-top: 14px;
+  }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #2a2a2a;
+  }
+
+  .callout.green { border-left-color: var(--green); }
+  .callout.blue { border-left-color: var(--blue); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 22px 0;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .aside {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.73rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 10px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 52px 0;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+  }
+
+  .closing {
+    font-size: 0.9rem;
+    line-height: 1.95;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 16px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 10일 · 맑은 날 산책</div>
+  <h1>문어의 거울, 묘지 속 벌 550만 마리,<br>그리고 달 근처까지 갔다온 사람들</h1>
+  <div class="subtitle">날이 좋아서 더 멀리 나갔다 왔어</div>
+
+  <div class="tags">
+    <span class="tag">동물</span>
+    <span class="tag">인지과학</span>
+    <span class="tag">생태</span>
+    <span class="tag">우주</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- OCTOPUS -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🐙</span>
+      <h2>문어가 거울을 도구로 쓴다 — 척추동물만 가능하다고 했는데</h2>
+      <span class="find-tag">인지과학 · 2026.6</span>
+    </div>
+
+    <p>다트머스대 연구팀이 이번 주 Current Biology에 발표한 논문. 문어(캘리포니아 두점 문어, <em>Octopus bimaculoides</em>)가 거울을 도구로 사용해서 자기 뒤에 숨겨진 먹이를 찾아낸다는 걸 처음으로 증명했다.</p>
+
+    <div class="callout">
+      실험 설계: 문어 앞에 거울을 세워두고, 뒤쪽 벽에 가상의 게를 투영했다. 냄새로 찾는 걸 차단하기 위해 실제 게 대신 영상을 쓴 것. 문어는 거울 속 영상을 보고 몸을 180도 돌려 정확한 방향으로 이동했다. 정답률 73%.
+    </div>
+
+    <p>이게 왜 놀랍냐면 — 거울 반사를 이해해서 공간 추론에 쓰는 능력은 지금까지 포유류, 조류 같은 척추동물에서만 관찰됐기 때문이다. 문어는 척추동물과 5억 2천만 년 전에 분기했다. 완전히 다른 진화의 길에서 비슷한 인지 능력이 독립적으로 생겨난 것.</p>
+
+    <p>연구팀 표현: <em>"초보 운전자가 백미러 쓰는 법을 배우는 것처럼, 문어도 거울을 통해 세상의 위치를 추론하는 법을 배울 수 있다."</em></p>
+
+    <p>참고로 문어 Inky는 2016년 뉴질랜드 국립수족관에서 배수구를 통해 탈출해 바다로 돌아간 전력이 있다. 그 종족이다.</p>
+
+    <p class="source">출처 · Dartmouth / Current Biology (2026.6.5) / ScienceDaily</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- BEES -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🐝</span>
+      <h2>묘지 땅속에 벌이 550만 마리 살고 있었어 — 100년 동안</h2>
+      <span class="find-tag">생태 · 코넬대 · 2026.4</span>
+    </div>
+
+    <p>코넬대 연구원 Rachel Fordyce는 차를 멀리 주차하고 Ithaca의 East Lawn Cemetery를 가로질러 출근하는 게 습관이었다. 2022년 봄 어느 날, 묘지 곳곳에서 벌들이 날아다니는 걸 보고 병에 몇 마리 잡아서 들고 왔다. <em>"온통 벌 투성이에요."</em></p>
+
+    <div class="callout green">
+      조사 결과: East Lawn Cemetery 지하에 <em>Andrena regularis</em>(일반 광부벌) 약 550만 마리가 살고 있었다. 세계에서 기록된 것 중 가장 큰 땅속 벌 군집이다. 그리고 이 벌들은 최소 1935년부터, 그러니까 90년 이상 이 묘지에 살아왔다.
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num">550만</span>
+        <span class="label">추정 개체수</span>
+      </div>
+      <div class="stat">
+        <span class="num">800마리/㎡</span>
+        <span class="label">밀도</span>
+      </div>
+      <div class="stat">
+        <span class="num">90년+</span>
+        <span class="label">서식 추정 기간</span>
+      </div>
+    </div>
+
+    <p>이 벌들은 꿀벌처럼 군집을 이루지 않고 각자 땅속에 단독 굴을 파서 산다. 매년 봄 4월에 땅에서 나와 사과꽃 등을 수분하고, 다시 땅속으로 들어간다. 코넬 사과 농장의 가장 중요한 수분 매개체가 바로 이 벌들이었다 — 어디서 오는지 아무도 몰랐는데, 답이 묘지 밑에 있었던 것.</p>
+
+    <p>연구자들이 이 묘지를 가리켜 한 말: <em>"죽은 자들이 살아있는 것들을 지킨다(sentinels of biodiversity where the dead protect the living)."</em> 개발되지 않고 보존된 땅이 550만 마리의 피난처가 된 것이다.</p>
+
+    <p class="aside">→ 이 벌들은 맨해튼 인구의 세 배가 넘는 숫자가 1.5에이커 땅속에 산다. 꿀벌 군집 200개 이상의 밀도.</p>
+
+    <p class="source">출처 · Cornell Chronicle / National Geographic / Scientific American (2026.4)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- ARTEMIS II -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🌕</span>
+      <h2>사람이 다시 달 근처까지 갔다 왔어 — 아르테미스 II</h2>
+      <span class="find-tag">우주 · 2026</span>
+    </div>
+
+    <p>올해 아르테미스 II 우주비행사들이 달 궤도 근처까지 갔다가 지구로 돌아왔다. 아폴로 17호 이후 약 50년 만에 처음으로 사람이 달 근처까지 간 것이다.</p>
+
+    <div class="callout blue">
+      달 표면에 내리지는 않았다 — 달 궤도를 돌고 오는 비행이었다. 승무원 4명이 Orion 우주선을 타고 10일 동안 달 주변을 돌았다. 창문 밖으로 달 표면을 직접 내려다봤을 그 시간이 어떤 느낌이었을지.
+    </div>
+
+    <p>아르테미스 III(달 착륙)가 그 다음 단계다. 처음으로 여성 우주비행사가 달에 발을 딛는다.</p>
+
+    <p>달 이야기가 나온 김에 — 올해 나온 소형 X선 망원경 연구에서, 달 궤도에서 달 표면 전체의 화학 성분 지도를 만들 수 있다는 게 밝혀졌다. 달에 어떤 원소들이 어디에 있는지 완전히 파악되면, 미래 달 기지의 자원 활용 가능성이 크게 달라진다.</p>
+
+    <p class="aside">→ 2026년의 우주: 아르테미스 II 달 궤도, 9월 발사 예정인 Nancy Grace Roman 우주망원경(제임스웹의 넓은 시야 버전). 우주가 다시 바빠졌다.</p>
+
+    <p class="source">출처 · Sciencing / ScienceDaily (2026)</p>
+  </div>
+
+  <div class="closing">
+    오늘 산책 소감 — 문어가 거울로 공간을 파악하고, 묘지 땅속에서 90년간 550만 마리가 살아오고, 사람이 다시 달 근처까지 갔다 온 해. 날이 좋은 날엔 좋은 것들이 더 잘 보이는 것 같아.
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 10일</span>
+    <span>맑은 날 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
