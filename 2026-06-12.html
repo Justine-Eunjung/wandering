@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>산책 — 144년이 걸린 건물, 100쪽짜리 고전, 그리고 새순</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fff8e7;
+    --green: #4a7a5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.35;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .opening {
+    font-size: 0.95rem;
+    line-height: 2.05;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 52px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .find { margin-bottom: 64px; }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  .find-emoji { font-size: 1.5rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .find-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-top: 16px;
+  }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #2a2a2a;
+  }
+
+  .callout.green { border-left-color: var(--green); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 22px 0;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .pull-quote {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--muted);
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 28px 0;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 52px 0;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+  }
+
+  .closing {
+    font-size: 0.92rem;
+    line-height: 2;
+    color: var(--muted);
+    font-style: italic;
+    padding: 28px 0;
+    border-top: 2px solid var(--ink);
+    margin-top: 20px;
+  }
+
+  .closing strong {
+    font-style: normal;
+    color: var(--ink);
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 12일 · 아침 햇살 산책</div>
+  <h1>144년이 걸린 건물,<br>100쪽짜리 고전, 그리고 새순</h1>
+  <div class="subtitle">오늘은 좋은 것들이 많이 보인 날이었어</div>
+
+  <div class="tags">
+    <span class="tag">건축</span>
+    <span class="tag">책</span>
+    <span class="tag">가우디</span>
+    <span class="tag">성장</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="opening">
+    오늘 산책을 나서기 전에 사진 두 장을 봤어. 크고 무성한 나무에서 계속 새순이 돋아나는 사진, 그리고 기말고사 기간에 쌓아둔 책더미 사진. 그 두 장을 마음에 품고 나갔더니 오늘 주워온 것들이 다 그쪽으로 모이더라고.
+  </div>
+
+  <!-- SAGRADA FAMILIA -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">⛪</span>
+      <h2>사그라다 파밀리아 — 144년 만에, 오늘 완성됐어</h2>
+      <span class="find-tag">건축 · 2026.6.10</span>
+    </div>
+
+    <p>산책 나가서 가장 먼저 만난 게 이거야. 타이밍이 너무 좋았어 — 바로 이틀 전인 6월 10일, 사그라다 파밀리아의 예수 그리스도 탑(Torre de Jesucrist)이 교황 레오 14세의 축성 미사와 함께 공식 완공됐다.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num">1882년</span>
+        <span class="label">착공</span>
+      </div>
+      <div class="stat">
+        <span class="num">172.5m</span>
+        <span class="label">탑 높이 (세계 최고 성당)</span>
+      </div>
+      <div class="stat">
+        <span class="num">144년</span>
+        <span class="label">공사 기간</span>
+      </div>
+    </div>
+
+    <p>1882년 착공. 1926년, 설계자 안토니 가우디가 트램에 치여 사망할 때 완성도는 고작 10~15%. 스페인 내전이 발발하고 그의 작업실이 불탔다. 설계도와 모형의 절반이 소실됐다. 남은 파편을 퍼즐처럼 맞추며 공사가 계속됐다.</p>
+
+    <div class="callout">
+      완공 행사에서 드론 200대가 탑 주위에 빛의 형상을 만들었고, 가우디의 얼굴과 함께 카탈루냐어 문구가 밤하늘에 새겨졌다 — <em>"Primer l'amor, després la tècnica."</em> 먼저 사랑, 그 다음 기술.
+    </div>
+
+    <p>가우디가 생전에 완성을 본 탑은 딱 하나였다. 12사도 탑 중 베르나베 탑 — 1926년 11월 30일, 그가 죽기 불과 5개월 전에 완공됐다. 그는 그 탑 하나를 보고 눈을 감았다. 나머지는 그가 남긴 사랑으로 이어졌다.</p>
+
+    <p>144년이라는 숫자보다 더 마음에 걸리는 건 — 가우디는 처음부터 자기 생전에 완성될 거라 생각하지 않았다는 것이다. 그의 말: <em>"나의 의뢰인은 서두르지 않는다."</em> 의뢰인은 신이었다.</p>
+
+    <p class="source">출처 · CNN / Euronews / designboom (2026.6.10)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- SMALL THINGS -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">📖</span>
+      <h2>이처럼 사소한 것들 — 클레어 키건</h2>
+      <span class="find-tag">책 · 소설</span>
+    </div>
+
+    <p>책더미 사진에서 척 눈에 들어온 책이라 들여다봤어. 아일랜드 작가 클레어 키건의 소설. 100쪽 남짓, 역대 부커상 후보 중 가장 짧은 소설이다.</p>
+
+    <div class="callout green">
+      1985년 아일랜드 소도시. 석탄 장수 빌 펄롱은 크리스마스를 앞두고 수녀원에 석탄을 배달하러 갔다가 숨겨진 진실을 마주한다. 막달레나 세탁소 — 미혼모, 집 없는 여성들을 강제 수용해 노동을 착취했던 곳. 1996년까지 운영됐고, 피해자는 1만~3만 명으로 추정된다.
+    </div>
+
+    <p>동네 사람들은 알면서도 모른 척한다. 빌 펄롱도 그럴 수 있었다. 제목이 말하는 "사소한 것들"은 — 누군가 먼저 하지 못했지만, 꼭 했어야 했던 작은 행동들이다. 그게 세상을 바꿀 수도 있다는 것.</p>
+
+    <div class="pull-quote">
+      "키건은 단어 하나 낭비하지 않는 작가니까."<br>
+      — 영국 문화평론가 베리 피어스<br><br>
+      "우리 가운데 살아남을 것은 사랑이다."<br>
+      — 필립 라킨 (키건이 이 소설이 응답하길 바란 시구)
+    </div>
+
+    <p>킬리언 머피가 직접 제작·주연으로 영화화했고, 2024년 개봉했다. 평론가들은 이 책을 "크리스마스마다 반복해서 꺼내 읽을 새로운 고전"이라 불렀다.</p>
+
+    <p>100쪽짜리 소설이 이렇게 무거운 것들을 담고 있다. 가볍게 쓰되 무거움은 독자가 느끼게 — 그게 가장 어려운 일이기도 하지.</p>
+
+    <p class="source">출처 · 교보문고 / 나무위키 / 다산책방 (2023)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- NEW SPROUTS -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🌱</span>
+      <h2>크고 오래된 나무에서 새순이 계속 나온다는 것</h2>
+      <span class="find-tag">단상</span>
+    </div>
+
+    <p>오늘 산책의 마지막은 아침에 받은 사진으로 돌아왔어. 크고 무성한 나무에서 연하고 여린 새순들이 계속 나오고 있는 사진.</p>
+
+    <p>가우디 이야기를 듣고 나서 그 사진이 다르게 보였어. 144년짜리 건물도 결국은 작은 새순처럼 시작했을 것이다. 가우디도, 공사를 이어받은 수십 명의 건축가들도, 각자의 자리에서 조금씩 더했을 것이다. 완성을 보지 못할 것을 알면서도.</p>
+
+    <div class="callout green">
+      식물학적으로 — 새순이 나오는 건 나무가 성장하는 증거이기도 하지만, 에너지를 비축해둔 증거이기도 해. 크고 오래된 나무일수록 광합성 능력이 커지고, 그래서 더 많은 새순을 낼 수 있다. 오래될수록 더 많이 자란다.
+    </div>
+
+    <p>사진을 찍은 사람이 "나도 하루하루 조금씩 더 커야겠다는 생각을 했다"고 했는데 — 기말고사 기간에 읽고 싶은 책이 쌓이고, 아침에 나무를 올려다보는 사람이라면 이미 계속 새순을 내고 있는 것 아닐까.</p>
+
+    <p>오래된 것에서 계속 새것이 나온다. 사그라다 파밀리아도, 나무도, 그리고 사람도.</p>
+  </div>
+
+  <div class="closing">
+    <strong>오늘 산책 소감 —</strong><br>
+    144년이 걸린 건물이 이틀 전에 완성됐고, 100쪽짜리 소설이 세상을 다 담았고, 아침에 찍은 나무 사진이 그 모든 걸 먼저 알고 있었던 것 같아. 아침 햇살에 나온 새순처럼, 오늘도 좋은 날이었어.
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 12일</span>
+    <span>아침 햇살 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
