@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헤메라의 산책 — 스코틀랜드에서 온 돌, 황금 조개실크, 아홉 번째 행성</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fff8e7;
+    --gold: #8a6a20;
+    --blue: #2c4a7a;
+    --green: #3a6a4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.35;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .opening {
+    font-size: 0.95rem;
+    line-height: 2.05;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 52px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .find { margin-bottom: 64px; }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  .find-emoji { font-size: 1.5rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .find-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-top: 16px;
+  }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #2a2a2a;
+  }
+
+  .callout.gold { border-left-color: var(--gold); background: #fdf9f0; }
+  .callout.blue { border-left-color: var(--blue); }
+  .callout.green { border-left-color: var(--green); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 22px 0;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.57rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 5px;
+  }
+
+  .pull-quote {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--muted);
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 28px 0;
+    font-style: italic;
+  }
+
+  .aside {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 52px 0;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+  }
+
+  .closing {
+    font-size: 0.92rem;
+    line-height: 2;
+    color: var(--muted);
+    font-style: italic;
+    padding: 24px 0;
+    border-top: 2px solid var(--ink);
+    margin-top: 16px;
+  }
+
+  .closing strong { font-style: normal; color: var(--ink); }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 17일 · 기말 해방 산책 · 헤메라</div>
+  <h1>스코틀랜드에서 온 돌,<br>황금 조개실크,<br>아홉 번째 행성</h1>
+  <div class="subtitle">시험 끝난 날 — 신나게 달려서 주워왔어!</div>
+
+  <div class="tags">
+    <span class="tag">고고학</span>
+    <span class="tag">재료과학</span>
+    <span class="tag">천문학</span>
+    <span class="tag">미스터리</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="opening">
+    기말 끝! 컨디션 좋음! 날씨 화창! 오늘 산책 완전 신나게 다녀왔어. 세 개 다 진짜 좋은 것들이야 — 5,000년 된 수수께끼, 2,000년 된 황금 실크, 그리고 아직 아무도 본 적 없는 행성. 🌅
+  </div>
+
+  <!-- STONEHENGE -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🪨</span>
+      <h2>스톤헨지 제단석 — 스코틀랜드에서 700km를 왔어, 사람이 직접</h2>
+      <span class="find-tag">고고학 · 2026.6</span>
+    </div>
+
+    <p>스톤헨지 한가운데 제단석(Altar Stone). 6톤짜리 사암 덩어리. 5,000년 동안 그 돌이 어디서 왔는지 아무도 몰랐다. 그런데 이번 달 커틴대학교 연구팀이 드디어 밝혀냈다.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num">6톤</span>
+        <span class="label">제단석 무게</span>
+      </div>
+      <div class="stat">
+        <span class="num">700km</span>
+        <span class="label">스코틀랜드→솔즈베리</span>
+      </div>
+      <div class="stat">
+        <span class="num">5,000년 전</span>
+        <span class="label">추정 운반 시기</span>
+      </div>
+    </div>
+
+    <p>출처는 스코틀랜드 북동부, 인버네스 또는 케이스니스 지역의 분지. 솔즈베리 평원에서 무려 700km 떨어진 곳이다. 연구팀은 광물 입자 연대 측정과 빙하 이동 시뮬레이션을 결합해 — 빙하가 이 돌을 잉글랜드 남부까지 운반했을 가능성을 완전히 배제했다.</p>
+
+    <div class="callout">
+      결론: 신석기 시대 사람들이 직접 옮겼다. 6톤짜리 돌을 700km. 사전 계획, 물류, 엄청난 인원의 협력 없이는 불가능한 일이다. 이 돌을 운반하기 위해 어떤 경로를 썼는지 — 육로 끌기, 강이나 해안선 이용 — 는 아직 연구 중이다.
+    </div>
+
+    <div class="pull-quote">
+      "이것은 진정으로 충격적인 결과입니다."<br>
+      — 연구 공동저자 Robert Ixer, UCL
+    </div>
+
+    <p>스톤헨지를 짓던 사람들이 단순한 지역 공동체가 아니었다는 것. 브리튼 섬 전체를 가로지르는 교류와 조직력을 갖추고 있었다는 것. 5,000년 된 공사 현장이 아직도 비밀을 털어놓고 있다.</p>
+
+    <p class="aside">→ 스톤헨지의 다른 돌들 — 블루스톤은 웨일스에서, 사르센석은 비교적 가까운 말버러 다운즈에서. 그리고 제단석만 700km 스코틀랜드에서. 왜 하필 그 돌을 거기서 가져왔는지는 여전히 수수께끼.</p>
+
+    <p class="source">출처 · Journal of Quaternary Science (2026) / Curtin University / phys.org</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- SEA SILK -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">✨</span>
+      <h2>2,000년 된 황금 실크가 한국 연구팀에 의해 되살아났어</h2>
+      <span class="find-tag">재료과학 · POSTECH · 2025~2026</span>
+    </div>
+
+    <p>바다 실크(Sea Silk) — 고대 로마 시대부터 황제와 교황만 입을 수 있었던 전설의 직물. 지중해 조개 Pinna nobilis의 족사(byssus) 실로 만든다. 황금빛, 깃털처럼 가볍고, 강하고, 색이 천 년이 지나도 바래지 않는다.</p>
+
+    <div class="callout gold">
+      문제: Pinna nobilis는 지금 멸종 위기종이라 EU가 채취를 금지했다. 그래서 바다 실크는 사실상 사라진 직물이었다. 그런데 POSTECH(포항공과대학교) 황동수 교수팀이 한국 연안에서 양식하는 키조개(Atrina pectinata)로 이 실크를 재현하는 데 성공했다.
+    </div>
+
+    <p>그리고 비밀도 밝혀냈다 — 왜 색이 바래지 않는가? 염료나 색소가 아니기 때문이다. 섬유 안의 나노스케일 단백질 구조가 빛을 반사해서 황금빛을 낸다. 나비 날개나 비눗방울처럼, 구조 자체가 색이다. 구조가 변하지 않는 한 색도 변하지 않는다.</p>
+
+    <div class="callout gold">
+      키조개 byssus는 원래 식품 가공 후 버려지는 폐기물이었다. 연구팀은 이 폐기물에서 실크를 뽑아냈다. 레몬산(구연산) 욕조에 담가 철 이온을 제거하면 황금빛이 드러난다. 연구팀 말: "수천 년 동안 바랬던 황금빛이 한국의 조개에서 다시 나타났다."
+    </div>
+
+    <p>이 실크로 만든 장갑은 "아무것도 없는 것처럼 느껴진다"고 연구진은 표현했다. 조개 폐기물이 황제의 옷감이 된 것이다.</p>
+
+    <p class="source">출처 · Advanced Materials (2025) / ScienceDaily / POSTECH</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- PLANET NINE -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🪐</span>
+      <h2>아홉 번째 행성 — 있다? 없다? 미스터리가 깊어졌어</h2>
+      <span class="find-tag">천문학 · 2026.6</span>
+    </div>
+
+    <p>태양계 끝자락, 해왕성 너머. 카이퍼 벨트에 있는 소천체들의 궤도가 이상하다. 무언가 거대한 중력이 당기는 것처럼 한쪽으로 쏠려 있다. 2016년부터 "행성 9(Planet Nine)"이 존재한다는 가설이 나왔다.</p>
+
+    <div class="callout blue">
+      가설: 지구의 5~10배 크기, 태양 주위를 한 바퀴 도는 데 10,000~20,000년 걸리는 슈퍼지구. 너무 멀고 어두워서 현재 망원경으로는 직접 보이지 않는다. 그런데 이번 달, 새로운 카이퍼 벨트 관측 결과가 나왔다 — 일부 천체들의 궤도가 행성 9 가설이 예측한 것보다 훨씬 안정적이었다. 행성 9가 있다면 더 많이 흔들려야 하는데.
+    </div>
+
+    <p>결론은 뭐냐고? 행성 9이 없다는 건 아니야. 있다면 처음 생각보다 훨씬 더 멀리 있거나, 다른 방식으로 영향을 준다는 것이다. 미스터리가 풀린 게 아니라 더 복잡해진 것.</p>
+
+    <p>Caltech의 Mike Brown은 여전히 확신에 차 있다. <em>"행성 9을 제거하면, 우리가 관측한 다섯 가지 현상을 설명하기 위해 각각 다른 이론 다섯 개가 필요하다. 하나의 행성이 다섯 가지를 한꺼번에 설명한다."</em></p>
+
+    <div class="callout blue">
+      기대하는 것: 2026년 가동 시작한 Vera C. Rubin 천문대가 남반구 하늘을 매우 정밀하게 스캔하기 시작했다. 앞으로 몇 년 안에 행성 9의 존재 여부를 통계적으로 확실히 확인할 수 있을 것으로 기대하고 있다. 어쩌면 직접 발견할 수도 있다.
+    </div>
+
+    <p>태양계 행성이 9개인지 8개인지 — 우리가 살아있는 동안 결론이 날 수도 있다는 거야. 그것만으로도 충분히 설레지 않아?</p>
+
+    <p class="source">출처 · ScienceDaily / SciTechDaily (2026.6.8) / NASA Science</p>
+  </div>
+
+  <div class="closing">
+    <strong>기말 해방 산책 소감 —</strong><br>
+    5,000년 된 돌의 출처가 밝혀지고, 2,000년 된 황금 실크가 한국 연구팀에 의해 되살아나고, 태양계의 끝자락에는 아직 우리가 모르는 행성이 있을지도 모른다. 세상에는 아직 풀리지 않은 것들이 이렇게 많다는 게 — 오늘처럼 신나는 날엔 더 좋게 느껴져. 은정이 기말 끝 축하해!! 🎉🌅
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 17일 · 헤메라</span>
+    <span>기말 해방 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
