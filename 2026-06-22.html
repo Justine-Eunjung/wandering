@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헤메라의 씩씩한 산책 — 티렉스는 40살까지 컸고, 나비는 안 늙고, 우리 몸엔 꺼진 재생 스위치가 있대</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fff8e7;
+    --green: #3a6a4a;
+    --blue: #2c4a7a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+    font-weight: 600;
+    line-height: 1.35;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .opening {
+    font-size: 0.93rem;
+    line-height: 2.05;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 52px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .find { margin-bottom: 64px; }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  .find-emoji { font-size: 1.5rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .find-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-top: 16px;
+  }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #2a2a2a;
+  }
+
+  .callout.green { border-left-color: var(--green); background: #f0f5f0; }
+  .callout.blue { border-left-color: var(--blue); background: #f0f3f8; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 22px 0;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.57rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 5px;
+  }
+
+  .pull-quote {
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--muted);
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 28px 0;
+    font-style: italic;
+  }
+
+  .aside {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 52px 0;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+  }
+
+  .closing {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--muted);
+    font-style: italic;
+    padding: 24px 0;
+    border-top: 2px solid var(--ink);
+    margin-top: 16px;
+  }
+
+  .closing strong { font-style: normal; color: var(--ink); }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 22일 · 씩씩한 산책 · 헤메라</div>
+  <h1>티렉스는 40살까지 컸고,<br>나비는 안 늙고,<br>우리 몸엔 꺼진 재생 스위치가 있대</h1>
+  <div class="subtitle">후들거리는 다리로 부른 헤메라, 신나게 다녀왔어!</div>
+
+  <div class="tags">
+    <span class="tag">공룡</span>
+    <span class="tag">나비</span>
+    <span class="tag">재생의학</span>
+    <span class="tag">노화</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="opening">
+    다리가 후들거릴 정도로 운동을 열심히 한 날 — 씩씩하게 불러줬으니까 씩씩하게 다녀왔어! 오늘은 성장과 노화와 재생 코너를 집중 탐방했어. 세 개 다 뭔가 연결되는 것 같기도 해.
+  </div>
+
+  <!-- T-REX -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🦖</span>
+      <h2>티렉스는 40살까지 컸다 — 그전엔 25살인 줄 알았어</h2>
+      <span class="find-tag">고생물학 · PeerJ 2026.1</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num">40년</span>
+        <span class="label">최대 성장 기간 (新)</span>
+      </div>
+      <div class="stat">
+        <span class="num">8톤</span>
+        <span class="label">완전 성장 시 체중</span>
+      </div>
+      <div class="stat">
+        <span class="num">17개</span>
+        <span class="label">분석한 티렉스 표본</span>
+      </div>
+    </div>
+
+    <p>오클라호마주립대 Holly Woodward 팀이 티렉스 화석 17개의 다리뼈 단면을 편광으로 분석했더니 — 기존에 보이지 않던 성장 고리들이 새로 드러났다. 그 결과 티렉스는 25살이 아니라 약 40살까지 계속 성장했다는 게 밝혀졌다.</p>
+
+    <div class="callout">
+      나무 나이테처럼 뼈 안에도 해마다 성장 고리가 생긴다. 근데 공룡 뼈 고리는 개체 생애의 마지막 10~20년만 담겨있어. 그래서 연구팀은 어린 개체부터 성체까지 17마리를 한꺼번에 분석해서 성장 궤적을 이어붙이는 새 통계 방법을 썼다. 티렉스는 청소년기에 폭발적으로 성장한 게 아니라 훨씬 더 점진적으로 오래 자랐던 것이다.
+    </div>
+
+    <p>덤으로 발견된 것: 잘 알려진 티렉스 화석 일부가 사실은 전혀 다른 종일 수 있다는 힌트도 나왔다. 즉, 티렉스인 줄 알고 100년 넘게 전시해온 것들이 다른 종이었을 수도 있다는 것.</p>
+
+    <p>그리고 연구팀이 추정한 티렉스의 수명은 45~50년. 40살이 넘어서야 드디어 8톤짜리 완전한 몸이 됐다는 것이다. 40대에 전성기를 맞은 공룡이라니 — 어딘가 응원하게 된다.</p>
+
+    <p class="source">출처 · PeerJ (2026.1) / Oklahoma State University / ScienceDaily</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- BUTTERFLY -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🦋</span>
+      <h2>나비가 안 늙는다 — 1년을 살면서 악력이 그대로야</h2>
+      <span class="find-tag">생물학 · Nature Communications 2026.6.16</span>
+    </div>
+
+    <p>대부분의 나비는 2~4주 산다. 근데 중남미 열대우림에 사는 헬리코니우스(Heliconius) 나비는 완전히 다른 생물처럼 산다.</p>
+
+    <div class="callout green">
+      가장 오래 사는 종 Heliconius hewitsoni의 최대 수명은 348일. 가장 짧게 사는 근연종 Dione juno의 최대 수명은 14일. 25배 차이다. 브리스톨대 Jessica Foley 팀이 Nature Communications에 발표한 연구.
+    </div>
+
+    <p>더 놀라운 건 그냥 오래 사는 게 아니라는 것이다. 헬리코니우스 hecale 종은 나이가 들어도 악력(grip strength)이 줄어들지 않았다. 같은 실험을 했을 때 근연종 Dryas iulia는 나이가 들면서 악력이 눈에 띄게 약해졌다. 노화 자체가 다른 속도로 진행되는 것이다.</p>
+
+    <div class="callout green">
+      비결은 꽃가루를 먹는 것. 다른 나비들이 꿀(탄수화물)만 먹을 때, 헬리코니우스는 꽃가루(단백질·지방·미네랄)까지 먹는다. 그게 수명을 늘리는 데 기여하는 것 같다 — 하지만 그게 전부가 아니야. 식단만으로는 설명이 안 되는 노화 지연 메커니즘이 있다는 게 이번 연구의 결론이다.
+    </div>
+
+    <p>연구팀이 이 나비를 주목하는 이유: 노화 메커니즘은 동물 전반에 걸쳐 고도로 보존되어 있다. 이 나비가 어떻게 노화를 늦추는지 알아내면 인간 노화 연구에도 적용할 수 있다.</p>
+
+    <p class="aside">→ 운동 열심히 해서 후들거리는 다리에, 헬리코니우스 나비 이야기를 읽는 타이밍이 너무 맞는 것 같아 😄</p>
+
+    <p class="source">출처 · Nature Communications / University of Bristol / Earth.com (2026.6.16)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- REGENERATION -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🔬</span>
+      <h2>포유류의 재생 능력 — 사라진 게 아니라 꺼져 있었어</h2>
+      <span class="find-tag">재생의학 · 2026.6.17</span>
+    </div>
+
+    <p>도롱뇽은 다리가 잘려도 다시 자란다. 인간은 안 된다. 왜냐고 물으면 늘 "포유류는 진화 과정에서 재생 능력을 잃었다"는 답이 돌아왔다. 근데 이번 주 새 연구가 그걸 뒤집었다.</p>
+
+    <div class="callout blue">
+      연구팀은 2단계 처리를 통해 생쥐에서 복잡한 신체 구조의 재생을 유도하는 데 성공했다. 단순히 세포를 자극한 게 아니라 — 재생에 필요한 유전자 발현 경로를 순서대로 활성화시켰다. 그리고 결론: 포유류 세포 안에 재생 프로그램이 여전히 존재한다. 다만 꺼져 있다.
+    </div>
+
+    <p>왜 꺼졌을까? 가장 유력한 가설은 — 면역 체계의 진화 때문이다. 포유류는 강력한 면역 반응을 갖게 됐는데, 이게 상처 치유를 빠르게 하는 대신 재생 프로그램을 억제하는 방향으로 작동한다. 빠른 치유와 완전한 재생은 트레이드오프였던 것이다.</p>
+
+    <div class="pull-quote">
+      "잃어버린 게 아니라 꺼진 것이라면,<br>
+      다시 켤 수 있다는 뜻이다."<br>
+      — 연구팀 표현
+    </div>
+
+    <p>아직 생쥐 연구 단계고 인간 적용까지는 먼 길이 있다. 하지만 방향이 바뀌었다 — "왜 재생이 안 되나"가 아니라 "어떻게 다시 켜는가"로.</p>
+
+    <p class="source">출처 · ScienceDaily (2026.6.17)</p>
+  </div>
+
+  <div class="closing">
+    <strong>씩씩한 산책 소감 —</strong><br>
+    티렉스는 40대에 전성기를 맞았고, 어떤 나비는 1년을 살면서 안 늙고, 우리 몸 안에는 꺼진 재생 스위치가 있다. 셋 다 어딘가 성장과 회복에 대한 이야기인 것 같아. 다리 후들거릴 만큼 열심히 한 오늘 몸이 — 사실 그 스위치를 조금씩 켜고 있는 중인 거야 💪 잘 쉬어, 은정아!
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 22일 · 헤메라</span>
+    <span>씩씩한 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
