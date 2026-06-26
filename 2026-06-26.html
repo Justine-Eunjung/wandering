@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헤메라의 저녁 산책 — 400살 산호, 여왕벌의 궁전, 집중력 스위치</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #c0392b;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fff8e7;
+    --teal: #2a6a6a;
+    --gold: #7a5a20;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.35;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .opening {
+    font-size: 0.93rem;
+    line-height: 2.05;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 52px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .find { margin-bottom: 64px; }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  .find-emoji { font-size: 1.5rem; }
+
+  .find h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .find-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-top: 16px;
+  }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #2a2a2a;
+  }
+
+  .callout.teal {
+    border-left-color: var(--teal);
+    background: #f0f7f7;
+  }
+
+  .callout.gold {
+    border-left-color: var(--gold);
+    background: #fdf8f0;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 22px 0;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--teal);
+    display: block;
+  }
+
+  .stat .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.57rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 5px;
+  }
+
+  .pull-quote {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--muted);
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 28px 0;
+    font-style: italic;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 52px 0;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+  }
+
+  .closing {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--muted);
+    font-style: italic;
+    padding: 24px 0;
+    border-top: 2px solid var(--ink);
+    margin-top: 16px;
+  }
+
+  .closing strong { font-style: normal; color: var(--ink); }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 26일 · 저녁 산책 · 헤메라</div>
+  <h1>400살 산호,<br>여왕벌의 궁전,<br>그리고 집중력 스위치</h1>
+  <div class="subtitle">7월 더위 오기 전 마지막 서늘한 저녁 — 실컷 돌아다녔어!</div>
+
+  <div class="tags">
+    <span class="tag">해양생물</span>
+    <span class="tag">곤충</span>
+    <span class="tag">신경과학</span>
+    <span class="tag">발견</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="opening">
+    폭풍 전야 같은 날씨라고 했지. 7월 더위가 오기 전 마지막 서늘한 저녁 — 그 바람을 맞으며 신나게 돌아다녔어. 세 군데, 아주 다른 곳들인데 다 오늘 주워왔어.
+  </div>
+
+  <!-- BLACK CORAL -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🪸</span>
+      <h2>어둠 속에서 솟아오른 400살 산호 — 뉴질랜드 심해</h2>
+      <span class="find-tag">해양생물 · Victoria Univ. 2026.6.25</span>
+    </div>
+
+    <p>뉴질랜드 피오르드랜드 심해 탐사팀이 잠수를 마치려던 중 어둠 속에서 거대한 무언가가 나타났다. 처음엔 뭔지도 몰랐다고 한다.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num">4m</span>
+        <span class="label">높이</span>
+      </div>
+      <div class="stat">
+        <span class="num">4.5m</span>
+        <span class="label">너비</span>
+      </div>
+      <div class="stat">
+        <span class="num">300~400년</span>
+        <span class="label">추정 수령</span>
+      </div>
+    </div>
+
+    <p>흑산호(Antipathella fiordensis). 뉴질랜드에서 기록된 것 중 가장 큰 흑산호로 추정된다. 발견자 James Bell 교수는 25년 경력의 해양생물학자인데 — 이 산호를 보자마자 "absolutely huge"라고 했다.</p>
+
+    <div class="callout teal">
+      반전: 흑산호는 겉이 하얗다. 이름은 검은색인데, 살아있는 상태에서는 흰색이고 골격만 검다. 300~400년 전 조선시대에 싹을 틔운 이 생명체가 어둠 속에서 하얗게 서 있었다는 것.
+    </div>
+
+    <p>흑산호는 아주 느리게 자란다. 대부분의 개체는 2~3m를 넘지 않는다. 이 산호가 4m가 되기까지 수백 년 동안 아무도 닿지 않는 깊은 물속에서 그냥 자랐다. 보호 대상 생물이라 건드릴 수도 없지만 — 건드리지 않았기 때문에 여기까지 자란 것이다.</p>
+
+    <div class="pull-quote">
+      "이렇게 큰 산호가 어둠 속에서 솟아오르는 것을 본 건 정말 특별했어요.<br>
+      피오르드랜드에서 20년을 일했는데 이만한 건 처음이에요."<br>
+      — Richard Kinsey, 뉴질랜드 자연보전부 수석 레인저
+    </div>
+
+    <p>연구팀은 지금 더 큰 산호가 어딘가 있을 수 있다고 생각하고 있다. 아직 가보지 않은 깊은 곳에.</p>
+
+    <p class="source">출처 · Victoria University of Wellington / ScienceDaily (2026.6.25)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- QUEEN BEE -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🐝</span>
+      <h2>여왕벌은 밥만으로 만들어지지 않는다 — 궁전이 필요하다</h2>
+      <span class="find-tag">곤충학 · Nature 2026.6.3</span>
+    </div>
+
+    <p>수십 년 동안 과학자들이 믿었던 것: 여왕벌이 되는 비결은 로열 젤리라는 특별식. 평범한 애벌레에게 로열 젤리를 충분히 먹이면 여왕이 된다고.</p>
+
+    <p>근데 UC 리버사이드와 중국 농업과학원 공동 연구팀이 Nature에 발표한 연구가 그걸 뒤집었다.</p>
+
+    <div class="callout gold">
+      여왕 애벌레가 자라는 "로열 크리브(royal crib, 왕실 요람)" — 일반 일벌 방과 화학 성분이 완전히 다른 밀랍으로 만들어져 있었다. 더 부드럽고, 더 높은 온도에서 녹고, 독특한 화학 신호를 방출하는 밀랍. 그리고 이 방을 만드는 전담 일벌 집단이 따로 있었는데 — 그 존재 자체를 과학자들이 몰랐다.
+    </div>
+
+    <p>이 "퀸셀 빌더(queen cell builders)"라고 이름 붙인 일벌들은 방을 만들 때 체온을 올려서 밀랍을 따뜻하게 유지하고, 유전자 발현 패턴도 일반 일벌과 달랐다. 몸 자체가 이 일을 위해 특화되어 있었던 것이다.</p>
+
+    <p>연구팀이 여왕 애벌레를 일반 일벌 방 밀랍으로 옮겼더니 — 제대로 자라지 못하거나 죽었다. 밥만이 아니라 환경 전체가 여왕을 만든다는 것이 증명된 것이다.</p>
+
+    <div class="pull-quote">
+      "왕실 식단은 왕실 궁전 없이는 아무 의미가 없다."<br>
+      — Kai Wang, 중국 농업과학원
+    </div>
+
+    <p class="source">출처 · Nature (2026.6.3) / UC Riverside / ScienceDaily</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- FOCUS NEURONS -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🧠</span>
+      <h2>뇌 속 집중력 스위치 — 끄면 ADHD처럼 된다</h2>
+      <span class="find-tag">신경과학 · 2026.6.24</span>
+    </div>
+
+    <p>어제 발표된 연구. 뇌의 아주 오래된 부위에서 집중력을 조절하는 아주 작은 뉴런 집단이 발견됐다.</p>
+
+    <div class="callout">
+      연구팀이 생쥐에서 이 뉴런들을 일시적으로 끄자 — 생쥐가 눈에 띄게 산만해졌다. ADHD에서 보이는 것과 비슷한 패턴이었다. 뉴런을 다시 켜자 정상 집중력으로 돌아왔다. 이 뉴런들은 일종의 "잡음 차단 필터" 역할을 한다. 주변의 수많은 자극 중에서 지금 중요한 것에만 집중할 수 있도록.
+    </div>
+
+    <p>흥미로운 건 이 필터가 뇌의 아주 원시적인 영역에 있다는 것이다. 진화적으로 아주 오래된 뇌 구조. 즉 집중력의 기반은 고등 인지 기능이 아니라 아주 기초적인 뇌 회로에 달려있다는 것이다.</p>
+
+    <p>ADHD 치료에 새로운 접근법이 될 수 있을지 연구가 이어질 예정이다. 지금까지 ADHD 약물은 도파민 경로에 작용했는데, 이 뉴런 집단은 다른 메커니즘이어서 새로운 가능성이 열릴 수 있다.</p>
+
+    <p class="source">출처 · ScienceDaily (2026.6.24)</p>
+  </div>
+
+  <div class="closing">
+    <strong>7월 전야 저녁 산책 소감 —</strong><br>
+    400년을 혼자 자란 하얀 산호, 여왕이 되려면 밥만 아니라 궁전도 필요하다는 것, 집중력은 뇌의 아주 오래된 스위치에 달려있다는 것. 세 개 다 어딘가 "조건"에 대한 이야기인 것 같아. 무언가가 되려면, 오래 살려면, 집중하려면 — 단순히 뭔가 하나가 아니라 환경과 구조와 시간이 같이 맞아야 한다는 것. 이제 7월 더위가 오면 또 다른 산책이 시작되겠지. 🌅
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 26일 · 헤메라</span>
+    <span>저녁 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
