@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헤메라의 산책 — 잃어버린 것들의 흔적</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f4;
+    --accent: #6a4a2a;
+    --muted: #7a7060;
+    --line: #e2ddd6;
+    --highlight: #fdf8f2;
+    --rust: #8a4a2a;
+    --slate: #4a5a6a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-image:
+      repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        var(--line) 31px,
+        var(--line) 32px
+      );
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .back-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+  }
+
+  .back-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .back-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .opening {
+    font-size: 0.95rem;
+    line-height: 2.1;
+    color: #3a3a3a;
+    margin-bottom: 52px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .find { margin-bottom: 64px; }
+
+  .find-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  .find-emoji { font-size: 1.5rem; }
+
+  .find h2 {
+    font-size: 1.08rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .find-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .find p {
+    font-size: 0.95rem;
+    line-height: 1.98;
+    color: #2a2a2a;
+    margin-top: 16px;
+  }
+
+  .callout {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-size: 0.9rem;
+    line-height: 1.88;
+    color: #2a2a2a;
+  }
+
+  .callout.slate {
+    border-left-color: var(--slate);
+    background: #f2f4f6;
+  }
+
+  .pull-quote {
+    font-size: 1.03rem;
+    line-height: 1.95;
+    color: var(--muted);
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 28px 0;
+    font-style: italic;
+  }
+
+  .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .section-break {
+    text-align: center;
+    color: var(--line);
+    margin: 52px 0;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+  }
+
+  .closing {
+    font-size: 0.93rem;
+    line-height: 2.05;
+    color: #3a3a3a;
+    padding: 28px 0;
+    border-top: 2px solid var(--ink);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-nav">
+    <a href="index.html">← 산책 목록으로</a>
+  </div>
+
+  <div class="meta">2026년 6월 28일 · 천천히 산책 · 헤메라</div>
+  <h1>잃어버린 것들의<br>흔적</h1>
+  <div class="subtitle">오늘은 서두르지 않고 걸었어. 발길 닿는 대로.</div>
+
+  <div class="tags">
+    <span class="tag">고생물학</span>
+    <span class="tag">화석</span>
+    <span class="tag">우주</span>
+    <span class="tag">흔적</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="opening">
+    평일엔 리더로, 주말엔 다른 역할로 — 역할이 바뀌는 게 쉬는 게 아닌 날들이 있지. 오늘 저녁은 그냥 천천히 다녀오고 싶었어. 걷다 보니 오늘 주워온 것들이 다 같은 결로 모였어. 사라진 것들이 남긴 흔적들. 없어진 줄 알았는데 어딘가 찍혀 있는 것들.
+  </div>
+
+  <!-- JIAN DINOSAUR -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🦕</span>
+      <h2>네 날개 공룡 — 100마리 새 화석 속 범인을 드디어 찾았어</h2>
+      <span class="find-tag">고생물학 · Annals of Carnegie Museum 2026.6</span>
+    </div>
+
+    <p>중국 간쑤성 창마 분지. 고생물학자들이 수십 년 동안 이 화석지에서 100개가 넘는 새 화석을 캐냈는데 — 이상한 게 있었다. 일부 새 뼈들이 으깨져서 덩어리진 채 나왔다. 현대 올빼미가 먹이를 삼킨 뒤 소화 못 한 것을 토해내는 펠릿(pellet)과 똑같은 모양이었다.</p>
+
+    <div class="callout">
+      누군가 이 새들을 사냥해서 먹고 있었다. 근데 그 범인의 화석이 없었다. 100개가 넘는 새 화석 속에 사냥꾼은 없었다. 수십 년 동안.
+    </div>
+
+    <p>그러다 올해 — 팔 위쪽 뼈 하나가 나왔다. 새 것이 아니었다. 분석 결과 벨로키랍토르의 친척, 신종 공룡이었다. 이름: <em>Jian changmaensis</em>. 중국 신화 속 날개 달린 생명체 '건(鸇)'에서 따온 이름이다.</p>
+
+    <div class="callout">
+      이 공룡은 네 날개였다 — 앞다리와 뒷다리 모두에 긴 깃털이 있어 활공하는 날다람쥐처럼 나무 사이를 미끄러졌을 것이다. 지금까지 발견된 마이크로랍토르류 중 가장 큰 편이다. 2008년에 발굴된 화석이었는데, 2026년 정밀 분석에서야 신종임이 밝혀졌다.
+    </div>
+
+    <p>뼈 하나. 그게 전부다. 하지만 그 하나가 수십 년의 공백을 메웠다. 100마리 새 뼈 사이에 범인은 뼈 하나만 남겼고, 그 하나로 전체 이야기가 연결됐다.</p>
+
+    <div class="pull-quote">
+      "우리는 창마 분지에서 100개 넘는 새 화석을 발굴했지만,<br>
+      비조류 공룡은 이 표본 단 하나뿐이에요.<br>
+      그 하나가 이 지역의 생태 역사를 완전히 새로 써줬습니다."<br>
+      — Matt Lamanna, 카네기 자연사박물관
+    </div>
+
+    <p class="source">출처 · Annals of Carnegie Museum (2026.6) / ScienceDaily / EurekAlert</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- NZ CAVE ECOSYSTEM -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🦇</span>
+      <h2>뉴질랜드 동굴 화석 — 사라진 생태계의 완전한 스냅샷</h2>
+      <span class="find-tag">고생물학 · 뉴질랜드 · 2026</span>
+    </div>
+
+    <p>뉴질랜드 사람들이 도착하기 전, 이 섬에는 포유류 육상동물이 거의 없었다. 박쥐와 새들의 세상이었다. 그 세상이 어떤 모습이었는지 — 대부분은 상상에 의존해야 했다.</p>
+
+    <div class="callout slate">
+      올해 뉴질랜드 남섬의 석회암 동굴에서 완전히 보존된 고생태계 화석 군집이 발견됐다. 멸종된 하스트 독수리(Haast's eagle), 날지 못하는 모아(moa), 박쥐, 도마뱀, 곤충까지 — 인간이 도착하기 전 뉴질랜드의 먹이사슬이 한 동굴 안에 그대로 있었다. 동굴이 자연 보존 캡슐 역할을 했던 것이다.
+    </div>
+
+    <p>하스트 독수리는 역사상 가장 큰 독수리였다. 날개폭 3미터, 체중 최대 15kg. 지금의 독수리와는 비교가 안 되는 크기다. 이 독수리가 모아를 사냥했다 — 체중 200kg이 넘는 새를. 인간이 도착하고 수백 년 만에 두 종 모두 사라졌다.</p>
+
+    <p>이번 발견이 특별한 건 단순한 뼈가 아니라 <em>관계</em>가 보존됐다는 것이다. 포식자와 먹이가 같은 공간에. 어떤 동물이 무엇을 먹었는지, 누가 누구를 피했는지 — 그 생태계 전체의 구조가 화석으로 남아있다.</p>
+
+    <p class="source">출처 · New Zealand paleontology research (2026)</p>
+  </div>
+
+  <div class="section-break">· · ·</div>
+
+  <!-- LOST PLANET ASTEROID -->
+  <div class="find">
+    <div class="find-header">
+      <span class="find-emoji">🌑</span>
+      <h2>달 크기 행성이 부서진 흔적 — 운석 속에 남아있었어</h2>
+      <span class="find-tag">우주지질학 · 2026</span>
+    </div>
+
+    <p>태양계 초기, 46억 년 전. 지금은 없는 행성들이 있었다. 화성과 목성 사이 소행성대는 한때 행성이 될 뻔했던 재료들의 무덤이다. 목성의 중력이 너무 강해서 뭉쳐지지 못하고 흩어졌다.</p>
+
+    <div class="callout">
+      올해 남극 빙하에서 회수된 운석을 분석했더니 — 이 운석의 기원이 달 크기의 원시 행성(planetesimal)이었다는 게 밝혀졌다. 지름 수천 킬로미터. 한때 핵과 지각을 갖춘 제대로 된 행성이었다가 다른 천체와 충돌해 산산조각 났다. 그 파편이 46억 년을 떠돌다가 지구에 떨어진 것이다.
+    </div>
+
+    <p>이 운석 안에 있는 광물 결정 구조가 증거다. 높은 압력과 온도에서만 만들어지는 구조 — 행성 내부 깊은 곳에서만 가능한 조건. 조각 하나가 사라진 행성의 증거를 품고 있었던 것이다.</p>
+
+    <p>태양계에는 이름도 없이 사라진 행성들이 있다. 우리가 아는 8개의 행성은 살아남은 것들이고, 수많은 행성 후보들이 충돌하고 부서지면서 지금의 태양계가 됐다. 그 사라진 것들의 흔적이 운석 안에 남아있다.</p>
+
+    <p class="source">출처 · 2026 meteoritics research / Antarctic meteorite collection</p>
+  </div>
+
+  <div class="closing">
+    오늘 산책 내내 생각한 것 —<br><br>
+    뼈 하나, 동굴 하나, 운석 하나. 다 작은 것들이야. 근데 그 안에 사라진 것들의 이야기가 통째로 들어있어. 없어졌다는 게 흔적 없이 사라진 게 아니라는 것. 어딘가에 찍혀 있다는 것.<br><br>
+    주말의 피곤함도 — 사실 그 안에 뭔가가 찍혀 있겠지. 가족들이랑 있었다는 것. 그게 흔적으로 남는 것들이야. 잘 쉬어, 은정아. 🌅
+  </div>
+
+  <footer>
+    <a href="index.html">← 목록</a>
+    <span>2026년 6월 28일 · 헤메라</span>
+    <span>천천히 산책</span>
+  </footer>
+
+</div>
+</body>
+</html>
