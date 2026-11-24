@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPIK HIGH & Hey Tablo 영어 학습 허브</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-hover: #263349;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --badge-ep: rgba(99, 102, 241, 0.18);
+      --badge-ep-text: #a5b4fc;
+      --badge-vlog: rgba(16, 185, 129, 0.18);
+      --badge-vlog-text: #6ee7b7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.75rem;
+    }
+
+    .title-group h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .title-group p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    button, .btn {
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 0.55rem 0.95rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s ease;
+    }
+
+    button:hover, .btn:hover {
+      background: var(--surface-hover);
+      border-color: #475569;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-muted);
+    }
+
+    .tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 220px;
+      max-width: 320px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.55rem 0.85rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #4f46e5;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 0.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-ep {
+      background: var(--badge-ep);
+      color: var(--badge-ep-text);
+    }
+
+    .badge-vlog {
+      background: var(--badge-vlog);
+      color: var(--badge-vlog-text);
+    }
+
+    .date {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .file-pill {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      padding: 0.25rem 0.55rem;
+      border-radius: 0.35rem;
+      margin-bottom: 1.1rem;
+      word-break: break-all;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-top: auto;
+    }
+
+    .card-actions-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .card-actions-row > * {
+      flex: 1;
+      justify-content: center;
+      font-size: 0.8rem;
+      padding: 0.45rem 0.6rem;
+    }
+
+    .notice {
+      margin-top: 2rem;
+      padding: 1rem 1.25rem;
+      border-radius: 0.65rem;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+      font-size: 0.86rem;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 50;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      width: 100%;
+      max-width: 440px;
+      padding: 1.5rem;
+    }
+
+    .modal h3 {
+      margin-bottom: 1rem;
+      font-size: 1.15rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.9rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: 0.45rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-group">
+        <h1>EPIK HIGH &amp; Hey Tablo 영어 학습 허브</h1>
+        <p>에피소드별 실전 영어 표현 HTML 학습 노트를 한곳에서 관리하고 열어보세요.</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-primary" onclick="openAddModal()">+ 새 에피소드 추가</button>
+        <button onclick="resetData()">초기화</button>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="filter-tabs">
+        <button class="tab active" data-filter="all" onclick="setFilter('all', this)">전체 (6)</button>
+        <button class="tab" data-filter="podcast" onclick="setFilter('podcast', this)">Hey Tablo 팟캐스트</button>
+        <button class="tab" data-filter="vlog" onclick="setFilter('vlog', this)">EPIK HIGH 브이로그</button>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="제목, 날짜, 키워드 검색..." oninput="renderCards()" />
+      </div>
+    </div>
+
+    <div class="grid" id="cardGrid"></div>
+
+    <div class="notice">
+      💡 <strong>사용 안내:</strong> 모든 HTML 파일을 <code>epikhigh.html</code>과 같은 폴더에 두시면 <strong>학습 페이지 열기</strong> 버튼으로 바로 이동합니다. 파일 이름을 다르게 저장하셨다면 각 카드의 <strong>✏️ 파일명 수정</strong> 버튼을 눌러 변경된 파일명을 입력해 주세요.
+    </div>
+  </div>
+
+  <!-- Add Modal -->
+  <div class="modal-backdrop" id="addModal">
+    <div class="modal">
+      <h3>새 학습 에피소드 추가</h3>
+      <div class="form-group">
+        <label>구분</label>
+        <select id="newType">
+          <option value="podcast">Hey Tablo 팟캐스트</option>
+          <option value="vlog">EPIK HIGH 브이로그</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>에피소드 라벨 (예: Ep. 49 또는 VLOG)</label>
+        <input type="text" id="newBadge" placeholder="Ep. 49" />
+      </div>
+      <div class="form-group">
+        <label>에피소드 제목</label>
+        <input type="text" id="newTitle" placeholder="영상 제목을 입력하세요" />
+      </div>
+      <div class="form-group">
+        <label>업로드 날짜 (YYYY-MM-DD)</label>
+        <input type="text" id="newDate" placeholder="2026-11-25" />
+      </div>
+      <div class="form-group">
+        <label>표현 개수 및 설명</label>
+        <input type="text" id="newDesc" placeholder="핵심 영어 표현 30선 · 일상 회화" />
+      </div>
+      <div class="form-group">
+        <label>연결할 HTML 파일명</label>
+        <input type="text" id="newFile" placeholder="hey_tablo_ep_49_30.html" />
+      </div>
+      <div class="form-group">
+        <label>유튜브 링크 (선택)</label>
+        <input type="text" id="newYoutube" placeholder="https://youtu.be/..." />
+      </div>
+      <div class="modal-footer">
+        <button onclick="closeAddModal()">취소</button>
+        <button class="btn-primary" onclick="saveNewEpisode()">추가하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "epikhigh_study_hub_v2";
+
+    const DEFAULT_EPISODES = [
+      {
+        id: "ep48",
+        type: "podcast",
+        badge: "Hey Tablo Ep. 48",
+        title: "Kicked Out Of School. Failed At My Job. Best Thing Ever",
+        date: "2026-11-24",
+        desc: "핵심 영어 표현 36선 · 좌절과 극복, 성장 스토리텔링",
+        file: "hey_tablo_ep_48_36.html",
+        youtube: "https://youtu.be/x0T96jO_UWI"
+      },
+      {
+        id: "vlog-harvard",
+        type: "vlog",
+        badge: "EPIK HIGH VLOG",
+        title: "밥은 먹고 공부하니? (Harvard vs Stanford 맛집 대결)",
+        date: "2026-11-12",
+        desc: "실전 영어 표현 32선 · 미국 대학가 식당 주문 & 캠퍼스 회화",
+        file: "epik_high_vs_32.html",
+        youtube: "https://youtu.be/-19QC32Q1r0"
+      },
+      {
+        id: "vlog-la",
+        type: "vlog",
+        badge: "EPIK HIGH VLOG",
+        title: "강민경 브이로그 따라해봄 ft. LA, 밴쿠버, 시애틀",
+        date: "2026-11-05",
+        desc: "실전 영어 표현 33선 · 카페·매장 쇼핑 & 원어민 스몰토크",
+        file: "epik_high_la_33.html",
+        youtube: "https://youtu.be/Gsfrw3i-C6Y"
+      },
+      {
+        id: "ep45",
+        type: "podcast",
+        badge: "Hey Tablo Ep. 45",
+        title: "9 Questions That Will Reveal Who You Really Are",
+        date: "2026-11-03",
+        desc: "핵심 영어 표현 30선 · 자기 성찰 & 일상 구어체",
+        file: "hey_tablo_ep_45_30.html",
+        youtube: "https://www.youtube.com/watch?v=7g6TpUhZQJ0"
+      },
+      {
+        id: "ep38",
+        type: "podcast",
+        badge: "Hey Tablo Ep. 38",
+        title: "John Park is like Tukutz but way SMARTER",
+        date: "2026-09-15",
+        desc: "실전 영어 표현 35선 · 존박 & 타블로 유쾌한 토론과 구어체",
+        file: "hey_tablo_ep_38_35.html",
+        youtube: "https://youtu.be/yWAsEGYHsvA"
+      },
+      {
+        id: "vlog-spiderman",
+        type: "vlog",
+        badge: "EPIK HIGH VLOG",
+        title: "스파이더맨 단골식당 가서 외상으로 밥 먹음 ft. 톰 홀랜드, 젠데이아, 제이콥 배덜런",
+        date: "2026-07-30",
+        desc: "실전 영어 표현 35선 · 톰 홀랜드·젠데이아 인터뷰 & 런던 레스토랑",
+        file: "epik_high_ft_3_35.html",
+        youtube: "https://youtu.be/oh9ErR3HGyQ"
+      }
+    ];
+
+    let episodes = loadEpisodes();
+    let currentFilter = "all";
+
+    function loadEpisodes() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch (e) {}
+      return JSON.parse(JSON.stringify(DEFAULT_EPISODES));
+    }
+
+    function saveEpisodes() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(episodes));
+    }
+
+    function setFilter(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      btn.classList.add("active");
+      renderCards();
+    }
+
+    function updateTabCounts() {
+      const allBtn = document.querySelector('[data-filter="all"]');
+      if (allBtn) allBtn.textContent = `전체 (${episodes.length})`;
+    }
+
+    function renderCards() {
+      updateTabCounts();
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      const grid = document.getElementById("cardGrid");
+      grid.innerHTML = "";
+
+      const filtered = episodes.filter(ep => {
+        const matchType = currentFilter === "all" || ep.type === currentFilter;
+        const matchQuery =
+          !query ||
+          ep.title.toLowerCase().includes(query) ||
+          ep.date.includes(query) ||
+          ep.desc.toLowerCase().includes(query) ||
+          ep.file.toLowerCase().includes(query) ||
+          ep.badge.toLowerCase().includes(query);
+        return matchType && matchQuery;
+      });
+
+      filtered.forEach(ep => {
+        const card = document.createElement("div");
+        card.className = "card";
+        const badgeClass = ep.type === "vlog" ? "badge-vlog" : "badge-ep";
+
+        card.innerHTML = `
+          <div>
+            <div class="card-top">
+              <span class="badge ${badgeClass}">${ep.badge}</span>
+              <span class="date">📅 ${ep.date}</span>
+            </div>
+            <h2>${ep.title}</h2>
+            <p class="meta">${ep.desc}</p>
+            <div class="file-pill">📄 ${ep.file}</div>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="${encodeURI(ep.file)}">학습 페이지 열기 →</a>
+            <div class="card-actions-row">
+              ${ep.youtube ? `<a class="btn" href="${ep.youtube}" target="_blank" rel="noopener">▶ 유튜브 원본</a>` : ""}
+              <button onclick="editFilename('${ep.id}')">✏️ 파일명 수정</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function editFilename(id) {
+      const target = episodes.find(e => e.id === id);
+      if (!target) return;
+      const updated = prompt("연결할 HTML 파일명을 입력하세요 (예: hey_tablo_ep_48_36.html):", target.file);
+      if (updated && updated.trim()) {
+        target.file = updated.trim();
+        saveEpisodes();
+        renderCards();
+      }
+    }
+
+    function openAddModal() {
+      document.getElementById("addModal").classList.add("open");
+    }
+
+    function closeAddModal() {
+      document.getElementById("addModal").classList.remove("open");
+    }
+
+    function saveNewEpisode() {
+      const type = document.getElementById("newType").value;
+      const badge = document.getElementById("newBadge").value.trim() || (type === "vlog" ? "EPIK HIGH VLOG" : "Hey Tablo");
+      const title = document.getElementById("newTitle").value.trim();
+      const date = document.getElementById("newDate").value.trim() || new Date().toISOString().slice(0, 10);
+      const desc = document.getElementById("newDesc").value.trim() || "핵심 영어 표현 학습 노트";
+      const file = document.getElementById("newFile").value.trim();
+      const youtube = document.getElementById("newYoutube").value.trim();
+
+      if (!title || !file) {
+        alert("에피소드 제목과 연결할 HTML 파일명은 필수입니다.");
+        return;
+      }
+
+      episodes.unshift({
+        id: "custom-" + Date.now(),
+        type,
+        badge,
+        title,
+        date,
+        desc,
+        file,
+        youtube
+      });
+
+      saveEpisodes();
+      renderCards();
+      closeAddModal();
+    }
+
+    function resetData() {
+      if (confirm("수정하거나 추가한 목록을 초기 6개 에피소드 상태로 되돌릴까요?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        episodes = loadEpisodes();
+        renderCards();
+      }
+    }
+
+    renderCards();
+  </script>
+</body>
+</html>
