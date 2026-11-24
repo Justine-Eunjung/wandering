@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey Tablo Ep. 45 — 실전 영어 표현 30선 학습 노트</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          colors: {
+            paper: {
+              bg: '#FAF8F5',
+              card: '#FFFFFF',
+              subtle: '#F3EFEA',
+              border: '#E6E0D6',
+              ink: '#22201E',
+              muted: '#6E685F',
+              accent: '#B45309', // Warm amber/terracotta ink
+              accentLight: '#FEF3C7',
+              sage: '#2F6F4E',
+              sageLight: '#ECFDF5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #22201E;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Smooth blur effect for active recall mode */
+    .blur-target {
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+    .hide-meaning .blur-target {
+      filter: blur(6px);
+      user-select: none;
+      cursor: pointer;
+    }
+    .hide-meaning .blur-target:hover,
+    .hide-meaning .blur-target.revealed {
+      filter: blur(0);
+      user-select: auto;
+    }
+    /* Cloze blank styling */
+    .cloze-blank {
+      display: inline-block;
+      min-width: 110px;
+      padding: 0 8px;
+      margin: 0 2px;
+      border-bottom: 2px dashed #B45309;
+      background-color: #FEF3C7;
+      color: transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .cloze-blank.revealed {
+      color: #92400E;
+      background-color: #FDE68A;
+      border-bottom-style: solid;
+      font-weight: 600;
+      user-select: auto;
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6CFC4;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-paper-ink text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-center gap-2">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg">알림 메시지</span>
+  </div>
+
+  <!-- Header & Progress Section -->
+  <header class="sticky top-0 z-30 bg-paper-bg/95 backdrop-blur-md border-b border-paper-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-paper-accent mb-1">
+            <span>Hey Tablo Ep. 45</span>
+            <span>•</span>
+            <a href="https://www.youtube.com/watch?v=7g6TpUhZQJ0" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-800 inline-flex items-center gap-1">
+              YouTube 원본 영상 ↗
+            </a>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-paper-ink tracking-tight">
+            9 Questions That Will Reveal Who You Really Are
+          </h1>
+          <p class="text-xs sm:text-sm text-paper-muted mt-0.5">
+            팟캐스트 실제 예문(원문) 기반 핵심 영어 표현 30선 학습 노트
+          </p>
+        </div>
+
+        <!-- Export & Utility Buttons -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="exportMarkdown()" class="px-3.5 py-2 rounded-xl bg-paper-ink text-white text-xs sm:text-sm font-medium hover:bg-stone-800 transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Obsidian (.md) 내보내기
+          </button>
+          <button onclick="openResetModal()" class="px-3 py-2 rounded-xl bg-paper-card border border-paper-border text-paper-muted text-xs sm:text-sm font-medium hover:bg-paper-subtle transition" title="학습 기록 초기화">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4">
+        <div class="flex items-center justify-between text-xs font-medium text-paper-muted mb-1.5">
+          <span>학습 진도율 (암기 완료)</span>
+          <span id="progress-text" class="text-paper-sage font-semibold">0 / 30 (0%)</span>
+        </div>
+        <div class="w-full h-2 bg-paper-subtle rounded-full overflow-hidden border border-paper-border/60">
+          <div id="progress-bar" class="h-full bg-paper-sage transition-all duration-300 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controls & Filter Bar -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6">
+    <section class="bg-paper-card border border-paper-border rounded-2xl p-4 mb-6 shadow-sm space-y-4">
+      <!-- Search & Study Mode Toggles -->
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-paper-muted absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="영어 표현, 예문 또는 한국어 뜻 검색..."
+            class="w-full pl-10 pr-4 py-2.5 bg-paper-bg border border-paper-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-paper-accent/30 focus:border-paper-accent transition"
+          />
+        </div>
+
+        <!-- Study Modes -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-hide-meaning" onclick="toggleHideMeaning()" class="px-3.5 py-2.5 rounded-xl border border-paper-border bg-paper-bg text-xs sm:text-sm font-medium text-paper-ink hover:bg-paper-subtle transition flex items-center gap-1.5">
+            <span>👁️</span> 뜻/해석 가리기
+          </button>
+          <button id="btn-cloze-mode" onclick="toggleClozeMode()" class="px-3.5 py-2.5 rounded-xl border border-paper-border bg-paper-bg text-xs sm:text-sm font-medium text-paper-ink hover:bg-paper-subtle transition flex items-center gap-1.5">
+            <span>✍️</span> 예문 빈칸 퀴즈
+          </button>
+          <button id="btn-hide-mastered" onclick="toggleHideMastered()" class="px-3.5 py-2.5 rounded-xl border border-paper-border bg-paper-bg text-xs sm:text-sm font-medium text-paper-ink hover:bg-paper-subtle transition flex items-center gap-1.5">
+            <span>✅</span> 암기 완료 숨기기
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div id="category-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="flex items-center justify-between mb-4 px-1">
+      <p id="result-count" class="text-xs sm:text-sm text-paper-muted font-medium">총 30개의 표현 표시 중</p>
+      <p class="text-xs text-paper-muted hidden sm:block">💡 팁: 타임스탬프 버튼을 누르면 유튜브의 해당 발화 구간으로 바로 이동합니다.</p>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cards-container" class="space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 bg-paper-card border border-paper-border rounded-2xl">
+      <p class="text-3xl mb-2">📭</p>
+      <h3 class="text-base font-semibold text-paper-ink">조건에 맞는 표현이 없습니다</h3>
+      <p class="text-sm text-paper-muted mt-1">검색어를 지우거나 필터 설정을 변경해 보세요.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-paper-subtle hover:bg-paper-border/60 rounded-xl text-xs font-medium text-paper-ink transition">
+        필터 초기화
+      </button>
+    </div>
+  </main>
+
+  <!-- Custom Confirmation Modal (No native confirm/alert) -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-xs p-4">
+    <div class="bg-paper-card border border-paper-border rounded-2xl max-w-sm w-full p-6 shadow-xl">
+      <h3 class="text-lg font-bold text-paper-ink">학습 기록을 초기화할까요?</h3>
+      <p class="text-sm text-paper-muted mt-2 leading-relaxed">
+        체크한 '암기 완료' 상태와 작성하신 개인 메모가 모두 삭제됩니다. 필요하시면 먼저 Obsidian(.md) 파일로 내보내세요.
+      </p>
+      <div class="mt-5 flex justify-end gap-2">
+        <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl border border-paper-border text-sm font-medium text-paper-muted hover:bg-paper-subtle transition">
+          취소
+        </button>
+        <button onclick="confirmReset()" class="px-4 py-2 rounded-xl bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition">
+          초기화하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-paper-border bg-paper-card mt-12 py-6 text-center text-xs text-paper-muted">
+    <p>Source: Epik High Official YouTube — <em>9 Questions That Will Reveal Who You Really Are | Hey Tablo Ep. 45</em></p>
+  </footer>
+
+  <script>
+    // 30 Curated Expressions with Verbatim Quotes from Hey Tablo Ep. 45
+    const VIDEO_ID = "7g6TpUhZQJ0";
+    const EXPRESSIONS = [
+      {
+        id: 1,
+        expression: "Where did the time go?",
+        timestamp: "00:00:00",
+        seconds: 0,
+        category: "일상·시간 묘사",
+        meaning: "시간이 벌써 이렇게 됐나? / 세월 참 빠르다",
+        nuance: "한 해가 저물어가거나 오랜만에 지인을 만났을 때 시간이 믿기지 않을 정도로 빨리 흘렀음을 나타내는 관용적 감탄문입니다.",
+        quote: "Oh my god, there's only two months left in 2026. Where did the time go?",
+        highlight: "Where did the time go?",
+        translation: "세상에, 2026년이 두 달밖에 안 남았네. 시간이 벌써 이렇게 됐나?"
+      },
+      {
+        id: 2,
+        expression: "pop up in one's feed",
+        timestamp: "00:00:19",
+        seconds: 19,
+        category: "일상·시간 묘사",
+        meaning: "(SNS·유튜브) 피드에 계속 뜨다",
+        nuance: "'pop up'은 불쑥 나타나다는 뜻으로, 소셜 미디어 알고리즘에 의해 특정 영상이나 게시물이 홈 화면(feed)에 자꾸 노출될 때 씁니다.",
+        quote: "I think my algorithm knows that that's what I've been thinking because this thing keeps on popping up in my feed.",
+        highlight: "popping up in my feed",
+        translation: "내 알고리즘이 내가 무슨 생각을 하는지 아나 봐, 이게 내 피드에 계속 뜨거든."
+      },
+      {
+        id: 3,
+        expression: "grueling",
+        timestamp: "00:01:03",
+        seconds: 63,
+        category: "일상·시간 묘사",
+        meaning: "녹초가 될 정도로 힘든, 혹독한",
+        nuance: "체력적·정신적으로 극심한 피로를 유발하는 스케줄, 훈련, 작업 등을 묘사할 때 원어민이 즐겨 쓰는 형용사입니다.",
+        quote: "I was never once sick the whole month, okay? Grueling like 5:00 wakeups, getting on the plane...",
+        highlight: "Grueling",
+        translation: "한 달 내내 한 번도 안 아팠어요. 새벽 5시 기상에 비행기 타는 혹독한 일정이었는데도요."
+      },
+      {
+        id: 4,
+        expression: "hold on",
+        timestamp: "00:02:28",
+        seconds: 148,
+        category: "감정·성찰",
+        meaning: "(힘든 상황에서) 버티다, 견디다",
+        nuance: "전화 통화에서 '잠깐만 기다려'라는 뜻 외에, 역경이나 병마 속에서도 포기하지 않고 버텨낸다는 뜻으로 자주 쓰입니다.",
+        quote: "What they figured out was that if you have like a daily purpose, your body just knows to hold on.",
+        highlight: "hold on",
+        translation: "연구진이 알아낸 건 매일 해야 할 목적이 있으면 우리 몸이 버텨야 한다는 걸 스스로 안다는 거예요."
+      },
+      {
+        id: 5,
+        expression: "back to back",
+        timestamp: "00:02:51",
+        seconds: 171,
+        category: "일상·시간 묘사",
+        meaning: "연달아, 쉴 틈 없이 연속으로",
+        nuance: "회의, 공연, 비행, 우승 등이 중간 휴식 없이 바로 이어질 때 명사 앞뒤로 붙여 활용합니다.",
+        quote: "My body was probably just like, okay, this guy is doing shows back to back and he's flying all the time.",
+        highlight: "back to back",
+        translation: "내 몸이 아마 '좋아, 이 녀석이 공연을 연달아 하고 계속 비행기를 타는구나'라고 생각했을 거예요."
+      },
+      {
+        id: 6,
+        expression: "From what I gather",
+        timestamp: "00:03:42",
+        seconds: 222,
+        category: "실무·생활",
+        meaning: "내가 파악하기로는, 내가 알기로는",
+        nuance: "여러 정보나 정황을 종합해 보았을 때 내린 판단을 조심스럽고 세련되게 제시할 때 문장 맨 앞에서 씁니다. (추가 선별)",
+        quote: "From what I gather, these nine questions are hard-to-answer questions and will force you to reflect.",
+        highlight: "From what I gather",
+        translation: "내가 파악하기로는, 이 아홉 가지 질문은 답하기 어렵고 스스로를 성찰하게 만드는 질문들이에요."
+      },
+      {
+        id: 7,
+        expression: "ground rules",
+        timestamp: "00:05:09",
+        seconds: 309,
+        category: "실무·생활",
+        meaning: "기본 규칙, 원칙",
+        nuance: "원래 스포츠 경기장의 기본 규칙에서 유래했으며, 협업이나 가족·팀 간에 반드시 지켜야 할 최소한의 합의 사항을 뜻합니다.",
+        quote: "I'll do it in writing. So like no AI Tablo songs. I'll make some ground rules.",
+        highlight: "ground rules",
+        translation: "문서로 남겨둘 거예요. AI 타블로 노래 금지 같은 기본 원칙들을 정해둘 겁니다."
+      },
+      {
+        id: 8,
+        expression: "hella (early / pictures)",
+        timestamp: "00:06:38",
+        seconds: 398,
+        category: "구어체·슬랭",
+        meaning: "엄청, 굉장히 (구어체 강조 부사)",
+        nuance: "미국 캘리포니아(베이 에어리어)에서 시작되어 북미 전역에서 쓰이는 캐주얼한 강조 표현('very' 또는 'a lot of'의 구어체)입니다.",
+        quote: "If I had 24 hours to live, the first thing I would do is I wake up hella early.",
+        highlight: "hella",
+        translation: "만약 살 날이 24시간밖에 안 남았다면, 제일 먼저 엄청 일찍 일어날 거예요."
+      },
+      {
+        id: 9,
+        expression: "outstanding bills",
+        timestamp: "00:06:44",
+        seconds: 404,
+        category: "실무·생활",
+        meaning: "미납된 청구서, 아직 결제되지 않은 고지서",
+        nuance: "금융·비즈니스에서 'outstanding'은 '뛰어난'이라는 뜻 외에 '아직 처리(지불)되지 않고 남아 있는'이라는 핵심 실무 의미를 가집니다.",
+        quote: "I would have to prepare all the things to take care of finances and everything. No outstanding bills.",
+        highlight: "outstanding bills",
+        translation: "재정적인 부분이나 모든 걸 정리해 둬야겠죠. 미납된 청구서가 남지 않도록요."
+      },
+      {
+        id: 10,
+        expression: "ditch school",
+        timestamp: "00:07:20",
+        seconds: 440,
+        category: "구어체·슬랭",
+        meaning: "학교를 빼먹다, 땡땡이치다",
+        nuance: "'ditch'는 원래 '버리다, 빠지다'라는 구어체 동사로, 'ditch class(수업 째다)', 'ditch work(직장 땡땡이치다)'로도 응용됩니다.",
+        quote: "I would make Haru ditch school to just hang out with me.",
+        highlight: "ditch school",
+        translation: "하루한테 학교 땡땡이치게 하고 나랑 같이 놀자고 할 거예요."
+      },
+      {
+        id: 11,
+        expression: "be at it again",
+        timestamp: "00:08:32",
+        seconds: 512,
+        category: "구어체·슬랭",
+        meaning: "또 저러네, 또 시작이네",
+        nuance: "누군가 평소 자주 하던 습관적인 행동이나 잔소리, 엉뚱한 짓을 또 반복할 때 농담 섞어 반응하는 자연스러운 표현입니다.",
+        quote: "Do you think they'll believe me? They'll be like, 'Oh, he's at it again.'",
+        highlight: "he's at it again",
+        translation: "멤버들이 내 말을 믿을까요? 아마 '아, 저 형 또 시작이네'라고 할 거예요."
+      },
+      {
+        id: 12,
+        expression: "under the weather",
+        timestamp: "00:10:55",
+        seconds: 655,
+        category: "일상·시간 묘사",
+        meaning: "몸 상태가 안 좋은, 컨디션이 저조한",
+        nuance: "중병은 아니지만 감기 기운이 있거나 피곤해서 몸이 찌뿌둥할 때 가장 원어민답게 쓰는 완곡한 표현입니다.",
+        quote: "Maybe I should only shoot on days where I'm like under the weather.",
+        highlight: "under the weather",
+        translation: "아마 컨디션이 좀 안 좋은 날에만 촬영을 해야 할까 봐요."
+      },
+      {
+        id: 13,
+        expression: "pop up in one's head",
+        timestamp: "00:11:52",
+        seconds: 712,
+        category: "일상·시간 묘사",
+        meaning: "머릿속에 불현듯 떠오르다",
+        nuance: "2번의 'pop up in my feed'와 같은 구조로, 어떤 생각이나 아이디어가 머릿속에 갑자기 스쳐 지나갈 때 씁니다. (추가 선별)",
+        quote: "The first thing that pops up in my head, I want to search for home videos.",
+        highlight: "pops up in my head",
+        translation: "머릿속에 제일 먼저 떠오르는 건, 옛날 홈 비디오를 찾아보고 싶다는 거예요."
+      },
+      {
+        id: 14,
+        expression: "flood back",
+        timestamp: "00:15:20",
+        seconds: 920,
+        category: "감정·성찰",
+        meaning: "(기억이나 감정이) 한꺼번에 밀려오다",
+        nuance: "홍수(flood)가 밀려오듯 잊고 지냈던 과거의 추억이나 감정이 특정 계기로 인해 순식간에 되살아나는 생생한 묘사입니다.",
+        quote: "Oh yeah, I played the violin. Oh yeah, that's what I looked like. And then like the memories flood back.",
+        highlight: "flood back",
+        translation: "맞아, 나 바이올린 켰었지. 맞아, 저렇게 생겼었지. 그러면서 기억들이 한꺼번에 밀려오더라고요."
+      },
+      {
+        id: 15,
+        expression: "live up to (someone's) expectations",
+        timestamp: "00:18:03",
+        seconds: 1083,
+        category: "감정·성찰",
+        meaning: "(~의) 기대에 부응하다",
+        nuance: "부모님, 사회, 혹은 스스로가 세운 높은 기준과 기대치를 충족시키며 살아간다는 뜻의 필수 연어(collocation)입니다.",
+        quote: "The entire first and second verse is basically about me having to live up to other people's expectations.",
+        highlight: "live up to other people's expectations",
+        translation: "1절과 2절 전체가 기본적으로 다른 사람들의 기대에 부응하며 살아야 했던 제 이야기예요."
+      },
+      {
+        id: 16,
+        expression: "nudge (someone) towards",
+        timestamp: "00:19:19",
+        seconds: 1159,
+        category: "감정·성찰",
+        meaning: "(~쪽으로) 은근히 등을 떠밀다, 유도하다",
+        nuance: "'nudge'는 팔꿈치로 슬쩍 찌른다는 뜻으로, 강압적이지 않지만 특정 방향이나 진로로 가도록 은근히 압력을 주거나 유도할 때 씁니다. (추가 선별)",
+        quote: "I was raised in an Asian household, so I was constantly nudged towards things where I wouldn't be able to do any of that.",
+        highlight: "nudged towards",
+        translation: "아시아 가정에서 자랐기 때문에, 그런 예술 활동은 전혀 할 수 없는 길로 끊임없이 유도되었죠."
+      },
+      {
+        id: 17,
+        expression: "hold oneself back",
+        timestamp: "00:21:02",
+        seconds: 1262,
+        category: "감정·성찰",
+        meaning: "스스로를 자제하다, 억누르다",
+        nuance: "감정이나 충동, 하고 싶은 말이나 행동을 밖으로 표출하지 않고 스스로 제동을 걸어 참는다는 의미입니다.",
+        quote: "I want to try like crazy things, but sometimes I have to hold myself back.",
+        highlight: "hold myself back",
+        translation: "미친 듯이 새로운 시도들을 해보고 싶지만, 가끔은 스스로를 자제해야만 해요."
+      },
+      {
+        id: 18,
+        expression: "a one-off (thing)",
+        timestamp: "00:23:19",
+        seconds: 1399,
+        category: "일상·시간 묘사",
+        meaning: "일회성의, 단발성으로 끝나는 일",
+        nuance: "정기적이거나 장기적인 시리즈가 아니라 단 한 번만 특별히 진행되는 이벤트, 프로젝트, 실수 등을 가리킬 때 매우 유용합니다.",
+        quote: "We'll still go to do concerts and stuff, but I think it needs to be like a one-off thing where I just go and perform in a couple cities.",
+        highlight: "a one-off thing",
+        translation: "앞으로도 콘서트는 하겠지만, 몇 개 도시만 짧게 가서 공연하고 오는 단발성 일정이어야 할 것 같아요."
+      },
+      {
+        id: 19,
+        expression: "go through hell",
+        timestamp: "00:24:12",
+        seconds: 1452,
+        category: "구어체·슬랭",
+        meaning: "지옥 같은 힘든 시간을 겪다, 극심한 고생을 하다",
+        nuance: "신체적·정신적으로 말 못 할 고초나 번거로운 시련을 겪었을 때 감정을 실어 표현하는 구어체 숙어입니다.",
+        quote: "This one time I was on another tour and I had gone through hell in this particular airport in a foreign country.",
+        highlight: "gone through hell",
+        translation: "예전에 다른 투어를 할 때 어떤 외국의 특정 공항에서 정말 지옥 같은 고생을 겪은 적이 있어요."
+      },
+      {
+        id: 20,
+        expression: "hold on to (memories/something)",
+        timestamp: "00:25:25",
+        seconds: 1525,
+        category: "감정·성찰",
+        meaning: "(~을) 간직하다, 계속 붙잡고 있다",
+        nuance: "물건을 꽉 잡는다는 뜻에서 확장되어 과거의 기억, 미련, 신념 등을 놓지 않고 마음속에 계속 간직한다는 뜻으로 쓰입니다. (추가 선별)",
+        quote: "Are those best memories that I'm holding on to even now? Heck no.",
+        highlight: "holding on to",
+        translation: "그때의 최고의 기억들을 제가 지금까지도 계속 붙잡고 있냐고요? 전혀 아니에요."
+      },
+      {
+        id: 21,
+        expression: "have a low bar (for)",
+        timestamp: "00:25:57",
+        seconds: 1557,
+        category: "실무·생활",
+        meaning: "(~에 대한) 기준이 낮다, 쉽게 만족하다",
+        nuance: "높이뛰기 바(bar)에서 유래한 비유로, 기대치나 만족의 문턱이 낮아 사소한 것에도 쉽게 기뻐하거나 통과시킨다는 뜻입니다.",
+        quote: "Like I have a very low bar for best memories.",
+        highlight: "have a very low bar for",
+        translation: "저는 최고의 기억에 대한 기준이 아주 낮은 편이에요."
+      },
+      {
+        id: 22,
+        expression: "What if",
+        timestamp: "00:27:56",
+        seconds: 1676,
+        category: "감정·성찰",
+        meaning: "만약 ~라면 어땠을까? (후회나 가정의 명사화)",
+        nuance: "단순 의문문을 넘어, 본문처럼 명사('which what if')로 쓰여 '과거에 다른 선택을 했더라면 어땠을까 하는 미련·가정'을 뜻합니다. (추가 선별)",
+        quote: "Which 'what if' still haunts you the most?",
+        highlight: "what if",
+        translation: "어떤 '만약에'라는 가정이 여전히 당신을 가장 괴롭히나요?"
+      },
+      {
+        id: 23,
+        expression: "arrive at (a conclusion/thought)",
+        timestamp: "00:30:03",
+        seconds: 1803,
+        category: "실무·생활",
+        meaning: "(결론·생각에) 도달하다, 다다르다",
+        nuance: "깊은 고민이나 논의 끝에 최종적인 결론이나 깨달음에 이르게 될 때 'reach'와 함께 가장 격식 있고 자연스럽게 쓰입니다. (추가 선별)",
+        quote: "I always arrive at: I could have chosen a different path, I may have been more successful, maybe, but I wouldn't have become Haru's dad.",
+        highlight: "arrive at",
+        translation: "저는 늘 이런 결론에 도달해요. 다른 길을 택했다면 더 성공했을 수도 있겠지만, 하루 아빠가 되지는 못했겠죠."
+      },
+      {
+        id: 24,
+        expression: "learn the hard way",
+        timestamp: "00:32:55",
+        seconds: 1975,
+        category: "감정·성찰",
+        meaning: "뼈아픈 경험을 통해 깨닫다, 호되게 당해보고 배우다",
+        nuance: "남의 조언을 듣지 않거나 미리 알지 못해 직접 실패와 상처를 겪은 뒤에야 비로소 교훈을 얻었다는 뜻의 명표현입니다.",
+        quote: "I would advise them who to avoid, the types of people to avoid. I learned the hard way.",
+        highlight: "learned the hard way",
+        translation: "어떤 부류의 사람들을 피해야 하는지 조언해 줄 거예요. 저는 직접 호되게 당해보고 나서야 깨달았거든요."
+      },
+      {
+        id: 25,
+        expression: "in sync",
+        timestamp: "00:34:03",
+        seconds: 2043,
+        category: "일상·시간 묘사",
+        meaning: "동시에, 호흡이 딱 맞아서, 박자를 맞춰",
+        nuance: "'in synchronization'의 줄임말로, 여러 사람이 약속이나 한 듯 동시에 같은 행동을 하거나 서로의 마음이 잘 맞을 때 씁니다. (추가 선별)",
+        quote: "Everyone in this room is laughing right now. Like in sync, they're laughing at the same time.",
+        highlight: "in sync",
+        translation: "지금 이 방에 있는 모두가 웃고 있어요. 마치 약속이나 한 듯 동시에 웃고 있네요."
+      },
+      {
+        id: 26,
+        expression: "retreat into a corner",
+        timestamp: "00:36:12",
+        seconds: 2172,
+        category: "감정·성찰",
+        meaning: "구석으로 숨어들다, 위축되어 움츠러들다",
+        nuance: "상처를 받거나 부담을 느껴 외부 세상과 거리를 두고 자기만의 안전한 공간(껍질) 속으로 숨어버리는 심리를 묘사합니다. (추가 선별)",
+        quote: "So I think I just kind of retreated into a corner, and I was that way in school.",
+        highlight: "retreated into a corner",
+        translation: "그래서 그냥 마음의 구석으로 숨어들었던 것 같아요. 학교에서도 늘 그런 식이었죠."
+      },
+      {
+        id: 27,
+        expression: "low-key",
+        timestamp: "00:37:32",
+        seconds: 2252,
+        category: "구어체·슬랭",
+        meaning: "은근히, 남모르게, 내심",
+        nuance: "원래 '드러내지 않는, 절제된'이라는 뜻의 형용사지만, 현대 영어 회화에서는 '은근히, 사실은 좀'이라는 부사처럼 아주 빈번하게 쓰입니다.",
+        quote: "Sometimes I'm like I need to remind them that I'm an artist, that I'm low-key a poet.",
+        highlight: "low-key",
+        translation: "가끔은 팬들에게 내가 아티스트이고, 은근히 시인 같은 사람이라는 걸 상기시켜 줄 필요가 있다고 느껴요."
+      },
+      {
+        id: 28,
+        expression: "distill (something) down to",
+        timestamp: "00:39:58",
+        seconds: 2398,
+        category: "실무·생활",
+        meaning: "(~을 핵심만) 요약하다, 압축하다",
+        nuance: "액체를 증류(distill)해 순수한 원액만 뽑아내듯, 복잡하고 긴 이야기에서 가장 본질적인 핵심 한 가지만 추려낼 때 쓰는 고급 표현입니다. (추가 선별)",
+        quote: "If I distill my answers down to like a sentence, I guess what matters to me is family.",
+        highlight: "distill my answers down to",
+        translation: "제 대답들을 한 문장으로 압축해 본다면, 제게 중요한 건 결국 가족인 것 같아요."
+      },
+      {
+        id: 29,
+        expression: "wake up in a cold sweat",
+        timestamp: "00:40:41",
+        seconds: 2441,
+        category: "일상·시간 묘사",
+        meaning: "식은땀을 흘리며 잠에서 깨다",
+        nuance: "악몽을 꾸거나 극심한 불안감·스트레스 때문에 한밤중에 식은땀에 젖어 화들짝 잠에서 깨어나는 상황을 묘사할 때 씁니다. (추가 선별)",
+        quote: "At about like 2:40 in the morning or 3:15 in the morning, I'll just suddenly wake up in a cold sweat.",
+        highlight: "wake up in a cold sweat",
+        translation: "새벽 2시 40분이나 3시 15분쯤에 갑자기 식은땀을 뻘뻘 흘리며 잠에서 깨곤 해요."
+      },
+      {
+        id: 30,
+        expression: "wind down",
+        timestamp: "00:47:53",
+        seconds: 2873,
+        category: "일상·시간 묘사",
+        meaning: "(한 해나 일 등이) 서서히 마무리되다, 끝을 향해 가다",
+        nuance: "태엽이 서서히 풀리듯 바빴던 하루, 행사, 혹은 한 해가 차분하게 마무리되어 가는 시점을 표현할 때 씁니다.",
+        quote: "Maybe reconfigure your life as 2026 winds down, and when we begin 2027, hopefully we can go into it strong.",
+        highlight: "winds down",
+        translation: "2026년이 저물어 가는 지금 삶을 재정비해서, 2027년을 시작할 땐 힘차게 출발할 수 있기를 바랍니다."
+      }
+    ];
+
+    // App State
+    const STORAGE_KEY = "heytablo_ep45_study_v1";
+    let state = {
+      mastered: {}, // { id: true }
+      memos: {},    // { id: "note text" }
+      category: "전체",
+      search: "",
+      hideMeaning: false,
+      clozeMode: false,
+      hideMastered: false
+    };
+
+    // Load saved state
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.mastered = parsed.mastered || {};
+          state.memos = parsed.memos || {};
+        }
+      } catch (e) {
+        console.error("Failed to load state:", e);
+      }
+    }
+
+    // Save state
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          mastered: state.mastered,
+          memos: state.memos
+        }));
+      } catch (e) {
+        console.error("Failed to save state:", e);
+      }
+    }
+
+    // Show toast message
+    function showToast(msg, icon = "✓") {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-msg").textContent = msg;
+      document.getElementById("toast-icon").textContent = icon;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+
+    // Text-to-Speech (TTS)
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("이 브라우저는 음성 듣기를 지원하지 않습니다.", "⚠️");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = 0.95;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Escape HTML helper
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Format Quote with Highlight or Cloze Blank
+    function formatQuote(quote, highlight, clozeMode) {
+      const escapedQuote = escapeHtml(quote);
+      const escapedHighlight = escapeHtml(highlight);
+      const idx = escapedQuote.toLowerCase().indexOf(escapedHighlight.toLowerCase());
+
+      if (idx === -1) return escapedQuote;
+
+      const before = escapedQuote.slice(0, idx);
+      const match = escapedQuote.slice(idx, idx + escapedHighlight.length);
+      const after = escapedQuote.slice(idx + escapedHighlight.length);
+
+      if (clozeMode) {
+        return `${before}<span class="cloze-blank" onclick="this.classList.toggle('revealed')" title="클릭해서 정답 확인">${match}</span>${after}`;
+      } else {
+        return `${before}<mark class="bg-paper-accentLight text-amber-900 font-semibold px-1.5 py-0.5 rounded-md">${match}</mark>${after}`;
+      }
+    }
+
+    // Render Category Tabs
+    function renderCategories() {
+      const categories = ["전체", "일상·시간 묘사", "구어체·슬랭", "감정·성찰", "실무·생활"];
+      const container = document.getElementById("category-tabs");
+      container.innerHTML = categories.map(cat => {
+        const count = cat === "전체"
+          ? EXPRESSIONS.length
+          : EXPRESSIONS.filter(item => item.category === cat).length;
+        const isActive = state.category === cat;
+        const activeClasses = isActive
+          ? "bg-paper-ink text-white border-paper-ink shadow-xs"
+          : "bg-paper-bg text-paper-muted border-paper-border hover:bg-paper-subtle hover:text-paper-ink";
+
+        return `
+          <button
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-1.5 rounded-full border text-xs sm:text-sm font-medium whitespace-nowrap transition ${activeClasses}"
+          >
+            ${cat} <span class="opacity-75 text-xs ml-0.5">(${count})</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    // Update Progress UI
+    function updateProgress() {
+      const total = EXPRESSIONS.length;
+      const done = Object.values(state.mastered).filter(Boolean).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progress-text").textContent = `${done} / ${total} (${pct}%)`;
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    // Render Expression Cards
+    function renderCards() {
+      const container = document.getElementById("cards-container");
+      const emptyState = document.getElementById("empty-state");
+      const query = state.search.trim().toLowerCase();
+
+      const filtered = EXPRESSIONS.filter(item => {
+        if (state.category !== "전체" && item.category !== state.category) return false;
+        if (state.hideMastered && state.mastered[item.id]) return false;
+        if (query) {
+          const hay = `${item.expression} ${item.meaning} ${item.quote} ${item.translation} ${item.nuance}`.toLowerCase();
+          if (!hay.includes(query)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById("result-count").textContent = `총 ${filtered.length}개의 표현 표시 중`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      container.innerHTML = filtered.map(item => {
+        const isMastered = !!state.mastered[item.id];
+        const memoText = state.memos[item.id] || "";
+        const ytUrl = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const cardBorder = isMastered ? "border-emerald-300 bg-emerald-50/20" : "border-paper-border bg-paper-card";
+
+        return `
+          <article class="rounded-2xl border ${cardBorder} p-5 sm:p-6 shadow-xs transition hover:shadow-md">
+            <!-- Card Top Row: Number, Category, Timestamp, Mastered Checkbox -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-paper-subtle text-paper-ink text-xs font-bold">
+                  ${item.id}
+                </span>
+                <span class="px-2.5 py-0.5 rounded-md bg-paper-subtle text-paper-muted text-xs font-medium">
+                  ${item.category}
+                </span>
+                <a
+                  href="${ytUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-red-50 text-red-700 hover:bg-red-100 text-xs font-medium transition"
+                  title="유튜브에서 이 구간 바로 듣기"
+                >
+                  <span>▶</span> ${item.timestamp}
+                </a>
+              </div>
+
+              <label class="inline-flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg hover:bg-paper-subtle transition">
+                <input
+                  type="checkbox"
+                  ${isMastered ? "checked" : ""}
+                  onchange="toggleMastered(${item.id})"
+                  class="w-4 h-4 rounded accent-emerald-700 cursor-pointer"
+                />
+                <span class="text-xs font-semibold ${isMastered ? "text-paper-sage" : "text-paper-muted"}">
+                  ${isMastered ? "암기 완료" : "암기 체크"}
+                </span>
+              </label>
+            </div>
+
+            <!-- Expression Title & TTS -->
+            <div class="flex items-start justify-between gap-3">
+              <h2 class="text-lg sm:text-xl font-bold text-paper-ink tracking-tight">
+                ${escapeHtml(item.expression)}
+              </h2>
+              <button
+                onclick="speakText('${item.expression.replace(/'/g, "\\'")}')"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg border border-paper-border bg-paper-bg hover:bg-paper-subtle text-xs font-medium text-paper-ink transition flex items-center gap-1"
+                title="표현 발음 듣기"
+              >
+                <span>🔊</span> 발음
+              </button>
+            </div>
+
+            <!-- Korean Meaning & Nuance (Blurrable) -->
+            <div class="mt-2 blur-target" onclick="this.classList.toggle('revealed')">
+              <p class="text-base font-semibold text-paper-accent">
+                ${escapeHtml(item.meaning)}
+              </p>
+              <p class="text-xs sm:text-sm text-paper-muted mt-1 leading-relaxed">
+                ${escapeHtml(item.nuance)}
+              </p>
+            </div>
+
+            <!-- Verbatim Podcast Quote Box -->
+            <div class="mt-4 p-4 rounded-xl bg-paper-bg border border-paper-border/80">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-paper-muted">
+                  🎙️ Tablo's Exact Quote
+                </span>
+                <button
+                  onclick="speakText(\`${item.quote.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                  class="text-xs text-paper-muted hover:text-paper-ink font-medium inline-flex items-center gap-1 transition"
+                  title="예문 전체 발음 듣기"
+                >
+                  <span>🔊</span> 예문 듣기
+                </button>
+              </div>
+              <p class="text-sm sm:text-[15px] text-paper-ink leading-relaxed font-medium">
+                “${formatQuote(item.quote, item.highlight, state.clozeMode)}”
+              </p>
+              <p class="text-xs sm:text-sm text-paper-muted mt-2 pt-2 border-t border-paper-border/60 blur-target" onclick="this.classList.toggle('revealed')">
+                ${escapeHtml(item.translation)}
+              </p>
+            </div>
+
+            <!-- Personal Memo Section -->
+            <div class="mt-3">
+              <details ${memoText ? "open" : ""} class="group">
+                <summary class="text-xs font-medium text-paper-muted hover:text-paper-ink cursor-pointer select-none inline-flex items-center gap-1">
+                  <span>📝 나만의 예문 / 메모</span>
+                  ${memoText ? '<span class="w-1.5 h-1.5 rounded-full bg-paper-accent"></span>' : ''}
+                </summary>
+                <div class="mt-2">
+                  <textarea
+                    rows="2"
+                    placeholder="직접 만든 예문이나 기억해 둘 뉘앙스를 적어보세요 (자동 저장됨)..."
+                    oninput="updateMemo(${item.id}, this.value)"
+                    class="w-full p-2.5 text-xs sm:text-sm bg-paper-bg border border-paper-border rounded-xl focus:outline-none focus:border-paper-accent transition resize-y"
+                  >${escapeHtml(memoText)}</textarea>
+                </div>
+              </details>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    // Event Handlers
+    function selectCategory(cat) {
+      state.category = cat;
+      renderCategories();
+      renderCards();
+    }
+
+    function toggleMastered(id) {
+      state.mastered[id] = !state.mastered[id];
+      saveState();
+      updateProgress();
+      renderCards();
+      if (state.mastered[id]) {
+        showToast("암기 완료로 표시했습니다.", "✅");
+      }
+    }
+
+    function updateMemo(id, val) {
+      state.memos[id] = val;
+      saveState();
+    }
+
+    function toggleHideMeaning() {
+      state.hideMeaning = !state.hideMeaning;
+      document.body.classList.toggle("hide-meaning", state.hideMeaning);
+      const btn = document.getElementById("btn-hide-meaning");
+      btn.classList.toggle("bg-paper-accentLight", state.hideMeaning);
+      btn.classList.toggle("border-paper-accent", state.hideMeaning);
+      btn.classList.toggle("text-amber-900", state.hideMeaning);
+    }
+
+    function toggleClozeMode() {
+      state.clozeMode = !state.clozeMode;
+      const btn = document.getElementById("btn-cloze-mode");
+      btn.classList.toggle("bg-paper-accentLight", state.clozeMode);
+      btn.classList.toggle("border-paper-accent", state.clozeMode);
+      btn.classList.toggle("text-amber-900", state.clozeMode);
+      renderCards();
+    }
+
+    function toggleHideMastered() {
+      state.hideMastered = !state.hideMastered;
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.toggle("bg-paper-sageLight", state.hideMastered);
+      btn.classList.toggle("border-paper-sage", state.hideMastered);
+      btn.classList.toggle("text-paper-sage", state.hideMastered);
+      renderCards();
+    }
+
+    function resetFilters() {
+      state.category = "전체";
+      state.search = "";
+      state.hideMastered = false;
+      document.getElementById("search-input").value = "";
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.remove("bg-paper-sageLight", "border-paper-sage", "text-paper-sage");
+      renderCategories();
+      renderCards();
+    }
+
+    // Export to Obsidian Markdown (.md)
+    function exportMarkdown() {
+      const today = new Date().toISOString().slice(0, 10);
+      let md = `---\ntags:\n  - EnglishStudy\n  - HeyTablo\n  - Podcast\ndate: ${today}\nsource: "https://www.youtube.com/watch?v=${VIDEO_ID}"\n---\n\n`;
+      md += `# 🎙️ Hey Tablo Ep. 45 — 실전 영어 표현 30선\n\n`;
+      md += `- **영상 제목:** 9 Questions That Will Reveal Who You Really Are | Hey Tablo Ep. 45\n`;
+      md += `- **원본 링크:** https://www.youtube.com/watch?v=${VIDEO_ID}\n\n---\n\n`;
+
+      EXPRESSIONS.forEach(item => {
+        const checked = state.mastered[item.id] ? "x" : " ";
+        const ytLink = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const memo = state.memos[item.id] ? state.memos[item.id].trim() : "";
+
+        md += `### [${checked}] ${item.id}. ${item.expression} ([${item.timestamp}](${ytLink}))\n`;
+        md += `- **분류:** #${item.category.replace(/·/g, "_")}\n`;
+        md += `- **의미:** **${item.meaning}**\n`;
+        md += `- **뉘앙스:** ${item.nuance}\n`;
+        md += `- **팟캐스트 원문:**\n  > "${item.quote}"\n  > (${item.translation})\n`;
+        if (memo) {
+          md += `- **나의 메모:** ${memo}\n`;
+        }
+        md += `\n`;
+      });
+
+      const blob = new Blob([md], { type: "text/markdown;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Hey-Tablo-Ep45-English-30_${today}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Obsidian용 마크다운(.md) 파일이 다운로드되었습니다.", "📥");
+    }
+
+    // Reset Modal Functions
+    function openResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function confirmReset() {
+      state.mastered = {};
+      state.memos = {};
+      saveState();
+      updateProgress();
+      renderCards();
+      closeResetModal();
+      showToast("모든 학습 기록과 메모가 초기화되었습니다.", "🗑️");
+    }
+
+    // Initialize App
+    window.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      renderCategories();
+      updateProgress();
+      renderCards();
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderCards();
+      });
+    });
+  </script>
+</body>
+</html>

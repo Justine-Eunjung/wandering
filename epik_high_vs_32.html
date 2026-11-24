@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPIK HIGH 하버드 vs 스탠퍼드 맛집 대결 — 실전 영어 표현 32선</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          colors: {
+            campus: {
+              bg: '#FAF8F5',
+              card: '#FFFFFF',
+              subtle: '#F3EFEA',
+              border: '#E5DFD5',
+              ink: '#1E293B',
+              muted: '#64748B',
+              crimson: '#9B1B30',     // Harvard Crimson / Stanford Cardinal editorial accent
+              crimsonLight: '#FDF2F4',
+              amber: '#B45309',
+              amberLight: '#FEF3C7',
+              sage: '#2F6F4E',
+              sageLight: '#ECFDF5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E293B;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .blur-target {
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+    .hide-meaning .blur-target {
+      filter: blur(6px);
+      user-select: none;
+      cursor: pointer;
+    }
+    .hide-meaning .blur-target:hover,
+    .hide-meaning .blur-target.revealed {
+      filter: blur(0);
+      user-select: auto;
+    }
+    .cloze-blank {
+      display: inline-block;
+      min-width: 115px;
+      padding: 0 8px;
+      margin: 0 2px;
+      border-bottom: 2px dashed #9B1B30;
+      background-color: #FDF2F4;
+      color: transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .cloze-blank.revealed {
+      color: #881337;
+      background-color: #FCE7F3;
+      border-bottom-style: solid;
+      font-weight: 600;
+      user-select: auto;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-center gap-2">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg">알림 메시지</span>
+  </div>
+
+  <!-- Header & Progress Section -->
+  <header class="sticky top-0 z-30 bg-campus-bg/95 backdrop-blur-md border-b border-campus-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider uppercase text-campus-crimson mb-1">
+            <span>EPIK HIGH • HARVARD VS STANFORD</span>
+            <span>•</span>
+            <a href="https://www.youtube.com/watch?v=-19QC32Q1r0" target="_blank" rel="noopener noreferrer" class="underline hover:text-rose-900 inline-flex items-center gap-1">
+              YouTube 원본 영상 ↗
+            </a>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-campus-ink tracking-tight">
+            밥은 먹고 공부하니? — 실전 영어 표현 32선
+          </h1>
+          <p class="text-xs sm:text-sm text-campus-muted mt-0.5">
+            Harvard Square & Stanford Campus 맛집 탐방 실제 대화·원문 예문 학습 노트
+          </p>
+        </div>
+
+        <!-- Export, Copy & Utility Buttons -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="copyMarkdownToClipboard()" class="px-3 py-2 rounded-xl bg-campus-card border border-campus-border text-campus-ink text-xs sm:text-sm font-medium hover:bg-campus-subtle transition flex items-center gap-1.5 shadow-2xs" title="마크다운 전체 텍스트를 클립보드에 복사">
+            <svg class="w-4 h-4 text-campus-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            클립보드 복사
+          </button>
+          <button onclick="exportMarkdown()" class="px-3.5 py-2 rounded-xl bg-campus-crimson text-white text-xs sm:text-sm font-medium hover:bg-rose-900 transition flex items-center gap-1.5 shadow-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Obsidian (.md) 내보내기
+          </button>
+          <button onclick="openResetModal()" class="px-3 py-2 rounded-xl bg-campus-card border border-campus-border text-campus-muted text-xs sm:text-sm font-medium hover:bg-campus-subtle transition" title="학습 기록 초기화">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4">
+        <div class="flex items-center justify-between text-xs font-medium text-campus-muted mb-1.5">
+          <span>학습 진도율 (학습 완료)</span>
+          <span id="progress-text" class="text-campus-sage font-semibold">0 / 32 (0%)</span>
+        </div>
+        <div class="w-full h-2 bg-campus-subtle rounded-full overflow-hidden border border-campus-border/60">
+          <div id="progress-bar" class="h-full bg-campus-sage transition-all duration-300 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controls & Filter Bar -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6">
+    <section class="bg-campus-card border border-campus-border rounded-2xl p-4 mb-6 shadow-2xs space-y-4">
+      <!-- Search & Study Mode Toggles -->
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-campus-muted absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="영어 표현, 영상 원문, 장소(하버드/스탠퍼드) 또는 뜻 검색..."
+            class="w-full pl-10 pr-4 py-2.5 bg-campus-bg border border-campus-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-campus-crimson/25 focus:border-campus-crimson transition"
+          />
+        </div>
+
+        <!-- Study Modes & TTS Speed -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-tts-speed" onclick="toggleTtsSpeed()" class="px-3 py-2.5 rounded-xl border border-campus-border bg-campus-bg text-xs sm:text-sm font-medium text-campus-ink hover:bg-campus-subtle transition flex items-center gap-1" title="발음 재생 속도 전환">
+            <span>🐢/🐇</span> <span id="tts-speed-label">1.0x</span>
+          </button>
+          <button id="btn-hide-meaning" onclick="toggleHideMeaning()" class="px-3.5 py-2.5 rounded-xl border border-campus-border bg-campus-bg text-xs sm:text-sm font-medium text-campus-ink hover:bg-campus-subtle transition flex items-center gap-1.5">
+            <span>👁️</span> 뜻/해석 가리기
+          </button>
+          <button id="btn-cloze-mode" onclick="toggleClozeMode()" class="px-3.5 py-2.5 rounded-xl border border-campus-border bg-campus-bg text-xs sm:text-sm font-medium text-campus-ink hover:bg-campus-subtle transition flex items-center gap-1.5">
+            <span>✍️</span> 예문 빈칸 퀴즈
+          </button>
+          <button id="btn-hide-mastered" onclick="toggleHideMastered()" class="px-3.5 py-2.5 rounded-xl border border-campus-border bg-campus-bg text-xs sm:text-sm font-medium text-campus-ink hover:bg-campus-subtle transition flex items-center gap-1.5">
+            <span>📌</span> 미암기만 보기
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div id="category-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="flex items-center justify-between mb-4 px-1">
+      <p id="result-count" class="text-xs sm:text-sm text-campus-muted font-medium">총 32개의 표현 표시 중</p>
+      <p class="text-xs text-campus-muted hidden sm:block">💡 팁: 타임스탬프(▶) 버튼을 누르면 유튜브에서 실제 주문·대화 장면이 열립니다.</p>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cards-container" class="space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 bg-campus-card border border-campus-border rounded-2xl">
+      <p class="text-3xl mb-2">🎓</p>
+      <h3 class="text-base font-semibold text-campus-ink">조건에 맞는 표현이 없습니다</h3>
+      <p class="text-sm text-campus-muted mt-1">검색어를 지우거나 필터 설정을 초기화해 보세요.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-campus-subtle hover:bg-campus-border/60 rounded-xl text-xs font-medium text-campus-ink transition">
+        필터 초기화
+      </button>
+    </div>
+  </main>
+
+  <!-- Custom Confirmation Modal -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-xs p-4">
+    <div class="bg-campus-card border border-campus-border rounded-2xl max-w-sm w-full p-6 shadow-xl">
+      <h3 class="text-lg font-bold text-campus-ink">학습 기록을 초기화할까요?</h3>
+      <p class="text-sm text-campus-muted mt-2 leading-relaxed">
+        체크한 '학습 완료' 상태와 작성하신 개인 메모가 모두 삭제됩니다. 필요하시면 먼저 Obsidian(.md) 파일로 내보내세요.
+      </p>
+      <div class="mt-5 flex justify-end gap-2">
+        <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl border border-campus-border text-sm font-medium text-campus-muted hover:bg-campus-subtle transition">
+          취소
+        </button>
+        <button onclick="confirmReset()" class="px-4 py-2 rounded-xl bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition">
+          초기화하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-campus-border bg-campus-card mt-12 py-6 text-center text-xs text-campus-muted">
+    <p>Source: Epik High Official YouTube — <em>밥은 먹고 공부하니? (Harvard vs Stanford Food Battle)</em></p>
+  </footer>
+
+  <script>
+    const VIDEO_ID = "-19QC32Q1r0";
+
+    const EXPRESSIONS = [
+      {
+        id: 1,
+        expression: "walking distance",
+        timestamp: "00:01:21",
+        seconds: 81,
+        category: "캠퍼스·일상 대화",
+        meaning: "도보 거리, 걸어갈 수 있는 거리",
+        nuance: "'within walking distance (of ~)' 형태로 자주 쓰이며, 차를 타지 않고 걸어서 이동 가능한 가까운 거리를 뜻합니다.",
+        quote: "그러니까 대학교에서 walking distance에 있는 맛집만 저희가 대결할 겁니다.",
+        highlights: ["walking distance"],
+        ttsText: "walking distance",
+        translation: "그러니까 대학교에서 걸어갈 수 있는 거리에 있는 맛집만 저희가 대결할 겁니다."
+      },
+      {
+        id: 2,
+        expression: "set of three",
+        timestamp: "00:02:09",
+        seconds: 129,
+        category: "식당 주문·커스텀",
+        meaning: "3개 한 세트",
+        nuance: "타코, 컵케이크, 스시 롤 등이 3개 단위로 묶여 나오는 메뉴를 지칭할 때 쓰며, 2개는 'set of two', 4개는 'set of four'로 응용합니다.",
+        quote: "여기 타코, set of three.",
+        highlights: ["set of three"],
+        ttsText: "set of three",
+        translation: "여기 타코 3개 한 세트로 나오네요."
+      },
+      {
+        id: 3,
+        expression: "build your meal",
+        timestamp: "00:02:15",
+        seconds: 135,
+        category: "식당 주문·커스텀",
+        meaning: "직접 재료를 골라 식사를 구성하다 / 커스텀 주문하다",
+        nuance: "치폴레(Chipotle)나 서브웨이처럼 베이스, 고기, 토핑, 소스를 손님이 단계별로 직접 조합해 주문하는 미국식 시스템을 설명할 때 씁니다.",
+        quote: "It's because you gotta build your meal yourself.",
+        highlights: ["build your meal"],
+        ttsText: "It's because you gotta build your meal yourself.",
+        translation: "손님이 직접 재료를 골라서 식사를 구성해야 하기 때문이에요."
+      },
+      {
+        id: 4,
+        expression: "late-night (menu / food)",
+        timestamp: "00:02:23",
+        seconds: 143,
+        category: "음식·맛 묘사",
+        meaning: "야식, 심야 메뉴",
+        nuance: "밤늦게 공부하거나 파티 후에 먹는 '야식'을 영어로 가장 자연스럽게 표현할 때 'late-night food' 또는 'late-night snack'을 씁니다.",
+        quote: "딱 학생 late-night 메뉴로 시켜볼게요.",
+        highlights: ["late-night"],
+        ttsText: "late-night menu",
+        translation: "딱 학생들이 밤늦게 먹는 야식 메뉴로 시켜볼게요."
+      },
+      {
+        id: 5,
+        expression: "I can only do one meat.",
+        timestamp: "00:02:29",
+        seconds: 149,
+        category: "식당 주문·커스텀",
+        meaning: "고기는 한 종류만 고를 수 있나요? / ~는 추가 옵션인가요?",
+        nuance: "주문 상황에서 'do'는 '선택하다/주문하다'라는 의미로 아주 자주 쓰입니다. 'add-on'은 기본 구성 외에 추가 요금을 내는 옵션을 뜻합니다.",
+        quote: "I can only do one meat? / Yeah, and then shrimp is an add-on.",
+        highlights: ["I can only do one meat", "add-on"],
+        ttsText: "I can only do one meat? Yeah, and then shrimp is an add-on.",
+        translation: "고기는 한 종류만 고를 수 있나요? / 네, 그리고 새우는 추가 옵션이에요."
+      },
+      {
+        id: 6,
+        expression: "extra (shrimp)",
+        timestamp: "00:02:37",
+        seconds: 157,
+        category: "식당 주문·커스텀",
+        meaning: "추가 토핑으로 ~ 넣어주세요",
+        nuance: "원하는 재료 앞에 'extra'만 붙이면 추가 주문을 깔끔하게 할 수 있습니다. (예: extra cheese, extra sauce, extra shot)",
+        quote: "Extra shrimp, yeah.",
+        highlights: ["Extra shrimp"],
+        ttsText: "Extra shrimp, yeah.",
+        translation: "새우 추가로 넣어주세요, 네."
+      },
+      {
+        id: 7,
+        expression: "Can I get ~?",
+        timestamp: "00:02:44",
+        seconds: 164,
+        category: "식당 주문·커스텀",
+        meaning: "~로 주시겠어요? (가장 자연스러운 미국 식당 주문 표현)",
+        nuance: "교과서적인 'I would like ~'보다 실제 미국 식당·카페에서 원어민이 압도적으로 많이 쓰는 만능 주문 패턴입니다.",
+        quote: "Can I get combo meals? / What kind do you want? / Tacos.",
+        highlights: ["Can I get"],
+        ttsText: "Can I get combo meals? What kind do you want? Tacos.",
+        translation: "콤보 세트로 주시겠어요? / 어떤 종류로 원하세요? / 타코로요."
+      },
+      {
+        id: 8,
+        expression: "He wants a burrito combo.",
+        timestamp: "00:02:55",
+        seconds: 175,
+        category: "식당 주문·커스텀",
+        meaning: "이 친구는 부리또 세트로 원해요 (일행 대신 주문할 때)",
+        nuance: "일행의 메뉴를 대신 전달할 때 'He'll have ~' 또는 'He wants ~'라고 명확하게 주어를 밝혀 주문하면 직원이 헷갈리지 않습니다.",
+        quote: "He wants a burrito combo.",
+        highlights: ["He wants a burrito combo"],
+        ttsText: "He wants a burrito combo.",
+        translation: "이 친구는 부리또 콤보 세트로 원해요."
+      },
+      {
+        id: 9,
+        expression: "Can we get white rice?",
+        timestamp: "00:02:58",
+        seconds: 178,
+        category: "식당 주문·커스텀",
+        meaning: "흰쌀밥으로 주시겠어요? 치킨이랑요.",
+        nuance: "멕시칸 식당에서 밥 종류를 고를 때 백미는 'white rice', 현미는 'brown rice'라고 하며, 일행 전체 주문 시 'Can we get ~?'을 씁니다.",
+        quote: "Can we get white rice? Chicken...",
+        highlights: ["Can we get white rice"],
+        ttsText: "Can we get white rice? Chicken.",
+        translation: "흰쌀밥으로 주시겠어요? 고기는 치킨으로요..."
+      },
+      {
+        id: 10,
+        expression: "What is this? / spicy ground beef",
+        timestamp: "00:03:02",
+        seconds: 182,
+        category: "식당 주문·커스텀",
+        meaning: "이건 뭔가요? / 매콤하게 양념한 다진 소고기",
+        nuance: "쇼케이스 속 재료를 가리키며 정체를 물을 때 씁니다. 'ground beef'는 다진 소고기(민스), 'shredded beef'는 결대로 찢은 소고기입니다.",
+        quote: "What is this? / Spicy ground beef. / Ground beef, ground beef, yes.",
+        highlights: ["What is this?", "Spicy ground beef"],
+        ttsText: "What is this? Spicy ground beef. Ground beef, yes.",
+        translation: "이건 뭔가요? / 매콤하게 양념한 다진 소고기예요. / 다진 소고기요, 네 그걸로 주세요."
+      },
+      {
+        id: 11,
+        expression: "make your own",
+        timestamp: "00:03:43",
+        seconds: 223,
+        category: "음식·맛 묘사",
+        meaning: "직접 재료를 골라 만드는 방식, DIY 식사",
+        nuance: "3번의 'build your meal'과 같은 의미로, 손님 취향대로 직접 조합해서 만들어 먹는 콘셉트의 음식점이나 메뉴를 부를 때 씁니다.",
+        quote: "근데 그 make your own이었으니까 그래도 뭐 크레딧 주는 거지.",
+        highlights: ["make your own"],
+        ttsText: "make your own",
+        translation: "근데 손님이 직접 조합해서 만드는 방식이었으니까 그래도 어느 정도 점수를 주는 거죠."
+      },
+      {
+        id: 12,
+        expression: "give (someone) credit",
+        timestamp: "00:03:44",
+        seconds: 224,
+        category: "캠퍼스·일상 대화",
+        meaning: "(~의) 공을 인정해주다, 칭찬해줄 만하다",
+        nuance: "완벽하진 않더라도 잘한 점이나 노력한 부분을 인정하고 점수를 준다는 뜻의 회화 필수 표현입니다. ('I gotta give him credit for that.')",
+        quote: "그래도 뭐 credit 주는 거지.",
+        highlights: ["credit"],
+        ttsText: "give them credit",
+        translation: "그래도 잘한 부분은 인정해 주는 거죠."
+      },
+      {
+        id: 13,
+        expression: "take a shot (of hot sauce)",
+        timestamp: "00:03:58",
+        seconds: 238,
+        category: "음식·맛 묘사",
+        meaning: "원샷하다, 한 번에 들이켜다",
+        nuance: "작은 샷 잔(shot glass)에 담긴 음료나 소스를 단숨에 들이켜는 행동을 뜻합니다. ('take a shot of espresso / tequila')",
+        quote: "주문 안 하고 핫소스 원샷 때려가지고 쫓겨났어.",
+        highlights: ["원샷"],
+        ttsText: "take a shot of hot sauce",
+        translation: "음식 주문은 안 하고 핫소스를 원샷으로 들이켜서 쫓겨났어요."
+      },
+      {
+        id: 14,
+        expression: "photo dump",
+        timestamp: "00:09:22",
+        seconds: 562,
+        category: "캠퍼스·일상 대화",
+        meaning: "SNS에 여러 장의 일상 사진을 한꺼번에 올리는 게시물",
+        nuance: "인스타그램 등에서 특정 테마 없이 최근 찍은 B컷·일상 사진 10여 장을 툭 털어놓듯(dump) 모아 올리는 트렌드 용어입니다.",
+        quote: "그 'photo dump'라고 인스타그램에서 약간 허세스러운 사진들을 이렇게 잔뜩 올리는 거...",
+        highlights: ["photo dump"],
+        ttsText: "photo dump",
+        translation: "그 '포토 덤프'라고 인스타그램에서 느낌 있는 일상 사진들을 한꺼번에 잔뜩 올리는 게시물이 있어요."
+      },
+      {
+        id: 15,
+        expression: "Like whatever the students get the most.",
+        timestamp: "00:15:27",
+        seconds: 927,
+        category: "식당 주문·커스텀",
+        meaning: "학생들이 가장 많이 시키는 걸로 아무거나 주세요.",
+        nuance: "메뉴가 너무 많아 고르기 어려울 때 현지 단골들이 가장 즐겨 찾는 인기 메뉴를 추천받기 위한 최고의 실전 문장입니다.",
+        quote: "Like whatever the students get the most. / Okay, the ones that are sold the most, the tomato and basil pizza is very nice.",
+        highlights: ["whatever the students get the most"],
+        ttsText: "Like whatever the students get the most. Okay, the ones that are sold the most, the tomato and basil pizza is very nice.",
+        translation: "학생들이 제일 많이 시키는 걸로 아무거나 주세요. / 알겠습니다, 가장 많이 팔리는 메뉴 중에는 토마토 바질 피자가 아주 훌륭해요."
+      },
+      {
+        id: 16,
+        expression: "Can we get one pepperoni, one plain cheese, and one healthy one?",
+        timestamp: "00:15:43",
+        seconds: 943,
+        category: "식당 주문·커스텀",
+        meaning: "페퍼로니 하나, 플레인 치즈 하나, 그리고 저 건강한(채소) 피자 하나 주시겠어요?",
+        nuance: "피자 조각(slice)을 여러 종류 섞어 시킬 때 'one [토핑명]'을 나열하면 자연스럽고, 이름이 기억나지 않는 채소 피자는 'the healthy one'처럼 위트 있게 지칭할 수 있습니다.",
+        quote: "Can we get one pepperoni, one plain cheese, and one... the healthy one.",
+        highlights: ["Can we get one pepperoni, one plain cheese, and one... the healthy one"],
+        ttsText: "Can we get one pepperoni, one plain cheese, and one, the healthy one.",
+        translation: "페퍼로니 조각 하나, 기본 치즈 조각 하나, 그리고 저 건강한 채소 피자 하나 주시겠어요?"
+      },
+      {
+        id: 17,
+        expression: "You got it.",
+        timestamp: "00:15:50",
+        seconds: 950,
+        category: "식당 주문·커스텀",
+        meaning: "알겠습니다, 그렇게 해드릴게요 (원어민 직원의 대표적인 긍정 대답)",
+        nuance: "북미 식당이나 상점에서 직원이 손님의 주문을 접수했을 때 'Sure'나 'Okay' 대신 가장 활기차고 자연스럽게 쓰는 표현입니다.",
+        quote: "You got it.",
+        highlights: ["You got it"],
+        ttsText: "You got it.",
+        translation: "알겠습니다, 바로 준비해 드릴게요."
+      },
+      {
+        id: 18,
+        expression: "finger food",
+        timestamp: "00:17:13",
+        seconds: 1033,
+        category: "음식·맛 묘사",
+        meaning: "포크나 나이프 없이 손으로 집어 먹는 음식",
+        nuance: "피자 조각, 타코, 치킨 윙, 감자튀김처럼 식기류 없이 손으로 간편하게 먹을 수 있는 음식을 통칭합니다.",
+        quote: "아 이거 finger food.",
+        highlights: ["finger food"],
+        ttsText: "finger food",
+        translation: "아, 이건 포크 없이 손으로 집어 먹는 핑거 푸드네요."
+      },
+      {
+        id: 19,
+        expression: "Economics / Culinary",
+        timestamp: "00:17:22",
+        seconds: 1042,
+        category: "캠퍼스·일상 대화",
+        meaning: "경제학 / 조리학·요리학",
+        nuance: "대학 전공(major)을 말할 때 쓰이는 명사입니다. 'Culinary arts'는 조리 예술(요리학)을 뜻합니다.",
+        quote: "Economics. / Culinary.",
+        highlights: ["Economics", "Culinary"],
+        ttsText: "Economics. Culinary.",
+        translation: "경제학 전공. / 조리학 전공."
+      },
+      {
+        id: 20,
+        expression: "judge (something)",
+        timestamp: "00:17:44",
+        seconds: 1064,
+        category: "음식·맛 묘사",
+        meaning: "평가하다, 판단하다",
+        nuance: "'판사'라는 명사 외에, 음식 맛이나 실력, 결과를 냉정하게 심사하고 평가한다는 동사로 자주 쓰입니다.",
+        quote: "그 맛으로 judge를 해보자.",
+        highlights: ["judge"],
+        ttsText: "Let's judge it by the taste.",
+        translation: "그 음식 맛을 보고 제대로 평가해 보자."
+      },
+      {
+        id: 21,
+        expression: "royalty share",
+        timestamp: "00:20:32",
+        seconds: 1232,
+        category: "캠퍼스·일상 대화",
+        meaning: "저작권료·수익 분배",
+        nuance: "음악, 출판, 특허 등에서 발생하는 인세나 저작권 수익(royalty)의 지분(share)을 나누는 것을 의미합니다.",
+        quote: "RM이 royalty share를 좀 해야 되는데...",
+        highlights: ["royalty share"],
+        ttsText: "royalty share",
+        translation: "RM이 저작권 수익 분배를 좀 해줘야 하는데..."
+      },
+      {
+        id: 22,
+        expression: "Class of 2002",
+        timestamp: "00:20:43",
+        seconds: 1243,
+        category: "캠퍼스·일상 대화",
+        meaning: "2002년 졸업생/동기 (미국 대학 졸업 연도 표기법)",
+        nuance: "한국은 입학 연도(02학번)를 기준으로 부르지만, 미국 대학은 졸업 연도를 기준으로 'Class of [졸업연도]'라고 표기합니다.",
+        quote: "나 Class of 2002!",
+        highlights: ["Class of 2002"],
+        ttsText: "Class of 2002",
+        translation: "나 스탠퍼드 2002년 졸업생이야!"
+      },
+      {
+        id: 23,
+        expression: "Is there a taco that you recommend?",
+        timestamp: "00:21:59",
+        seconds: 1319,
+        category: "식당 주문·커스텀",
+        meaning: "추천해주실 만한 타코가 있나요?",
+        nuance: "'What do you recommend?'보다 특정 메뉴군(taco, burger, coffee)을 콕 집어 정중하게 추천을 부탁할 때 매우 세련된 표현입니다.",
+        quote: "Is there a taco that you recommend? / It would be the Ahi Poke Crispy Tacos.",
+        highlights: ["Is there a taco that you recommend?"],
+        ttsText: "Is there a taco that you recommend? It would be the Ahi Poke Crispy Tacos.",
+        translation: "추천해주실 만한 타코가 있나요? / 아히 포케 크리스피 타코를 추천해 드리고 싶네요."
+      },
+      {
+        id: 24,
+        expression: "I'll get one of these.",
+        timestamp: "00:22:04",
+        seconds: 1324,
+        category: "식당 주문·커스텀",
+        meaning: "이거요? 좋아요, 이걸로 하나 할게요.",
+        nuance: "직원이 추천해 준 메뉴나 메뉴판의 사진을 가리키며 즉석에서 주문을 결정할 때 쓰는 자연스러운 구어체 표현입니다.",
+        quote: "This one? Okay, I'll get one of these.",
+        highlights: ["I'll get one of these"],
+        ttsText: "This one? Okay, I'll get one of these.",
+        translation: "이거요? 좋아요, 이걸로 하나 주문할게요."
+      },
+      {
+        id: 25,
+        expression: "merit",
+        timestamp: "00:27:26",
+        seconds: 1646,
+        category: "캠퍼스·일상 대화",
+        meaning: "장점, 이점, 좋은 점",
+        nuance: "어떤 선택이나 장소가 가진 고유한 강점과 가치를 뜻합니다. ('have its merits' = 나름의 장점이 있다)",
+        quote: "난 근데 그게 merit인 것 같긴 해.",
+        highlights: ["merit"],
+        ttsText: "merit",
+        translation: "난 근데 그게 오히려 큰 장점인 것 같긴 해."
+      },
+      {
+        id: 26,
+        expression: "hang out",
+        timestamp: "00:30:08",
+        seconds: 1808,
+        category: "캠퍼스·일상 대화",
+        meaning: "(친구들과) 어울리다, 시간을 보내다",
+        nuance: "특별한 목적 없이 친구들과 카페, 라운지, Pub 등에 모여 편하게 수다 떨고 놀며 시간을 보내는 것을 뜻하는 필수 구동사입니다.",
+        quote: "모든 스탠퍼드 애들이 공부하고 커피 마시고 저녁에는 맥주 마시고 hang out 하는 곳 중에 하나가...",
+        highlights: ["hang out"],
+        ttsText: "hang out",
+        translation: "모든 스탠퍼드 학생들이 공부하고 커피 마시고 저녁에는 맥주 마시며 어울리는 곳 중 하나가..."
+      },
+      {
+        id: 27,
+        expression: "day shift / night shift",
+        timestamp: "00:33:12",
+        seconds: 1992,
+        category: "캠퍼스·일상 대화",
+        meaning: "주간 근무조 / 야간 근무조",
+        nuance: "카페, 병원, 알바 등의 교대 근무 시간대를 가리킬 때 'shift'를 씁니다. ('work the day shift' = 낮 시간대에 근무하다)",
+        quote: "낮 shift에 일하는 애들은 커피를 배워야 되고, 바리스타.",
+        highlights: ["shift"],
+        ttsText: "day shift, night shift",
+        translation: "주간 근무조(day shift)에 일하는 학생들은 바리스타 일을 위해 커피 내리는 법을 배워야 해요."
+      },
+      {
+        id: 28,
+        expression: "pick up order",
+        timestamp: "00:33:13",
+        seconds: 1993,
+        category: "식당 주문·커스텀",
+        meaning: "주문한 음식/음료를 받아가는 곳",
+        nuance: "미국 카페나 패스트푸드점에서 계산대(Order Here)와 분리된 수령대 안내 문구로 항상 볼 수 있는 표현입니다.",
+        quote: "Pick up order here.",
+        highlights: ["Pick up order"],
+        ttsText: "Pick up order here.",
+        translation: "주문하신 메뉴는 이곳에서 받아가세요."
+      },
+      {
+        id: 29,
+        expression: "Hug the tree.",
+        timestamp: "00:36:43",
+        seconds: 2203,
+        category: "스몰토크·관광 안내",
+        meaning: "나무를 안아줘.",
+        nuance: "자연이나 사물에게 애정을 표현할 때 쓰는 직관적인 명령문입니다. ('tree hugger'는 환경보호론자를 뜻하는 관용어이기도 합니다.)",
+        quote: "나무는 안아 줘야 돼. Hug the tree.",
+        highlights: ["Hug the tree"],
+        ttsText: "Hug the tree.",
+        translation: "나무는 따뜻하게 안아 줘야 돼. 나무를 안아줘."
+      },
+      {
+        id: 30,
+        expression: "Are you here to see ~?",
+        timestamp: "00:36:57",
+        seconds: 2217,
+        category: "스몰토크·관광 안내",
+        meaning: "~를 보러 여기 오신 건가요?",
+        nuance: "관광지나 명소에서 마주친 방문객에게 말을 걸 때 가장 자연스럽게 대화를 시작할 수 있는 아이스브레이킹 질문입니다.",
+        quote: "Hi, are you here to see the Crying Tree? / No, we didn't know what it is.",
+        highlights: ["are you here to see"],
+        ttsText: "Hi, are you here to see the Crying Tree? No, we didn't know what it is.",
+        translation: "안녕하세요, 혹시 크라이닝 트리를 보러 여기 오신 건가요? / 아니요, 이게 뭔지 몰랐어요."
+      },
+      {
+        id: 31,
+        expression: "an older musician named ~",
+        timestamp: "00:37:09",
+        seconds: 2229,
+        category: "스몰토크·관광 안내",
+        meaning: "~라는 이름의 선배 뮤지션이",
+        nuance: "사람이나 장소의 이름을 소개할 때 관계대명사절을 줄여 '[명사] + named [이름]' 형태로 쓰면 간결하고 원어민답습니다.",
+        quote: "Because an older musician named Tablo sat here and was sad.",
+        highlights: ["an older musician named"],
+        ttsText: "Because an older musician named Tablo sat here and was sad.",
+        translation: "타블로라는 이름의 선배 뮤지션이 이곳에 앉아서 슬퍼했었거든요."
+      },
+      {
+        id: 32,
+        expression: "It's a K-pop Crying Tree.",
+        timestamp: "00:37:17",
+        seconds: 2237,
+        category: "스몰토크·관광 안내",
+        meaning: "이게 바로 케이팝 크라이닝 트리예요.",
+        nuance: "자신의 과거 일화가 담긴 나무를 관광객들에게 유머러스하게 소개하며 'K-pop 성지'로 브랜딩하는 타블로의 재치 있는 한마디입니다.",
+        quote: "So this tree is very famous. It's a K-pop Crying Tree.",
+        highlights: ["It's a K-pop Crying Tree"],
+        ttsText: "So this tree is very famous. It's a K-pop Crying Tree.",
+        translation: "그래서 이 나무가 아주 유명해요. 이게 바로 케이팝 크라이닝 트리랍니다."
+      }
+    ];
+
+    const STORAGE_KEY = "epik_harvard_stanford_v1";
+    let state = {
+      mastered: {},
+      memos: {},
+      category: "전체",
+      search: "",
+      hideMeaning: false,
+      clozeMode: false,
+      hideMastered: false,
+      ttsSpeed: 1.0
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.mastered = parsed.mastered || {};
+          state.memos = parsed.memos || {};
+        }
+      } catch (e) {
+        console.error("Failed to load state:", e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          mastered: state.mastered,
+          memos: state.memos
+        }));
+      } catch (e) {
+        console.error("Failed to save state:", e);
+      }
+    }
+
+    function showToast(msg, icon = "✓") {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-msg").textContent = msg;
+      document.getElementById("toast-icon").textContent = icon;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("이 브라우저는 음성 듣기를 지원하지 않습니다.", "⚠️");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = state.ttsSpeed;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function toggleTtsSpeed() {
+      state.ttsSpeed = state.ttsSpeed === 1.0 ? 0.8 : 1.0;
+      document.getElementById("tts-speed-label").textContent = `${state.ttsSpeed.toFixed(1)}x`;
+      const btn = document.getElementById("btn-tts-speed");
+      btn.classList.toggle("bg-campus-amberLight", state.ttsSpeed === 0.8);
+      btn.classList.toggle("border-campus-amber", state.ttsSpeed === 0.8);
+      showToast(`발음 재생 속도를 ${state.ttsSpeed.toFixed(1)}배속으로 변경했습니다.`, "🔊");
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function formatQuote(quote, highlights, clozeMode) {
+      if (!highlights || highlights.length === 0) return escapeHtml(quote);
+
+      const sorted = [...highlights].sort((a, b) => b.length - a.length);
+      const pattern = new RegExp(`(${sorted.map(escapeRegExp).join("|")})`, "gi");
+      const parts = quote.split(pattern);
+
+      return parts.map(part => {
+        const isMatch = sorted.some(h => h.toLowerCase() === part.toLowerCase());
+        if (!isMatch) return escapeHtml(part);
+
+        const safePart = escapeHtml(part);
+        if (clozeMode) {
+          return `<span class="cloze-blank" onclick="this.classList.toggle('revealed')" title="클릭해서 정답 확인">${safePart}</span>`;
+        } else {
+          return `<mark class="bg-campus-crimsonLight text-campus-crimson font-semibold px-1.5 py-0.5 rounded-md">${safePart}</mark>`;
+        }
+      }).join("");
+    }
+
+    function renderCategories() {
+      const categories = ["전체", "식당 주문·커스텀", "음식·맛 묘사", "캠퍼스·일상 대화", "스몰토크·관광 안내"];
+      const container = document.getElementById("category-tabs");
+      container.innerHTML = categories.map(cat => {
+        const count = cat === "전체"
+          ? EXPRESSIONS.length
+          : EXPRESSIONS.filter(item => item.category === cat).length;
+        const isActive = state.category === cat;
+        const activeClasses = isActive
+          ? "bg-campus-crimson text-white border-campus-crimson shadow-2xs"
+          : "bg-campus-bg text-campus-muted border-campus-border hover:bg-campus-subtle hover:text-campus-ink";
+
+        return `
+          <button
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-1.5 rounded-full border text-xs sm:text-sm font-medium whitespace-nowrap transition ${activeClasses}"
+          >
+            ${cat} <span class="opacity-80 text-xs ml-0.5">(${count})</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function updateProgress() {
+      const total = EXPRESSIONS.length;
+      const done = Object.values(state.mastered).filter(Boolean).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progress-text").textContent = `${done} / ${total} (${pct}%)`;
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    function renderCards() {
+      const container = document.getElementById("cards-container");
+      const emptyState = document.getElementById("empty-state");
+      const query = state.search.trim().toLowerCase();
+
+      const filtered = EXPRESSIONS.filter(item => {
+        if (state.category !== "전체" && item.category !== state.category) return false;
+        if (state.hideMastered && state.mastered[item.id]) return false;
+        if (query) {
+          const hay = `${item.expression} ${item.meaning} ${item.quote} ${item.translation} ${item.nuance}`.toLowerCase();
+          if (!hay.includes(query)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById("result-count").textContent = `총 ${filtered.length}개의 표현 표시 중`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      container.innerHTML = filtered.map(item => {
+        const isMastered = !!state.mastered[item.id];
+        const memoText = state.memos[item.id] || "";
+        const ytUrl = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const cardBorder = isMastered ? "border-emerald-300 bg-emerald-50/20" : "border-campus-border bg-campus-card";
+
+        return `
+          <article class="rounded-2xl border ${cardBorder} p-5 sm:p-6 shadow-2xs transition hover:shadow-md">
+            <!-- Top Row: Badge, Category, Timestamp, Learned Checkbox -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-campus-subtle text-campus-ink text-xs font-bold">
+                  ${item.id}
+                </span>
+                <span class="px-2.5 py-0.5 rounded-md bg-campus-subtle text-campus-muted text-xs font-medium">
+                  ${item.category}
+                </span>
+                <a
+                  href="${ytUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-rose-50 text-campus-crimson hover:bg-rose-100 text-xs font-medium transition"
+                  title="유튜브에서 해당 구간 바로 보기"
+                >
+                  <span>▶</span> ${item.timestamp}
+                </a>
+              </div>
+
+              <label class="inline-flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg hover:bg-campus-subtle transition">
+                <input
+                  type="checkbox"
+                  ${isMastered ? "checked" : ""}
+                  onchange="toggleMastered(${item.id})"
+                  class="w-4 h-4 rounded accent-emerald-700 cursor-pointer"
+                />
+                <span class="text-xs font-semibold ${isMastered ? "text-campus-sage" : "text-campus-muted"}">
+                  학습 완료
+                </span>
+              </label>
+            </div>
+
+            <!-- Expression Title & TTS -->
+            <div class="flex items-start justify-between gap-3">
+              <h2 class="text-lg sm:text-xl font-bold text-campus-ink tracking-tight">
+                ${escapeHtml(item.expression)}
+              </h2>
+              <button
+                onclick="speakText('${item.ttsText.replace(/'/g, "\\'")}')"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg border border-campus-border bg-campus-bg hover:bg-campus-subtle text-xs font-medium text-campus-ink transition flex items-center gap-1"
+                title="핵심 표현 발음 듣기"
+              >
+                <span>🔊</span> 표현 듣기
+              </button>
+            </div>
+
+            <!-- Korean Meaning & Usage Nuance (Blurrable) -->
+            <div class="mt-2 blur-target" onclick="this.classList.toggle('revealed')">
+              <p class="text-base font-semibold text-campus-crimson">
+                ${escapeHtml(item.meaning)}
+              </p>
+              <p class="text-xs sm:text-sm text-campus-muted mt-1 leading-relaxed">
+                ${escapeHtml(item.nuance)}
+              </p>
+            </div>
+
+            <!-- Verbatim Video Quote Box -->
+            <div class="mt-4 p-4 rounded-xl bg-campus-bg border border-campus-border/80">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-campus-muted">
+                  🎬 Video Exact Quote
+                </span>
+                <button
+                  onclick="speakText(\`${item.ttsText.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                  class="text-xs text-campus-muted hover:text-campus-ink font-medium inline-flex items-center gap-1 transition"
+                  title="예문 발음 듣기"
+                >
+                  <span>🔊</span> 예문 듣기
+                </button>
+              </div>
+              <p class="text-sm sm:text-[15px] text-campus-ink leading-relaxed font-medium">
+                “${formatQuote(item.quote, item.highlights, state.clozeMode)}”
+              </p>
+              <p class="text-xs sm:text-sm text-campus-muted mt-2 pt-2 border-t border-campus-border/60 blur-target" onclick="this.classList.toggle('revealed')">
+                ${escapeHtml(item.translation)}
+              </p>
+            </div>
+
+            <!-- Collapsible Personal Memo -->
+            <div class="mt-3">
+              <details ${memoText ? "open" : ""} class="group">
+                <summary class="text-xs font-medium text-campus-muted hover:text-campus-ink cursor-pointer select-none inline-flex items-center gap-1">
+                  <span>📝 나만의 메모 / 응용 예문</span>
+                  ${memoText ? '<span class="w-1.5 h-1.5 rounded-full bg-campus-crimson"></span>' : ''}
+                </summary>
+                <div class="mt-2">
+                  <textarea
+                    rows="2"
+                    placeholder="직접 응용해 본 주문 문장이나 기억해 둘 뉘앙스를 적어보세요 (자동 저장됨)..."
+                    oninput="updateMemo(${item.id}, this.value)"
+                    class="w-full p-2.5 text-xs sm:text-sm bg-campus-bg border border-campus-border rounded-xl focus:outline-none focus:border-campus-crimson transition resize-y"
+                  >${escapeHtml(memoText)}</textarea>
+                </div>
+              </details>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function selectCategory(cat) {
+      state.category = cat;
+      renderCategories();
+      renderCards();
+    }
+
+    function toggleMastered(id) {
+      state.mastered[id] = !state.mastered[id];
+      saveState();
+      updateProgress();
+      renderCards();
+      if (state.mastered[id]) {
+        showToast("학습 완료로 체크했습니다.", "✅");
+      }
+    }
+
+    function updateMemo(id, val) {
+      state.memos[id] = val;
+      saveState();
+    }
+
+    function toggleHideMeaning() {
+      state.hideMeaning = !state.hideMeaning;
+      document.body.classList.toggle("hide-meaning", state.hideMeaning);
+      const btn = document.getElementById("btn-hide-meaning");
+      btn.classList.toggle("bg-campus-crimsonLight", state.hideMeaning);
+      btn.classList.toggle("border-campus-crimson", state.hideMeaning);
+      btn.classList.toggle("text-campus-crimson", state.hideMeaning);
+    }
+
+    function toggleClozeMode() {
+      state.clozeMode = !state.clozeMode;
+      const btn = document.getElementById("btn-cloze-mode");
+      btn.classList.toggle("bg-campus-crimsonLight", state.clozeMode);
+      btn.classList.toggle("border-campus-crimson", state.clozeMode);
+      btn.classList.toggle("text-campus-crimson", state.clozeMode);
+      renderCards();
+    }
+
+    function toggleHideMastered() {
+      state.hideMastered = !state.hideMastered;
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.toggle("bg-campus-sageLight", state.hideMastered);
+      btn.classList.toggle("border-campus-sage", state.hideMastered);
+      btn.classList.toggle("text-campus-sage", state.hideMastered);
+      renderCards();
+    }
+
+    function resetFilters() {
+      state.category = "전체";
+      state.search = "";
+      state.hideMastered = false;
+      document.getElementById("search-input").value = "";
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.remove("bg-campus-sageLight", "border-campus-sage", "text-campus-sage");
+      renderCategories();
+      renderCards();
+    }
+
+    function buildMarkdownContent() {
+      const today = new Date().toISOString().slice(0, 10);
+      let md = `---\ntags:\n  - EnglishStudy\n  - EpikHigh\n  - HarvardVsStanford\ndate: ${today}\nsource: "https://www.youtube.com/watch?v=${VIDEO_ID}"\n---\n\n`;
+      md += `# 🎓 EPIK HIGH 밥은 먹고 공부하니? (Harvard vs Stanford Food Battle) — 실전 영어 표현 32선\n\n`;
+      md += `- **영상 제목:** 밥은 먹고 공부하니? (Harvard vs Stanford Food Battle)\n`;
+      md += `- **원본 링크:** https://www.youtube.com/watch?v=${VIDEO_ID}\n\n---\n\n`;
+
+      EXPRESSIONS.forEach(item => {
+        const checked = state.mastered[item.id] ? "x" : " ";
+        const ytLink = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const memo = state.memos[item.id] ? state.memos[item.id].trim() : "";
+
+        md += `### [${checked}] ${item.id}. ${item.expression} ([${item.timestamp}](${ytLink}))\n`;
+        md += `- **분류:** #${item.category.replace(/·/g, "_")}\n`;
+        md += `- **의미:** **${item.meaning}**\n`;
+        md += `- **뉘앙스:** ${item.nuance}\n`;
+        md += `- **영상 원문:**\n  > "${item.quote}"\n  > (${item.translation})\n`;
+        if (memo) {
+          md += `- **나의 메모:** ${memo}\n`;
+        }
+        md += `\n`;
+      });
+
+      return md;
+    }
+
+    function copyMarkdownToClipboard() {
+      const md = buildMarkdownContent();
+      const textarea = document.createElement("textarea");
+      textarea.value = md;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        showToast("마크다운 전체 내용이 클립보드에 복사되었습니다.", "📋");
+      } catch (err) {
+        showToast("복사에 실패했습니다. 내보내기 버튼을 이용해 주세요.", "⚠️");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function exportMarkdown() {
+      const today = new Date().toISOString().slice(0, 10);
+      const md = buildMarkdownContent();
+      const blob = new Blob([md], { type: "text/markdown;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `EpikHigh-Harvard-Stanford-English-32_${today}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Obsidian용 마크다운(.md) 파일이 다운로드되었습니다.", "📥");
+    }
+
+    function openResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function confirmReset() {
+      state.mastered = {};
+      state.memos = {};
+      saveState();
+      updateProgress();
+      renderCards();
+      closeResetModal();
+      showToast("모든 학습 기록과 메모가 초기화되었습니다.", "🗑️");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      renderCategories();
+      updateProgress();
+      renderCards();
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderCards();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPIK HIGH LA·시애틀·밴쿠버 브이로그 실전 영어 표현 33선</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          colors: {
+            paper: {
+              bg: '#FAF8F5',
+              card: '#FFFFFF',
+              subtle: '#F3EFEA',
+              border: '#E6E0D6',
+              ink: '#22201E',
+              muted: '#6E685F',
+              accent: '#B45309',
+              accentLight: '#FEF3C7',
+              sage: '#2F6F4E',
+              sageLight: '#ECFDF5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #22201E;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .blur-target {
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+    .hide-meaning .blur-target {
+      filter: blur(6px);
+      user-select: none;
+      cursor: pointer;
+    }
+    .hide-meaning .blur-target:hover,
+    .hide-meaning .blur-target.revealed {
+      filter: blur(0);
+      user-select: auto;
+    }
+    .cloze-blank {
+      display: inline-block;
+      min-width: 110px;
+      padding: 0 8px;
+      margin: 0 2px;
+      border-bottom: 2px dashed #B45309;
+      background-color: #FEF3C7;
+      color: transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .cloze-blank.revealed {
+      color: #92400E;
+      background-color: #FDE68A;
+      border-bottom-style: solid;
+      font-weight: 600;
+      user-select: auto;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6CFC4;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-paper-ink text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-center gap-2">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg">알림 메시지</span>
+  </div>
+
+  <!-- Header & Progress Section -->
+  <header class="sticky top-0 z-30 bg-paper-bg/95 backdrop-blur-md border-b border-paper-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-paper-accent mb-1">
+            <span>EPIK HIGH VLOG</span>
+            <span>•</span>
+            <a href="https://www.youtube.com/watch?v=Gsfrw3i-C6Y" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-800 inline-flex items-center gap-1">
+              YouTube 원본 영상 ↗
+            </a>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-paper-ink tracking-tight">
+            EPIK HIGH LA·시애틀·밴쿠버 브이로그 실전 영어 표현 33선
+          </h1>
+          <p class="text-xs sm:text-sm text-paper-muted mt-0.5">
+            ep. 강민경 브이로그 따라해봄 — 실제 상황별 원문 예문 학습 노트
+          </p>
+        </div>
+
+        <!-- Export & Utility Buttons -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="exportMarkdown()" class="px-3.5 py-2 rounded-xl bg-paper-ink text-white text-xs sm:text-sm font-medium hover:bg-stone-800 transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Obsidian (.md) 내보내기
+          </button>
+          <button onclick="openResetModal()" class="px-3 py-2 rounded-xl bg-paper-card border border-paper-border text-paper-muted text-xs sm:text-sm font-medium hover:bg-paper-subtle transition" title="학습 기록 초기화">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4">
+        <div class="flex items-center justify-between text-xs font-medium text-paper-muted mb-1.5">
+          <span>학습 진도율 (학습 완료)</span>
+          <span id="progress-text" class="text-paper-sage font-semibold">0 / 33 (0%)</span>
+        </div>
+        <div class="w-full h-2 bg-paper-subtle rounded-full overflow-hidden border border-paper-border/60">
+          <div id="progress-bar" class="h-full bg-paper-sage transition-all duration-300 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controls & Filter Bar -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6">
+    <section class="bg-paper-card border border-paper-border rounded-2xl p-4 mb-6 shadow-sm space-y-4">
+      <!-- Search & Study Mode Toggles -->
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-paper-muted absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="영어 표현, 원문 예문, 상황 또는 한국어 뜻 검색..."
+            class="w-full pl-10 pr-4 py-2.5 bg-paper-bg border border-paper-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-paper-accent/30 focus:border-paper-accent transition"
+          />
+        </div>
+
+        <!-- Study Modes -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-hide-meaning" onclick="toggleHideMeaning()" class="px-3.5 py-2.5 rounded-xl border border-paper-border bg-paper-bg text-xs sm:text-sm font-medium text-paper-ink hover:bg-paper-subtle transition flex items-center gap-1.5">
+            <span>👁️</span> 뜻/해석 가리기
+          </button>
+          <button id="btn-cloze-mode" onclick="toggleClozeMode()" class="px-3.5 py-2.5 rounded-xl border border-paper-border bg-paper-bg text-xs sm:text-sm font-medium text-paper-ink hover:bg-paper-subtle transition flex items-center gap-1.5">
+            <span>✍️</span> 원문 빈칸 퀴즈
+          </button>
+          <button id="btn-hide-mastered" onclick="toggleHideMastered()" class="px-3.5 py-2.5 rounded-xl border border-paper-border bg-paper-bg text-xs sm:text-sm font-medium text-paper-ink hover:bg-paper-subtle transition flex items-center gap-1.5">
+            <span>✅</span> 학습 완료 숨기기
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div id="category-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="flex items-center justify-between mb-4 px-1">
+      <p id="result-count" class="text-xs sm:text-sm text-paper-muted font-medium">총 33개의 표현 표시 중</p>
+      <p class="text-xs text-paper-muted hidden sm:block">💡 팁: 타임스탬프(▶) 버튼을 누르면 유튜브의 해당 장면으로 바로 이동합니다.</p>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cards-container" class="space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 bg-paper-card border border-paper-border rounded-2xl">
+      <p class="text-3xl mb-2">📭</p>
+      <h3 class="text-base font-semibold text-paper-ink">조건에 맞는 표현이 없습니다</h3>
+      <p class="text-sm text-paper-muted mt-1">검색어를 지우거나 필터 설정을 변경해 보세요.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-paper-subtle hover:bg-paper-border/60 rounded-xl text-xs font-medium text-paper-ink transition">
+        필터 초기화
+      </button>
+    </div>
+  </main>
+
+  <!-- Custom Confirmation Modal -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-xs p-4">
+    <div class="bg-paper-card border border-paper-border rounded-2xl max-w-sm w-full p-6 shadow-xl">
+      <h3 class="text-lg font-bold text-paper-ink">학습 기록을 초기화할까요?</h3>
+      <p class="text-sm text-paper-muted mt-2 leading-relaxed">
+        체크한 '학습 완료' 상태와 작성하신 개인 메모가 모두 삭제됩니다. 필요하시면 먼저 Obsidian(.md) 파일로 내보내세요.
+      </p>
+      <div class="mt-5 flex justify-end gap-2">
+        <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl border border-paper-border text-sm font-medium text-paper-muted hover:bg-paper-subtle transition">
+          취소
+        </button>
+        <button onclick="confirmReset()" class="px-4 py-2 rounded-xl bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition">
+          초기화하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-paper-border bg-paper-card mt-12 py-6 text-center text-xs text-paper-muted">
+    <p>Source: Epik High Official YouTube — <em>ep. 강민경 브이로그 따라해봄 ft. LA, 밴쿠버, 시애틀</em></p>
+  </footer>
+
+  <script>
+    const VIDEO_ID = "Gsfrw3i-C6Y";
+
+    const EXPRESSIONS = [
+      {
+        id: 1,
+        expression: "the daily grind / fresh brewed",
+        timestamp: "00:01:08",
+        seconds: 68,
+        category: "일상·묘사 표현",
+        meaning: "매일 반복되는 고된 일상 / 갓 내린",
+        context: "LA 카페 벽화 문구",
+        quote: "The daily grind should produce fresh brewed happiness.",
+        highlights: ["daily grind", "fresh brewed"],
+        ttsText: "The daily grind should produce fresh brewed happiness.",
+        translation: "매일 반복되는 고된 일상은 갓 내린 커피 같은 행복을 만들어내야 한다."
+      },
+      {
+        id: 2,
+        expression: "I love your [item]",
+        timestamp: "00:01:38",
+        seconds: 98,
+        category: "스몰토크·여행",
+        meaning: "(~가) 정말 멋지네요 / 마음에 드네요",
+        context: "타블로가 엘리베이터에서 낯선 사람에게 건넨 칭찬",
+        quote: "I love your sunglasses.",
+        highlights: ["I love your"],
+        ttsText: "I love your sunglasses.",
+        translation: "선글라스가 정말 멋지네요."
+      },
+      {
+        id: 3,
+        expression: "Thanks for having us",
+        timestamp: "00:02:12",
+        seconds: 132,
+        category: "스몰토크·여행",
+        meaning: "초대해 주셔서 감사합니다",
+        context: "아마존 스튜디오 방송 출연 마무리 인사",
+        quote: "Thanks for having us.",
+        highlights: ["Thanks for having us"],
+        ttsText: "Thanks for having us.",
+        translation: "초대해 주셔서 감사합니다."
+      },
+      {
+        id: 4,
+        expression: "exclusive",
+        timestamp: "00:03:54",
+        seconds: 234,
+        category: "쇼핑·매장 회화",
+        meaning: "독점적인, 고급스러운, 흔히 구할 수 없는",
+        context: "에레혼 마켓에서 투컷",
+        quote: "여기 있는 맥주들은 참 뭐랄까, exclusive해요.",
+        highlights: ["exclusive"],
+        ttsText: "exclusive",
+        translation: "여기 있는 맥주들은 흔히 구할 수 없는 특별한 제품들이에요."
+      },
+      {
+        id: 5,
+        expression: "Is there like a ~?",
+        timestamp: "00:04:13",
+        seconds: 253,
+        category: "카페·식당 주문",
+        meaning: "혹시 ~ 같은 거 있나요?",
+        context: "에레혼에서 직원을 향해 메뉴를 물을 때",
+        quote: "Is there like a Hailey Bieber smoothie?",
+        highlights: ["Is there like a"],
+        ttsText: "Is there like a Hailey Bieber smoothie?",
+        translation: "혹시 헤일리 비버 스무디 같은 거 있나요?"
+      },
+      {
+        id: 6,
+        expression: "get renamed",
+        timestamp: "00:04:16",
+        seconds: 256,
+        category: "카페·식당 주문",
+        meaning: "이름이 바뀌다",
+        context: "에레혼 직원",
+        quote: "It got renamed, but it's the Strawberry Glaze Skin Smoothie.",
+        highlights: ["got renamed"],
+        ttsText: "It got renamed, but it's the Strawberry Glaze Skin Smoothie.",
+        translation: "이름이 바뀌긴 했는데, '스트로베리 글레이즈 스킨 스무디'예요."
+      },
+      {
+        id: 7,
+        expression: "Can we get ~ / We'll have ~",
+        timestamp: "00:04:28",
+        seconds: 268,
+        category: "카페·식당 주문",
+        meaning: "~ 하나랑, ~ 하나 주세요",
+        context: "타블로 주문",
+        quote: "Can we get one Strawberry Glaze, we'll have one Malibu Mango, and vanilla matcha.",
+        highlights: ["Can we get", "we'll have"],
+        ttsText: "Can we get one Strawberry Glaze, we'll have one Malibu Mango, and vanilla matcha.",
+        translation: "스트로베리 글레이즈 하나랑, 말리부 망고 하나, 그리고 바닐라 말차 주세요."
+      },
+      {
+        id: 8,
+        expression: "How much is each ~?",
+        timestamp: "00:04:35",
+        seconds: 275,
+        category: "카페·식당 주문",
+        meaning: "잠깐만요, 개당 얼마씩이죠?",
+        context: "스무디 개당 가격을 확인할 때",
+        quote: "Wait, how much is each smoothie?",
+        highlights: ["how much is each"],
+        ttsText: "Wait, how much is each smoothie?",
+        translation: "잠깐만요, 스무디 하나당 얼마씩이죠?"
+      },
+      {
+        id: 9,
+        expression: "We'll take those",
+        timestamp: "00:04:48",
+        seconds: 288,
+        category: "카페·식당 주문",
+        meaning: "그걸로 가져갈게요 / 테이크아웃 할게요",
+        context: "포장/테이크아웃으로 가져가겠다고 할 때",
+        quote: "We'll take those.",
+        highlights: ["We'll take those"],
+        ttsText: "We'll take those.",
+        translation: "그걸로 가져갈게요."
+      },
+      {
+        id: 10,
+        expression: "performative",
+        timestamp: "00:07:16",
+        seconds: 436,
+        category: "일상·묘사 표현",
+        meaning: "보여주기식의, 과시적인",
+        context: "카메라를 의식하며 포즈를 취하는 모습을 묘사할 때",
+        quote: "Performative.",
+        highlights: ["Performative"],
+        ttsText: "Performative.",
+        translation: "보여주기식이네. (남들 의식해서 설정샷 찍는 느낌이네.)"
+      },
+      {
+        id: 11,
+        expression: "do a pop-up (with)",
+        timestamp: "00:12:40",
+        seconds: 760,
+        category: "쇼핑·매장 회화",
+        meaning: "(~와 함께) 팝업 스토어를 열다",
+        context: "빈티지 숍 사장님",
+        quote: "I did a pop-up with the shop called Man on the Boon.",
+        highlights: ["did a pop-up with"],
+        ttsText: "I did a pop-up with the shop called Man on the Boon.",
+        translation: "'맨온더분'이라는 편집숍과 함께 팝업 스토어를 진행했어요."
+      },
+      {
+        id: 12,
+        expression: "What's going on?",
+        timestamp: "00:12:46",
+        seconds: 766,
+        category: "스몰토크·여행",
+        meaning: "어떻게 지내요? / 반가워요!",
+        context: "빈티지 숍 사장님의 반가운 인사",
+        quote: "What's going on?",
+        highlights: ["What's going on?"],
+        ttsText: "What's going on?",
+        translation: "어떻게 지내요? / 반가워요!"
+      },
+      {
+        id: 13,
+        expression: "That's like the Korean ~",
+        timestamp: "00:12:48",
+        seconds: 768,
+        category: "일상·묘사 표현",
+        meaning: "거기가 한국판 에레혼 같은 곳이에요",
+        context: "하우스 오브 신세계를 설명하는 타블로",
+        quote: "That's like the Korean Erewhon.",
+        highlights: ["That's like the Korean"],
+        ttsText: "That's like the Korean Erewhon.",
+        translation: "거기가 한국판 에레혼 같은 곳이에요."
+      },
+      {
+        id: 14,
+        expression: "be on someone's show",
+        timestamp: "00:13:07",
+        seconds: 787,
+        category: "일상·묘사 표현",
+        meaning: "~의 방송/쇼에 출연하다",
+        context: "태양이 에픽하이 유튜브에 출연했음을 설명할 때",
+        quote: "We're Epik High, and he was on our YouTube show recently.",
+        highlights: ["was on our YouTube show"],
+        ttsText: "We're Epik High, and he was on our YouTube show recently.",
+        translation: "저희는 에픽하이이고, 태양이 최근에 저희 유튜브 쇼에 출연했어요."
+      },
+      {
+        id: 15,
+        expression: "We'll take it",
+        timestamp: "00:13:49",
+        seconds: 829,
+        category: "쇼핑·매장 회화",
+        meaning: "좋아요, 이걸로 살게요",
+        context: "재킷을 입어본 뒤 구매를 결정할 때",
+        quote: "Okay, we'll take it.",
+        highlights: ["we'll take it"],
+        ttsText: "Okay, we'll take it.",
+        translation: "좋아요, 이걸로 살게요."
+      },
+      {
+        id: 16,
+        expression: "actually fit",
+        timestamp: "00:14:03",
+        seconds: 843,
+        category: "쇼핑·매장 회화",
+        meaning: "의외로 / 진짜로 딱 맞네요!",
+        context: "작아 보이던 재킷이 타블로에게 딱 맞자 놀라며",
+        quote: "It actually fits you!",
+        highlights: ["actually fits"],
+        ttsText: "It actually fits you!",
+        translation: "의외로 진짜 딱 맞네요!"
+      },
+      {
+        id: 17,
+        expression: "ready for ~",
+        timestamp: "00:14:51",
+        seconds: 891,
+        category: "일상·묘사 표현",
+        meaning: "~에 갈 준비 완료네요",
+        context: "초록색 코디를 마친 타블로에게 사장님이 건넨 농담",
+        quote: "Ready for Maru Coffee.",
+        highlights: ["Ready for"],
+        ttsText: "Ready for Maru Coffee.",
+        translation: "마루 커피 갈 준비 완료네요. (마루 커피 시그니처 컬러인 초록색을 입어서 한 농담)"
+      },
+      {
+        id: 18,
+        expression: "take a photo of ~",
+        timestamp: "00:14:55",
+        seconds: 895,
+        category: "쇼핑·매장 회화",
+        meaning: "여러분 사진 좀 찍어도 될까요?",
+        context: "사장님이 기념사진을 요청할 때",
+        quote: "Can I take a photo of you guys?",
+        highlights: ["take a photo of"],
+        ttsText: "Can I take a photo of you guys?",
+        translation: "여러분 사진 한 장 찍어도 될까요?"
+      },
+      {
+        id: 19,
+        expression: "My pleasure / Really appreciate it",
+        timestamp: "00:15:04",
+        seconds: 904,
+        category: "쇼핑·매장 회화",
+        meaning: "천만에요 / 정말 감사합니다",
+        context: "매장을 나서며 주고받는 감사 인사",
+        quote: "Thank you, sir. / My pleasure. / Really appreciate it.",
+        highlights: ["My pleasure", "Really appreciate it"],
+        ttsText: "Thank you, sir. My pleasure. Really appreciate it.",
+        translation: "감사합니다, 사장님. / 천만에요. / 정말 고맙습니다."
+      },
+      {
+        id: 20,
+        expression: "be allowed to ~",
+        timestamp: "00:15:44",
+        seconds: 944,
+        category: "일상·묘사 표현",
+        meaning: "한국어로 답변해도 되나요? 제가 통역할까요?",
+        context: "퍼피 인터뷰 촬영 전 스태프에게 확인할 때",
+        quote: "Are they allowed to answer in Korean? And then should I translate or no?",
+        highlights: ["allowed to"],
+        ttsText: "Are they allowed to answer in Korean? And then should I translate or no?",
+        translation: "멤버들이 한국어로 대답해도 되나요? 그리고 제가 통역을 해야 하나요, 아니면 안 해도 되나요?"
+      },
+      {
+        id: 21,
+        expression: "be in town",
+        timestamp: "00:18:02",
+        seconds: 1082,
+        category: "스몰토크·여행",
+        meaning: "이 도시에 얼마나 더 머무르세요?",
+        context: "와인숍 직원이 여행 일정을 물을 때",
+        quote: "How long are you guys in town?",
+        highlights: ["in town"],
+        ttsText: "How long are you guys in town?",
+        translation: "이 도시에 얼마나 더 머무르세요?"
+      },
+      {
+        id: 22,
+        expression: "a friend of ours / shoot something",
+        timestamp: "00:18:10",
+        seconds: 1090,
+        category: "일상·묘사 표현",
+        meaning: "우리 친구 중 한 명 / 무언가를 촬영하다",
+        context: "강민경이 이곳에서 촬영했음을 설명할 때",
+        quote: "A friend of ours is a YouTuber as well, and she came here and shot something.",
+        highlights: ["A friend of ours", "shot something"],
+        ttsText: "A friend of ours is a YouTuber as well, and she came here and shot something.",
+        translation: "우리 친구 중 한 명도 유튜버인데, 여기 와서 촬영을 했었거든요."
+      },
+      {
+        id: 23,
+        expression: "do a spoof of ~",
+        timestamp: "00:18:22",
+        seconds: 1102,
+        category: "일상·묘사 표현",
+        meaning: "~를 패러디하다",
+        context: "브이로그 패러디 콘셉트를 설명할 때",
+        quote: "Because we're friends with her, we're doing like a vlog spoof of her.",
+        highlights: ["vlog spoof of"],
+        ttsText: "Because we're friends with her, we're doing like a vlog spoof of her.",
+        translation: "저희가 그 친구랑 친해서, 그녀의 브이로그를 패러디해서 찍고 있어요."
+      },
+      {
+        id: 24,
+        expression: "highly recommend",
+        timestamp: "00:18:29",
+        seconds: 1109,
+        category: "쇼핑·매장 회화",
+        meaning: "적극 추천하다",
+        context: "강민경이 이곳을 적극 추천했다고 말할 때",
+        quote: "She came here and she highly recommended it.",
+        highlights: ["highly recommended"],
+        ttsText: "She came here and she highly recommended it.",
+        translation: "그 친구가 여기 와보고 이곳을 적극 추천하더라고요."
+      },
+      {
+        id: 25,
+        expression: "stop by / drop by",
+        timestamp: "00:18:32",
+        seconds: 1112,
+        category: "쇼핑·매장 회화",
+        meaning: "잠깐 들르다",
+        context: "가게에 들러줘서 고맙다는 인사와 다시 들르겠다는 답례",
+        quote: "Thanks for stopping by, man. / Yes, and we'll drop by again.",
+        highlights: ["stopping by", "drop by"],
+        ttsText: "Thanks for stopping by, man. Yes, and we'll drop by again.",
+        translation: "들러줘서 고마워요. / 네, 다음에 또 들를게요."
+      },
+      {
+        id: 26,
+        expression: "May I just see the menu?",
+        timestamp: "00:19:01",
+        seconds: 1141,
+        category: "카페·식당 주문",
+        meaning: "실례합니다, 메뉴판 좀 잠깐 봐도 될까요?",
+        context: "식당 입구에서 메뉴판을 먼저 보고 싶을 때",
+        quote: "Sir, may I just see the menu?",
+        highlights: ["may I just see the menu"],
+        ttsText: "Sir, may I just see the menu?",
+        translation: "실례합니다, 메뉴판 좀 잠깐 봐도 될까요?"
+      },
+      {
+        id: 27,
+        expression: "Weather is good, huh?",
+        timestamp: "00:26:51",
+        seconds: 1611,
+        category: "스몰토크·여행",
+        meaning: "날씨 좋죠?",
+        context: "투컷이 호텔 엘리베이터에서 시도한 스몰토크",
+        quote: "Weather is good, huh?",
+        highlights: ["Weather is good, huh?"],
+        ttsText: "Weather is good, huh?",
+        translation: "날씨 좋죠?"
+      },
+      {
+        id: 28,
+        expression: "I'll have what I always have",
+        timestamp: "00:28:43",
+        seconds: 1723,
+        category: "카페·식당 주문",
+        meaning: "늘 먹던 걸로 할게요",
+        context: "단골집에서 늘 먹던 메뉴를 주문할 때",
+        quote: "I'll have what I always have.",
+        highlights: ["I'll have what I always have"],
+        ttsText: "I'll have what I always have.",
+        translation: "늘 먹던 걸로 할게요."
+      },
+      {
+        id: 29,
+        expression: "sunny-side up / over hard",
+        timestamp: "00:30:45",
+        seconds: 1845,
+        category: "카페·식당 주문",
+        meaning: "한쪽만 익힌 반숙 프라이 / 양면 다 익힌 완숙 프라이",
+        context: "달걀 프라이 굽기 방식 구분",
+        quote: "써니 사이드 업 말고 양면을 다 구운 거, 오버 하드.",
+        highlights: ["써니 사이드 업", "오버 하드"],
+        ttsText: "sunny-side up, over hard",
+        translation: "노른자가 위로 보이게 한쪽만 익힌 반숙(sunny-side up) 말고, 뒤집어서 양면과 노른자까지 다 익힌 완숙(over hard) 달걀 프라이."
+      },
+      {
+        id: 30,
+        expression: "right on time",
+        timestamp: "00:44:32",
+        seconds: 2672,
+        category: "스몰토크·여행",
+        meaning: "여러분 시간 딱 맞춰 잘 오셨네요!",
+        context: "밴쿠버 증기 시계 앞에서 일일 가이드가 된 타블로",
+        quote: "You guys are right on time!",
+        highlights: ["right on time"],
+        ttsText: "You guys are right on time!",
+        translation: "여러분 시간 딱 맞춰 잘 오셨네요!"
+      },
+      {
+        id: 31,
+        expression: "The weather's crazy today, huh?",
+        timestamp: "00:48:35",
+        seconds: 2915,
+        category: "스몰토크·여행",
+        meaning: "오늘 날씨 끝내주죠(미쳤죠)?",
+        context: "스몰토크 상황극 중 날씨 칭찬",
+        quote: "The weather's crazy today, huh?",
+        highlights: ["The weather's crazy today, huh?"],
+        ttsText: "The weather's crazy today, huh?",
+        translation: "오늘 날씨 진짜 끝내주죠?"
+      },
+      {
+        id: 32,
+        expression: "just visiting / What for?",
+        timestamp: "00:48:45",
+        seconds: 2925,
+        category: "스몰토크·여행",
+        meaning: "잠깐 여행 왔어요 / 무슨 일로 오셨어요?",
+        context: "여행객임을 밝히고 방문 목적을 묻는 대화",
+        quote: "Do you live here? / No, just visiting. / Oh, visiting? What for?",
+        highlights: ["just visiting", "What for?"],
+        ttsText: "Do you live here? No, just visiting. Oh, visiting? What for?",
+        translation: "여기 사세요? / 아니요, 잠깐 방문했어요. / 아, 여행 오셨군요? 무슨 일로 오셨어요?"
+      },
+      {
+        id: 33,
+        expression: "look crazy good",
+        timestamp: "00:51:26",
+        seconds: 3086,
+        category: "카페·식당 주문",
+        meaning: "와, 비주얼이 미쳤네요 / 엄청 맛있어 보인다",
+        context: "밴쿠버 미쿠 레스토랑에서 음식이 나왔을 때 감탄",
+        quote: "Yo, this looks crazy good.",
+        highlights: ["looks crazy good"],
+        ttsText: "Yo, this looks crazy good.",
+        translation: "와, 이거 진짜 엄청 맛있어 보인다."
+      }
+    ];
+
+    const STORAGE_KEY = "epikhigh_vlog_33_study_v1";
+    let state = {
+      mastered: {},
+      memos: {},
+      category: "전체",
+      search: "",
+      hideMeaning: false,
+      clozeMode: false,
+      hideMastered: false
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.mastered = parsed.mastered || {};
+          state.memos = parsed.memos || {};
+        }
+      } catch (e) {
+        console.error("Failed to load state:", e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          mastered: state.mastered,
+          memos: state.memos
+        }));
+      } catch (e) {
+        console.error("Failed to save state:", e);
+      }
+    }
+
+    function showToast(msg, icon = "✓") {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-msg").textContent = msg;
+      document.getElementById("toast-icon").textContent = icon;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("이 브라우저는 음성 듣기를 지원하지 않습니다.", "⚠️");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = 0.95;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function formatQuote(quote, highlights, clozeMode) {
+      if (!highlights || highlights.length === 0) return escapeHtml(quote);
+
+      const sorted = [...highlights].sort((a, b) => b.length - a.length);
+      const pattern = new RegExp(`(${sorted.map(escapeRegExp).join("|")})`, "gi");
+      const parts = quote.split(pattern);
+
+      return parts.map(part => {
+        const isMatch = sorted.some(h => h.toLowerCase() === part.toLowerCase());
+        if (!isMatch) return escapeHtml(part);
+
+        const safePart = escapeHtml(part);
+        if (clozeMode) {
+          return `<span class="cloze-blank" onclick="this.classList.toggle('revealed')" title="클릭해서 정답 확인">${safePart}</span>`;
+        } else {
+          return `<mark class="bg-paper-accentLight text-amber-900 font-semibold px-1.5 py-0.5 rounded-md">${safePart}</mark>`;
+        }
+      }).join("");
+    }
+
+    function renderCategories() {
+      const categories = ["전체", "카페·식당 주문", "쇼핑·매장 회화", "스몰토크·여행", "일상·묘사 표현"];
+      const container = document.getElementById("category-tabs");
+      container.innerHTML = categories.map(cat => {
+        const count = cat === "전체"
+          ? EXPRESSIONS.length
+          : EXPRESSIONS.filter(item => item.category === cat).length;
+        const isActive = state.category === cat;
+        const activeClasses = isActive
+          ? "bg-paper-ink text-white border-paper-ink shadow-xs"
+          : "bg-paper-bg text-paper-muted border-paper-border hover:bg-paper-subtle hover:text-paper-ink";
+
+        return `
+          <button
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-1.5 rounded-full border text-xs sm:text-sm font-medium whitespace-nowrap transition ${activeClasses}"
+          >
+            ${cat} <span class="opacity-75 text-xs ml-0.5">(${count})</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function updateProgress() {
+      const total = EXPRESSIONS.length;
+      const done = Object.values(state.mastered).filter(Boolean).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progress-text").textContent = `${done} / ${total} (${pct}%)`;
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    function renderCards() {
+      const container = document.getElementById("cards-container");
+      const emptyState = document.getElementById("empty-state");
+      const query = state.search.trim().toLowerCase();
+
+      const filtered = EXPRESSIONS.filter(item => {
+        if (state.category !== "전체" && item.category !== state.category) return false;
+        if (state.hideMastered && state.mastered[item.id]) return false;
+        if (query) {
+          const hay = `${item.expression} ${item.meaning} ${item.quote} ${item.translation} ${item.context}`.toLowerCase();
+          if (!hay.includes(query)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById("result-count").textContent = `총 ${filtered.length}개의 표현 표시 중`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      container.innerHTML = filtered.map(item => {
+        const isMastered = !!state.mastered[item.id];
+        const memoText = state.memos[item.id] || "";
+        const ytUrl = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const cardBorder = isMastered ? "border-emerald-300 bg-emerald-50/20" : "border-paper-border bg-paper-card";
+
+        return `
+          <article class="rounded-2xl border ${cardBorder} p-5 sm:p-6 shadow-xs transition hover:shadow-md">
+            <!-- Top Row: Badge, Category, Timestamp, Mastered Checkbox -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-paper-subtle text-paper-ink text-xs font-bold">
+                  ${item.id}
+                </span>
+                <span class="px-2.5 py-0.5 rounded-md bg-paper-subtle text-paper-muted text-xs font-medium">
+                  ${item.category}
+                </span>
+                <a
+                  href="${ytUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-red-50 text-red-700 hover:bg-red-100 text-xs font-medium transition"
+                  title="유튜브에서 이 장면 바로 보기"
+                >
+                  <span>▶</span> ${item.timestamp}
+                </a>
+              </div>
+
+              <label class="inline-flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg hover:bg-paper-subtle transition">
+                <input
+                  type="checkbox"
+                  ${isMastered ? "checked" : ""}
+                  onchange="toggleMastered(${item.id})"
+                  class="w-4 h-4 rounded accent-emerald-700 cursor-pointer"
+                />
+                <span class="text-xs font-semibold ${isMastered ? "text-paper-sage" : "text-paper-muted"}">
+                  ${isMastered ? "학습 완료" : "학습 완료"}
+                </span>
+              </label>
+            </div>
+
+            <!-- Expression Title & TTS -->
+            <div class="flex items-start justify-between gap-3">
+              <h2 class="text-lg sm:text-xl font-bold text-paper-ink tracking-tight">
+                ${escapeHtml(item.expression)}
+              </h2>
+              <button
+                onclick="speakText('${item.ttsText.replace(/'/g, "\\'")}')"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg border border-paper-border bg-paper-bg hover:bg-paper-subtle text-xs font-medium text-paper-ink transition flex items-center gap-1"
+                title="원문 발음 듣기"
+              >
+                <span>🔊</span> 발음 듣기
+              </button>
+            </div>
+
+            <!-- Korean Meaning & Context Note (Blurrable) -->
+            <div class="mt-2 blur-target" onclick="this.classList.toggle('revealed')">
+              <p class="text-base font-semibold text-paper-accent">
+                ${escapeHtml(item.meaning)}
+              </p>
+              <p class="text-xs sm:text-sm text-paper-muted mt-1 leading-relaxed">
+                <span class="font-medium text-paper-ink">상황:</span> ${escapeHtml(item.context)}
+              </p>
+            </div>
+
+            <!-- Verbatim Vlog Quote Box -->
+            <div class="mt-4 p-4 rounded-xl bg-paper-bg border border-paper-border/80">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-paper-muted">
+                  🎬 Vlog Exact Quote
+                </span>
+                <button
+                  onclick="speakText(\`${item.ttsText.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                  class="text-xs text-paper-muted hover:text-paper-ink font-medium inline-flex items-center gap-1 transition"
+                  title="예문 발음 듣기"
+                >
+                  <span>🔊</span> 예문 듣기
+                </button>
+              </div>
+              <p class="text-sm sm:text-[15px] text-paper-ink leading-relaxed font-medium">
+                “${formatQuote(item.quote, item.highlights, state.clozeMode)}”
+              </p>
+              <p class="text-xs sm:text-sm text-paper-muted mt-2 pt-2 border-t border-paper-border/60 blur-target" onclick="this.classList.toggle('revealed')">
+                ${escapeHtml(item.translation)}
+              </p>
+            </div>
+
+            <!-- Collapsible Personal Memo -->
+            <div class="mt-3">
+              <details ${memoText ? "open" : ""} class="group">
+                <summary class="text-xs font-medium text-paper-muted hover:text-paper-ink cursor-pointer select-none inline-flex items-center gap-1">
+                  <span>📝 나만의 메모 / 예문</span>
+                  ${memoText ? '<span class="w-1.5 h-1.5 rounded-full bg-paper-accent"></span>' : ''}
+                </summary>
+                <div class="mt-2">
+                  <textarea
+                    rows="2"
+                    placeholder="직접 응용한 예문이나 기억해 둘 포인트를 적어보세요 (자동 저장됨)..."
+                    oninput="updateMemo(${item.id}, this.value)"
+                    class="w-full p-2.5 text-xs sm:text-sm bg-paper-bg border border-paper-border rounded-xl focus:outline-none focus:border-paper-accent transition resize-y"
+                  >${escapeHtml(memoText)}</textarea>
+                </div>
+              </details>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function selectCategory(cat) {
+      state.category = cat;
+      renderCategories();
+      renderCards();
+    }
+
+    function toggleMastered(id) {
+      state.mastered[id] = !state.mastered[id];
+      saveState();
+      updateProgress();
+      renderCards();
+      if (state.mastered[id]) {
+        showToast("학습 완료로 체크했습니다.", "✅");
+      }
+    }
+
+    function updateMemo(id, val) {
+      state.memos[id] = val;
+      saveState();
+    }
+
+    function toggleHideMeaning() {
+      state.hideMeaning = !state.hideMeaning;
+      document.body.classList.toggle("hide-meaning", state.hideMeaning);
+      const btn = document.getElementById("btn-hide-meaning");
+      btn.classList.toggle("bg-paper-accentLight", state.hideMeaning);
+      btn.classList.toggle("border-paper-accent", state.hideMeaning);
+      btn.classList.toggle("text-amber-900", state.hideMeaning);
+    }
+
+    function toggleClozeMode() {
+      state.clozeMode = !state.clozeMode;
+      const btn = document.getElementById("btn-cloze-mode");
+      btn.classList.toggle("bg-paper-accentLight", state.clozeMode);
+      btn.classList.toggle("border-paper-accent", state.clozeMode);
+      btn.classList.toggle("text-amber-900", state.clozeMode);
+      renderCards();
+    }
+
+    function toggleHideMastered() {
+      state.hideMastered = !state.hideMastered;
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.toggle("bg-paper-sageLight", state.hideMastered);
+      btn.classList.toggle("border-paper-sage", state.hideMastered);
+      btn.classList.toggle("text-paper-sage", state.hideMastered);
+      renderCards();
+    }
+
+    function resetFilters() {
+      state.category = "전체";
+      state.search = "";
+      state.hideMastered = false;
+      document.getElementById("search-input").value = "";
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.remove("bg-paper-sageLight", "border-paper-sage", "text-paper-sage");
+      renderCategories();
+      renderCards();
+    }
+
+    function exportMarkdown() {
+      const today = new Date().toISOString().slice(0, 10);
+      let md = `---\ntags:\n  - EnglishStudy\n  - EpikHigh\n  - VlogEnglish\ndate: ${today}\nsource: "https://www.youtube.com/watch?v=${VIDEO_ID}"\n---\n\n`;
+      md += `# 🎬 EPIK HIGH LA·시애틀·밴쿠버 브이로그 실전 영어 표현 33선\n\n`;
+      md += `- **영상 제목:** ep. 강민경 브이로그 따라해봄 ft. LA, 밴쿠버, 시애틀\n`;
+      md += `- **원본 링크:** https://www.youtube.com/watch?v=${VIDEO_ID}\n\n---\n\n`;
+
+      EXPRESSIONS.forEach(item => {
+        const checked = state.mastered[item.id] ? "x" : " ";
+        const ytLink = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const memo = state.memos[item.id] ? state.memos[item.id].trim() : "";
+
+        md += `### [${checked}] ${item.id}. ${item.expression} ([${item.timestamp}](${ytLink}))\n`;
+        md += `- **분류:** #${item.category.replace(/·/g, "_")}\n`;
+        md += `- **의미:** **${item.meaning}**\n`;
+        md += `- **상황:** ${item.context}\n`;
+        md += `- **영상 원문:**\n  > "${item.quote}"\n  > (${item.translation})\n`;
+        if (memo) {
+          md += `- **나의 메모:** ${memo}\n`;
+        }
+        md += `\n`;
+      });
+
+      const blob = new Blob([md], { type: "text/markdown;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `EpikHigh-Vlog-English-33_${today}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Obsidian용 마크다운(.md) 파일이 다운로드되었습니다.", "📥");
+    }
+
+    function openResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function confirmReset() {
+      state.mastered = {};
+      state.memos = {};
+      saveState();
+      updateProgress();
+      renderCards();
+      closeResetModal();
+      showToast("모든 학습 기록과 메모가 초기화되었습니다.", "🗑️");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      renderCategories();
+      updateProgress();
+      renderCards();
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderCards();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey Tablo Ep. 38 — 존박 & 타블로 영어 표현 35선</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          colors: {
+            slatex: {
+              bg: '#0B1120',
+              surface: '#111827',
+              card: '#161F33',
+              subtle: '#1E293B',
+              border: '#283548',
+              ink: '#F1F5F9',
+              muted: '#94A3B8',
+              indigo: '#6366F1',
+              indigoHover: '#4F46E5',
+              indigoSoft: 'rgba(99, 102, 241, 0.16)',
+              emerald: '#10B981',
+              emeraldSoft: 'rgba(16, 185, 129, 0.15)',
+              amber: '#F59E0B',
+              amberSoft: 'rgba(245, 158, 11, 0.16)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0B1120;
+      color: #F1F5F9;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .blur-target {
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+    .hide-meaning .blur-target {
+      filter: blur(6px);
+      user-select: none;
+      cursor: pointer;
+    }
+    .hide-meaning .blur-target:hover,
+    .hide-meaning .blur-target.revealed {
+      filter: blur(0);
+      user-select: auto;
+    }
+    .cloze-blank {
+      display: inline-block;
+      min-width: 115px;
+      padding: 0 8px;
+      margin: 0 2px;
+      border-bottom: 2px dashed #818CF8;
+      background-color: rgba(99, 102, 241, 0.2);
+      color: transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .cloze-blank.revealed {
+      color: #C7D2FE;
+      background-color: rgba(99, 102, 241, 0.32);
+      border-bottom-style: solid;
+      font-weight: 600;
+      user-select: auto;
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B1120;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-slate-800 border border-slate-700 text-slate-100 text-sm px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2.5">
+    <span id="toast-icon" class="text-indigo-400 font-bold">✓</span>
+    <span id="toast-msg">알림 메시지</span>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-30 bg-slatex-bg/90 backdrop-blur-md border-b border-slatex-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider uppercase text-indigo-400 mb-1">
+            <span>HEY TABLO EP. 38</span>
+            <span class="text-slate-600">•</span>
+            <a href="https://www.youtube.com/watch?v=yWAsEGYHsvA" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-300 inline-flex items-center gap-1 transition">
+              YouTube 원본 영상 (John Park & Tablo) ↗
+            </a>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-slatex-ink tracking-tight">
+            Hey Tablo Ep. 38 — 존박 & 타블로 영어 표현 35선
+          </h1>
+          <p class="text-xs sm:text-sm text-slatex-muted mt-0.5">
+            John Park is like Tukutz but way SMARTER — 실제 팟캐스트 대화 원문 학습 노트
+          </p>
+        </div>
+
+        <!-- Action Buttons: Copy, Export, Reset -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="copyMarkdownToClipboard()" class="px-3 py-2 rounded-xl bg-slatex-card border border-slatex-border text-slatex-ink text-xs sm:text-sm font-medium hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-slatex-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            클립보드 복사 (.md)
+          </button>
+          <button onclick="exportMarkdown()" class="px-3.5 py-2 rounded-xl bg-slatex-indigo text-white text-xs sm:text-sm font-medium hover:bg-slatex-indigoHover transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Obsidian (.md) 내보내기
+          </button>
+          <button onclick="openResetModal()" class="px-3 py-2 rounded-xl bg-slatex-card border border-slatex-border text-slatex-muted text-xs sm:text-sm font-medium hover:text-slate-200 hover:bg-slatex-subtle transition" title="학습 기록 초기화">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4">
+        <div class="flex items-center justify-between text-xs font-medium text-slatex-muted mb-1.5">
+          <span>학습 진도율 (암기 완료)</span>
+          <span id="progress-text" class="text-emerald-400 font-semibold">암기 완료: 0 / 35 (0%)</span>
+        </div>
+        <div class="w-full h-2 bg-slatex-subtle rounded-full overflow-hidden border border-slatex-border/80">
+          <div id="progress-bar" class="h-full bg-emerald-500 transition-all duration-300 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6">
+    <!-- Filter & Study Mode Controls -->
+    <section class="bg-slatex-card border border-slatex-border rounded-2xl p-4 mb-6 shadow-md space-y-4">
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <!-- Search Box -->
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-slatex-muted absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="영어 표현, 영상 원문, 화자(Tablo / John Park) 또는 뜻 검색..."
+            class="w-full pl-10 pr-4 py-2.5 bg-slatex-bg border border-slatex-border rounded-xl text-sm text-slatex-ink placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition"
+          />
+        </div>
+
+        <!-- Study Toggles & TTS Speed -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-tts-speed" onclick="toggleTtsSpeed()" class="px-3 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1" title="발음 재생 속도 전환">
+            <span>🐢/🐇</span> <span id="tts-speed-label">1.0x</span>
+          </button>
+          <button id="btn-hide-meaning" onclick="toggleHideMeaning()" class="px-3.5 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <span>👁️</span> 뜻/해석 가리기
+          </button>
+          <button id="btn-cloze-mode" onclick="toggleClozeMode()" class="px-3.5 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <span>✍️</span> 원문 빈칸 퀴즈
+          </button>
+          <button id="btn-hide-mastered" onclick="toggleHideMastered()" class="px-3.5 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <span>📌</span> <span id="hide-mastered-label">전체 보기</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div id="category-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Status Bar -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 px-1">
+      <p id="result-count" class="text-xs sm:text-sm text-slatex-muted font-medium">총 35개의 표현 표시 중</p>
+      <p class="text-xs text-slatex-muted">💡 팁: <span class="text-indigo-400 font-semibold">▶ HH:MM:SS</span> 버튼으로 유튜브 발화 구간을 바로 들을 수 있습니다.</p>
+    </div>
+
+    <!-- Cards List -->
+    <div id="cards-container" class="space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 bg-slatex-card border border-slatex-border rounded-2xl">
+      <p class="text-3xl mb-2">🎧</p>
+      <h3 class="text-base font-semibold text-slatex-ink">조건에 맞는 표현이 없습니다</h3>
+      <p class="text-sm text-slatex-muted mt-1">검색어를 지우거나 필터 설정을 초기화해 보세요.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-slatex-subtle hover:bg-slate-700 rounded-xl text-xs font-medium text-slatex-ink transition">
+        필터 초기화
+      </button>
+    </div>
+  </main>
+
+  <!-- Custom Reset Confirmation Modal -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/65 backdrop-blur-xs p-4">
+    <div class="bg-slatex-card border border-slatex-border rounded-2xl max-w-sm w-full p-6 shadow-2xl">
+      <h3 class="text-lg font-bold text-slatex-ink">학습 기록을 초기화할까요?</h3>
+      <p class="text-sm text-slatex-muted mt-2 leading-relaxed">
+        체크한 '암기 완료' 상태와 작성하신 개인 메모가 모두 삭제됩니다. 필요하시면 먼저 Obsidian(.md) 파일로 내보내세요.
+      </p>
+      <div class="mt-5 flex justify-end gap-2">
+        <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl border border-slatex-border text-sm font-medium text-slatex-muted hover:bg-slatex-subtle transition">
+          취소
+        </button>
+        <button onclick="confirmReset()" class="px-4 py-2 rounded-xl bg-rose-600 text-white text-sm font-medium hover:bg-rose-700 transition">
+          초기화하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-slatex-border bg-slatex-surface mt-12 py-6 text-center text-xs text-slatex-muted">
+    <p>Source: Epik High Official YouTube — <em>John Park is like Tukutz but way SMARTER | Hey Tablo Ep. 38</em></p>
+  </footer>
+
+  <script>
+    const VIDEO_ID = "yWAsEGYHsvA";
+
+    const EXPRESSIONS = [
+      {
+        id: 1,
+        expression: "come off as",
+        timestamp: "00:01:25",
+        seconds: 85,
+        speaker: "John Park",
+        category: "대화·성격 묘사",
+        meaning: "~라는 인상을 주다, ~처럼 보이다",
+        nuance: "본인의 의도와는 무관하게 말투나 행동 때문에 타인에게 특정 이미지나 인상을 풍긴다는 뜻의 구동사입니다.",
+        quote: "I guess I come off as a Korean-American.",
+        highlights: ["come off as"],
+        translation: "제 생각엔 제가 재미교포 같은 인상을 주는 것 같아요."
+      },
+      {
+        id: 2,
+        expression: "pinpoint",
+        timestamp: "00:01:41",
+        seconds: 101,
+        speaker: "Tablo",
+        category: "대화·성격 묘사",
+        meaning: "정확히 짚어내다, 찾아내다",
+        nuance: "바늘 끝(pinpoint)으로 콕 집어내듯, 정확한 위치나 원인, 억양의 출신지 등을 딱 짚어 설명할 때 씁니다.",
+        quote: "My accent is also like it's really hard to like pinpoint where my accent is from.",
+        highlights: ["pinpoint"],
+        translation: "제 억양 역시 어디 출신 억양인지 정확히 짚어내기가 정말 어려워요."
+      },
+      {
+        id: 3,
+        expression: "low stakes",
+        timestamp: "00:02:26",
+        seconds: 146,
+        speaker: "Tablo",
+        category: "대화·성격 묘사",
+        meaning: "부담이 적은, 큰 걸린 것이 없는",
+        nuance: "원래 도박 판돈(stakes)에서 유래했으며, 틀리거나 실패해도 잃을 게 없어 가볍고 편하게 즐길 수 있는 대화나 게임을 뜻합니다. (반대말: high stakes)",
+        quote: "It's very low stakes, but these are just jump off points for us to have a convo.",
+        highlights: ["low stakes"],
+        translation: "전혀 부담 없는 질문들이고, 그냥 우리가 대화를 시작하기 위한 출발점 같은 거예요."
+      },
+      {
+        id: 4,
+        expression: "take oneself too seriously",
+        timestamp: "00:02:44",
+        seconds: 164,
+        speaker: "John Park",
+        category: "대화·성격 묘사",
+        meaning: "자신을 너무 진지하게 여기다, 폼 잡다",
+        nuance: "스스로를 너무 대단하거나 심각하게 여기지 않고 유머 감각과 여유를 가졌다는 칭찬으로 'don't take yourself too seriously' 형태로 자주 씁니다.",
+        quote: "You're very introspective, but like not that serious—like you don't take yourself too seriously.",
+        highlights: ["take yourself too seriously"],
+        translation: "형은 내면을 깊이 성찰하는 편이지만, 그렇다고 너무 심각하거나 스스로를 지나치게 진지하게 여기지는 않잖아요."
+      },
+      {
+        id: 5,
+        expression: "come with the territory",
+        timestamp: "00:03:05",
+        seconds: 185,
+        speaker: "John Park",
+        category: "의견·가치관 토론",
+        meaning: "원래 따르기 마련이다, 당연한 일이다",
+        nuance: "특정 직업, 나이, 지위, 상황에 놓이면 좋든 싫든 자연스럽게 뒤따라오는 부수적인 일이나 고충을 받아들일 때 씁니다.",
+        quote: "Yeah, it comes with the territory.",
+        highlights: ["comes with the territory"],
+        translation: "네, 그건 원래(나이나 위치에) 당연히 따라오는 일이죠."
+      },
+      {
+        id: 6,
+        expression: "speak one's mind",
+        timestamp: "00:03:12",
+        seconds: 192,
+        speaker: "John Park",
+        category: "대화·성격 묘사",
+        meaning: "자기 생각을 솔직히 말하다",
+        nuance: "남의 눈치를 보지 않고 자신이 느끼고 생각하는 바를 가감 없이 솔직하게 표현한다는 뜻의 관용어입니다.",
+        quote: "Whenever you give like a piece of advice or you speak your mind, I usually relate to it.",
+        highlights: ["speak your mind"],
+        translation: "형이 조언을 해주거나 솔직한 생각을 말할 때마다 저는 주로 공감하게 되더라고요."
+      },
+      {
+        id: 7,
+        expression: "kill for",
+        timestamp: "00:04:11",
+        seconds: 251,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "~을 위해서라면 뭐든 할 정도로 간절히 원하다",
+        nuance: "'I would kill for ~' 형태로 쓰여, 무언가를 너무나 부러워하거나 간절히 갖고 싶을 때 과장되게 강조하는 일상 구어체입니다.",
+        quote: "Loki's got a great speaking voice. I would kill for that accent.",
+        highlights: ["kill for"],
+        translation: "로키(톰 히들스턴)는 목소리 톤이 정말 멋지잖아요. 저런 억양을 가질 수 있다면 뭐든 하겠어요."
+      },
+      {
+        id: 8,
+        expression: "a fine line",
+        timestamp: "00:04:30",
+        seconds: 270,
+        speaker: "Tablo",
+        category: "의견·가치관 토론",
+        meaning: "종이 한 장 차이, 미묘한 경계",
+        nuance: "두 가지 상반된 특성(예: 멋짐과 느끼함, 천재와 괴짜) 사이의 경계가 아주 얇아서 자칫하면 한쪽으로 넘어가기 쉽다는 뜻입니다.",
+        quote: "Yeah, it's a fine line. It's like Harry Potter.",
+        highlights: ["a fine line"],
+        translation: "맞아요, 정말 종이 한 장 차이예요. 마치 해리 포터 억양 같은 거죠."
+      },
+      {
+        id: 9,
+        expression: "double-edged sword",
+        timestamp: "00:05:52",
+        seconds: 352,
+        speaker: "John Park",
+        category: "의견·가치관 토론",
+        meaning: "양날의 검",
+        nuance: "큰 장점과 이득을 주는 동시에 그만큼의 위험이나 단점도 함께 안겨주는 상황을 비유할 때 쓰는 필수 표현입니다.",
+        quote: "I don't think it's fair, but I guess it's like a double-edged sword.",
+        highlights: ["double-edged sword"],
+        translation: "그게 공평하다고 생각하진 않지만, 어찌 보면 양날의 검 같은 것 같아요."
+      },
+      {
+        id: 10,
+        expression: "catch on to",
+        timestamp: "00:07:13",
+        seconds: 433,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "눈치채다, 파악하다, 이해하다",
+        nuance: "처음에는 몰랐던 사실이나 의도, 요령을 뒤늦게 알아차리고 이해하게 되었을 때 쓰는 자연스러운 구동사입니다.",
+        quote: "I think they caught on to the fact that it makes you just sound 1.5 times smarter.",
+        highlights: ["caught on to"],
+        translation: "제 생각엔 사람들이 그 억양을 쓰면 1.5배는 더 똑똑해 보인다는 사실을 눈치챈 것 같아요."
+      },
+      {
+        id: 11,
+        expression: "jarring",
+        timestamp: "00:10:13",
+        seconds: 613,
+        speaker: "Tablo",
+        category: "대화·성격 묘사",
+        meaning: "거슬리는, 충격적인, 의외인",
+        nuance: "평소 익숙하던 이미지나 기대와 너무 달라서 순간적으로 어색하고 놀랍거나 위화감이 느껴질 때 쓰는 고급 형용사입니다.",
+        quote: "And it's jarring to me that you're not constantly singing.",
+        highlights: ["jarring"],
+        translation: "네가 평소에도 계속 노래를 부르고 있지 않다는 게 나한텐 오히려 의외고 어색하게 느껴져."
+      },
+      {
+        id: 12,
+        expression: "back in the day",
+        timestamp: "00:16:45",
+        seconds: 1005,
+        speaker: "Tablo",
+        category: "일상·라이프스타일",
+        meaning: "예전에, 한창때에는",
+        nuance: "과거의 좋았던 시절이나 전성기, 옛 추억을 회상하며 '라떼는 말이야 / 옛날 한창때는'이라는 뉘앙스로 자주 씁니다.",
+        quote: "Apgujeong was probably back in the day. Damn, you know that place was good.",
+        highlights: ["back in the day"],
+        translation: "압구정은 아마 옛날 한창때가 대단했죠. 와, 그 동네 진짜 좋았잖아요."
+      },
+      {
+        id: 13,
+        expression: "at one's peak performance",
+        timestamp: "00:17:02",
+        seconds: 1022,
+        speaker: "John Park",
+        category: "대화·성격 묘사",
+        meaning: "전성기일 때, 최고 기량일 때",
+        nuance: "운동선수나 아티스트가 커리어 중 가장 뛰어난 실력과 컨디션을 발휘하던 절정기를 가리킬 때 씁니다.",
+        quote: "You know them by era? Yeah, of course, when they were at their peak performance.",
+        highlights: ["at their peak performance"],
+        translation: "선수들을 시대별로 다 알아요? 네, 당연하죠, 그들이 최고 전성기 기량을 보여주던 시절이잖아요."
+      },
+      {
+        id: 14,
+        expression: "along the lines of",
+        timestamp: "00:18:29",
+        seconds: 1109,
+        speaker: "John Park",
+        category: "대화·성격 묘사",
+        meaning: "~와 비슷한 맥락의, 대략 ~라는 취지의",
+        nuance: "상대방이 했던 말의 정확한 단어는 기억나지 않지만, 대략 그와 비슷한 내용이나 취지였다고 인용할 때 매우 유용합니다.",
+        quote: "I think it was something along the lines of 'I want you to figure it out without me telling you.'",
+        highlights: ["along the lines of"],
+        translation: "제 기억엔 대략 '내가 일일이 말하지 않아도 네가 알아서 눈치챘으면 좋겠어'라는 취지의 말이었던 것 같아요."
+      },
+      {
+        id: 15,
+        expression: "be on the same frequency",
+        timestamp: "00:18:37",
+        seconds: 1117,
+        speaker: "John Park",
+        category: "대화·성격 묘사",
+        meaning: "마음이 통하다, 주파수가 맞다",
+        nuance: "'be on the same wavelength'와 같은 뜻으로, 라디오 주파수가 맞듯 서로의 생각과 감정이 잘 통한다는 비유적 표현입니다.",
+        quote: "I want you to be on my frequency, but at the same time I want you to lead.",
+        highlights: ["be on my frequency"],
+        translation: "네가 나랑 주파수가 딱 맞았으면 좋겠지만, 동시에 네가 나를 리드해 주기도 바라는 거죠."
+      },
+      {
+        id: 16,
+        expression: "hit the mark",
+        timestamp: "00:18:53",
+        seconds: 1133,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "정곡을 찌르다, 딱 맞추다",
+        nuance: "활이나 총이 과녁(mark)의 정중앙을 맞히듯, 기대나 기준, 정답을 정확하게 충족시켰을 때 씁니다. (반대말: miss the mark)",
+        quote: "Ultimately you're not—you don't hit the mark and I need to fix you.",
+        highlights: ["hit the mark"],
+        translation: "결국 넌 기대치를 딱 맞추지 못했고, 내가 널 고쳐줘야 한다는 식이 되는 거죠."
+      },
+      {
+        id: 17,
+        expression: "root for",
+        timestamp: "00:19:08",
+        seconds: 1148,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "~을 응원하다",
+        nuance: "스포츠 팀이나 친구의 도전, 성공을 진심으로 바라며 응원할 때 'cheer for'와 함께 원어민이 가장 즐겨 쓰는 구동사입니다.",
+        quote: "I am actually rooting for you to guess it right.",
+        highlights: ["rooting for"],
+        translation: "난 사실 네가 정답을 맞히기를 진심으로 응원하고 있어."
+      },
+      {
+        id: 18,
+        expression: "cut in front of",
+        timestamp: "00:20:17",
+        seconds: 1217,
+        speaker: "Tablo",
+        category: "일상·라이프스타일",
+        meaning: "새치기하다, 앞으로 끼어들다",
+        nuance: "줄을 서 있거나 운전 중일 때 누군가 무례하게 내 바로 앞으로 끼어드는 상황을 묘사할 때 씁니다.",
+        quote: "These two moms, they cut in front of me without even looking back.",
+        highlights: ["cut in front of"],
+        translation: "그 어머님 두 분이 뒤도 안 돌아보고 제 앞으로 쏙 새치기를 하시는 거예요."
+      },
+      {
+        id: 19,
+        expression: "mind you",
+        timestamp: "00:21:32",
+        seconds: 1292,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "참고로 말하자면, 그런데 말이야",
+        nuance: "방금 한 말에 중요한 부연 설명을 덧붙이거나, 반전·대조되는 조건을 강조할 때 문장 앞이나 중간에 툭 던지는 구어체 표현입니다.",
+        quote: "But mind you, can we teleport to a matjip and go to the comic book store next to it?",
+        highlights: ["mind you"],
+        translation: "그런데 말이야, 맛집으로 순간이동해서 그 옆에 있는 만화방에도 갈 수 있는 거야?"
+      },
+      {
+        id: 20,
+        expression: "get the most out of",
+        timestamp: "00:21:53",
+        seconds: 1313,
+        speaker: "John Park",
+        category: "일상·라이프스타일",
+        meaning: "~을 최대한 활용하다, 본전을 뽑다",
+        nuance: "주어진 시간, 기회, 돈, 도구에서 얻을 수 있는 최대치의 이득이나 즐거움을 끌어낸다는 실용적인 표현입니다.",
+        quote: "I'm not the one who's getting the most out of it anyway.",
+        highlights: ["getting the most out of"],
+        translation: "어차피 그 기능을 최대한으로 활용하게 될 사람은 제가 아니거든요."
+      },
+      {
+        id: 21,
+        expression: "a no-brainer",
+        timestamp: "00:22:12",
+        seconds: 1332,
+        speaker: "John Park",
+        category: "의견·가치관 토론",
+        meaning: "고민할 필요도 없는 당연한 선택",
+        nuance: "뇌(brain)를 써서 복잡하게 고민할 필요조차 없을 만큼 답이 뻔하고 명백한 선택을 가리키는 대표적인 북미 구어체 명사입니다.",
+        quote: "For me it's a no-brainer. Younger the better.",
+        highlights: ["a no-brainer"],
+        translation: "저한테는 고민할 여지도 없는 당연한 선택이에요. 어릴수록 무조건 좋죠."
+      },
+      {
+        id: 22,
+        expression: "take things for granted",
+        timestamp: "00:27:08",
+        seconds: 1628,
+        speaker: "Tablo",
+        category: "의견·가치관 토론",
+        meaning: "당연하게 여기다, 고마움을 모르다",
+        nuance: "젊음, 건강, 가족의 사랑처럼 소중한 것들의 가치를 깨닫지 못하고 원래 늘 있는 것처럼 당연시한다는 뜻의 필수 숙어입니다.",
+        quote: "You take things for granted as a young person, and walking around it really hit me.",
+        highlights: ["take things for granted"],
+        translation: "어릴 때는 모든 걸 당연하게 여기게 되는데, 캠퍼스를 걸어 다니면서 그 사실이 확 와닿더라고요."
+      },
+      {
+        id: 23,
+        expression: "get in the way",
+        timestamp: "00:28:10",
+        seconds: 1690,
+        speaker: "Tablo",
+        category: "의견·가치관 토론",
+        meaning: "방해가 되다, 걸림돌이 되다",
+        nuance: "어떤 목표를 이루거나 더 크게 성장하는 데 있어 특정 조건이나 습관이 앞길을 가로막는 장애물 역할을 한다는 뜻입니다.",
+        quote: "The fact that you had a good voice and that you were able to sing probably got in the way a little bit.",
+        highlights: ["got in the way"],
+        translation: "네가 좋은 목소리를 가졌고 노래를 잘했다는 사실이 오히려 (곡을 쓰는 데) 조금 방해가 됐을 수도 있어."
+      },
+      {
+        id: 24,
+        expression: "have one's back against the wall",
+        timestamp: "00:28:15",
+        seconds: 1695,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "벼랑 끝에 몰리다, 선택의 여지가 없다",
+        nuance: "뒤는 벽으로 막혀 있고 앞으로도 물러설 곳이 없는 절체절명의 위기 상황이나 배수진을 친 상태를 생생하게 묘사합니다.",
+        quote: "You got to have no options like me. You got to have your back against the wall.",
+        highlights: ["have your back against the wall"],
+        translation: "나처럼 다른 선택지가 전혀 없어야 해. 완전히 벼랑 끝에 몰려봐야 한다고."
+      },
+      {
+        id: 25,
+        expression: "on the outside looking in",
+        timestamp: "00:30:14",
+        seconds: 1814,
+        speaker: "Tablo",
+        category: "대화·성격 묘사",
+        meaning: "외부자의 시선으로, 겉돌며 바라보는 입장에서",
+        nuance: "주류 집단이나 화려한 무리 안에 속하지 못한 채 바깥에서 안을 들여다보는 소외감이나 객관적 관찰자의 입장을 표현합니다.",
+        quote: "I mean, I was on the outside looking in.",
+        highlights: ["on the outside looking in"],
+        translation: "내 말은, 난 늘 그 무리의 바깥에서 안을 들여다보는 외부자 입장이었다는 거야."
+      },
+      {
+        id: 26,
+        expression: "have it all together",
+        timestamp: "00:30:08",
+        seconds: 1808,
+        speaker: "Tablo",
+        category: "대화·성격 묘사",
+        meaning: "모든 걸 완벽하게 갖춘 것처럼 보이다, 빈틈없다",
+        nuance: "외모, 커리어, 멘탈, 인간관계 등 삶의 모든 면이 흔들림 없이 잘 정돈되고 성공적으로 보이는 사람을 묘사할 때 씁니다.",
+        quote: "They just looked like they had it all together.",
+        highlights: ["had it all together"],
+        translation: "그 사람들은 그냥 모든 걸 완벽하게 다 갖춘 것처럼 보였어요."
+      },
+      {
+        id: 27,
+        expression: "sit through",
+        timestamp: "00:32:04",
+        seconds: 1924,
+        speaker: "Tablo",
+        category: "일상·라이프스타일",
+        meaning: "지루하거나 힘든 공연·수업 등을 끝까지 참고 자리를 지키다",
+        nuance: "마음에 들지 않거나 지루한 영화, 회의, 오프닝 무대 등을 중간에 나가지 않고 끝날 때까지 엉덩이를 붙이고 버틴다는 뜻입니다.",
+        quote: "He was great, but I had to sit through some other songs that they did.",
+        highlights: ["sit through"],
+        translation: "그 가수는 정말 멋졌지만, 그 팀이 부른 다른 노래들까지 끝까지 참고 들어야만 했어요."
+      },
+      {
+        id: 28,
+        expression: "get one's money's worth",
+        timestamp: "00:39:41",
+        seconds: 2381,
+        speaker: "John Park",
+        category: "일상·라이프스타일",
+        meaning: "돈값을 하다, 본전을 뽑다",
+        nuance: "비싼 호텔, 뷔페, 공연 등에 지불한 비용만큼 충분히 즐기고 혜택을 누려 돈이 아깝지 않게 만든다는 뜻의 실용 표현입니다.",
+        quote: "So you would rather stay in the hotel room and get your money's worth?",
+        highlights: ["get your money's worth"],
+        translation: "그래서 차라리 호텔 방에 머물면서 숙박비 본전을 뽑겠다는 거예요?"
+      },
+      {
+        id: 29,
+        expression: "sleep like a truck / baby",
+        timestamp: "00:41:26",
+        seconds: 2486,
+        speaker: "John Park",
+        category: "일상·라이프스타일",
+        meaning: "골아떨어지다, 푹 자다",
+        nuance: "원래 관용구는 'sleep like a baby(아기처럼 새근새근 잘 자다)' 또는 'sleep like a log(통나무처럼 곯아떨어지다)'인데, 존박이 '트럭처럼 묵직하게 기절해 잔다'고 재치 있게 변형해 쓴 표현입니다.",
+        quote: "My daughter all her life slept like a baby and my wife sleeps like a truck.",
+        highlights: ["slept like a baby", "sleeps like a truck"],
+        translation: "제 딸은 태어나서 지금까지 아기처럼 푹 자고, 제 아내는 트럭처럼 완전히 곯아떨어져 자요."
+      },
+      {
+        id: 30,
+        expression: "counterproductive",
+        timestamp: "00:43:05",
+        seconds: 2585,
+        speaker: "John Park",
+        category: "의견·가치관 토론",
+        meaning: "역효과를 낳는, 비생산적인",
+        nuance: "원하는 목표를 달성하기 위해 한 행동이 오히려 방해가 되거나 정반대의 나쁜 결과를 초래할 때 쓰는 세련된 형용사입니다.",
+        quote: "I don't do that. It's counterproductive in the end.",
+        highlights: ["counterproductive"],
+        translation: "전 그렇게 안 해요. 결국엔 오히려 역효과만 나더라고요."
+      },
+      {
+        id: 31,
+        expression: "on its own merit",
+        timestamp: "00:44:29",
+        seconds: 2669,
+        speaker: "Tablo",
+        category: "의견·가치관 토론",
+        meaning: "자체 실력만으로, 정당한 가치로",
+        nuance: "유명세나 후광, 인맥의 도움 없이 오직 작품이나 사람 본연의 실력과 가치만으로 평가받는다는 뜻의 격조 있는 표현입니다.",
+        quote: "Instead of it's on its own merit, right? What if it is on its own merit, you just don't get any royalties?",
+        highlights: ["on its own merit"],
+        translation: "유명세 덕분이 아니라 오직 곡 자체의 실력만으로 평가받는 거잖아요, 맞죠? 만약 자체 실력만으로 인정받되 저작권료만 못 받는다면 어떨까요?"
+      },
+      {
+        id: 32,
+        expression: "soup up",
+        timestamp: "00:44:56",
+        seconds: 2696,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "성능을 높이다, 한층 업그레이드하다",
+        nuance: "원래 자동차 엔진을 개조해 마력을 높인다는 뜻에서 유래했으며, 질문이나 아이디어를 더 흥미진진하고 강도 높게 업그레이드할 때 씁니다.",
+        quote: "Okay, I'm going to soup up this 'would you rather.' What about this?",
+        highlights: ["soup up"],
+        translation: "좋아, 이 '밸런스 게임' 질문을 한 단계 더 업그레이드해 볼게. 이건 어때?"
+      },
+      {
+        id: 33,
+        expression: "hook someone up with",
+        timestamp: "00:49:14",
+        seconds: 2954,
+        speaker: "Tablo",
+        category: "구어체·관용구",
+        meaning: "~을 구해주다, 연결해주다",
+        nuance: "티켓, 맛집 예약, 좋은 일자리, 소개팅 등을 인맥이나 능력을 발휘해 챙겨주고 연결해 줄 때 쓰는 대표적인 북미 회화 구동사입니다.",
+        quote: "People calling you, 'Yo, can you like hook me up with VIP passes, bro?'",
+        highlights: ["hook me up with"],
+        translation: "사람들이 전화해서 '야, 나 VIP 패스 좀 구해줄 수 있어?'라고 부탁하는 거죠."
+      },
+      {
+        id: 34,
+        expression: "ingrained in one's mind",
+        timestamp: "00:51:13",
+        seconds: 3073,
+        speaker: "Tablo",
+        category: "의견·가치관 토론",
+        meaning: "머릿속에 깊이 각인된",
+        nuance: "나뭇결이나 피부 속에 깊이 스며든 것처럼, 어떤 기억이나 가치관이 머릿속에 단단히 뿌리박혀 절대 잊히지 않는 상태를 뜻합니다.",
+        quote: "Tell me one thing that's really ingrained in your mind.",
+        highlights: ["ingrained in your mind"],
+        translation: "네 머릿속에 정말 깊이 각인되어 있는 기억 한 가지만 말해줘."
+      },
+      {
+        id: 35,
+        expression: "agree to disagree",
+        timestamp: "00:54:41",
+        seconds: 3281,
+        speaker: "John Park",
+        category: "의견·가치관 토론",
+        meaning: "서로 의견이 다름을 인정하다",
+        nuance: "취향이나 주장이 끝내 좁혀지지 않을 때, 불필요한 논쟁을 멈추고 '네 생각도 존중하고 내 생각도 유지하자'며 쿨하게 합의하는 관용구입니다.",
+        quote: "Mom's Touch, Five Guys. Okay, well, agree to disagree.",
+        highlights: ["agree to disagree"],
+        translation: "맘스터치 대 파이브가이즈. 좋아요, 뭐, 서로 취향이 다르다는 걸 인정하죠."
+      }
+    ];
+
+    const STORAGE_KEY = "heytablo_ep38_progress";
+    let state = {
+      mastered: {},
+      memos: {},
+      category: "전체",
+      search: "",
+      hideMeaning: false,
+      clozeMode: false,
+      hideMastered: false,
+      ttsSpeed: 1.0
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.mastered = parsed.mastered || {};
+          state.memos = parsed.memos || {};
+        }
+      } catch (e) {
+        console.error("Failed to load state:", e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          mastered: state.mastered,
+          memos: state.memos
+        }));
+      } catch (e) {
+        console.error("Failed to save state:", e);
+      }
+    }
+
+    function showToast(msg, icon = "✓") {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-msg").textContent = msg;
+      document.getElementById("toast-icon").textContent = icon;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("이 브라우저는 음성 듣기를 지원하지 않습니다.", "⚠️");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = state.ttsSpeed;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function toggleTtsSpeed() {
+      state.ttsSpeed = state.ttsSpeed === 1.0 ? 0.8 : 1.0;
+      document.getElementById("tts-speed-label").textContent = `${state.ttsSpeed.toFixed(1)}x`;
+      const btn = document.getElementById("btn-tts-speed");
+      btn.classList.toggle("bg-amber-500/20", state.ttsSpeed === 0.8);
+      btn.classList.toggle("border-amber-500/60", state.ttsSpeed === 0.8);
+      btn.classList.toggle("text-amber-300", state.ttsSpeed === 0.8);
+      showToast(`발음 재생 속도를 ${state.ttsSpeed.toFixed(1)}배속으로 변경했습니다.`, "🔊");
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function formatQuote(quote, highlights, clozeMode) {
+      if (!highlights || highlights.length === 0) return escapeHtml(quote);
+
+      const sorted = [...highlights].sort((a, b) => b.length - a.length);
+      const pattern = new RegExp(`(${sorted.map(escapeRegExp).join("|")})`, "gi");
+      const parts = quote.split(pattern);
+
+      return parts.map(part => {
+        const isMatch = sorted.some(h => h.toLowerCase() === part.toLowerCase());
+        if (!isMatch) return escapeHtml(part);
+
+        const safePart = escapeHtml(part);
+        if (clozeMode) {
+          return `<span class="cloze-blank" onclick="this.classList.toggle('revealed')" title="클릭해서 정답 확인">${safePart}</span>`;
+        } else {
+          return `<mark class="bg-indigo-500/25 text-indigo-300 border border-indigo-500/30 font-semibold px-1.5 py-0.5 rounded-md">${safePart}</mark>`;
+        }
+      }).join("");
+    }
+
+    function renderCategories() {
+      const categories = ["전체", "대화·성격 묘사", "일상·라이프스타일", "의견·가치관 토론", "구어체·관용구"];
+      const container = document.getElementById("category-tabs");
+      container.innerHTML = categories.map(cat => {
+        const count = cat === "전체"
+          ? EXPRESSIONS.length
+          : EXPRESSIONS.filter(item => item.category === cat).length;
+        const isActive = state.category === cat;
+        const activeClasses = isActive
+          ? "bg-slatex-indigo text-white border-indigo-500 shadow-sm"
+          : "bg-slatex-bg text-slatex-muted border-slatex-border hover:bg-slatex-subtle hover:text-slatex-ink";
+
+        return `
+          <button
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-1.5 rounded-full border text-xs sm:text-sm font-medium whitespace-nowrap transition ${activeClasses}"
+          >
+            ${cat} <span class="opacity-80 text-xs ml-0.5">(${count})</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function updateProgress() {
+      const total = EXPRESSIONS.length;
+      const done = Object.values(state.mastered).filter(Boolean).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progress-text").textContent = `암기 완료: ${done} / ${total} (${pct}%)`;
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    function renderCards() {
+      const container = document.getElementById("cards-container");
+      const emptyState = document.getElementById("empty-state");
+      const query = state.search.trim().toLowerCase();
+
+      const filtered = EXPRESSIONS.filter(item => {
+        if (state.category !== "전체" && item.category !== state.category) return false;
+        if (state.hideMastered && state.mastered[item.id]) return false;
+        if (query) {
+          const hay = `${item.expression} ${item.meaning} ${item.quote} ${item.translation} ${item.nuance} ${item.speaker}`.toLowerCase();
+          if (!hay.includes(query)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById("result-count").textContent = `총 ${filtered.length}개의 표현 표시 중`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      container.innerHTML = filtered.map(item => {
+        const isMastered = !!state.mastered[item.id];
+        const memoText = state.memos[item.id] || "";
+        const ytUrl = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const cardBorder = isMastered
+          ? "border-emerald-500/45 bg-emerald-950/15"
+          : "border-slatex-border bg-slatex-card";
+        const speakerBadgeClass = item.speaker === "Tablo"
+          ? "bg-indigo-500/15 text-indigo-300 border border-indigo-500/25"
+          : "bg-sky-500/15 text-sky-300 border border-sky-500/25";
+        const fullAudioText = `${item.expression}. ${item.quote}`;
+
+        return `
+          <article class="rounded-2xl border ${cardBorder} p-5 sm:p-6 shadow-md transition hover:border-slate-600">
+            <!-- Top Row: Badge, Category, Speaker, Timestamp, Mastered Checkbox -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-slatex-subtle text-slate-200 text-xs font-bold border border-slate-700">
+                  ${item.id}
+                </span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slatex-subtle text-slatex-muted text-xs font-medium border border-slate-700/70">
+                  ${item.category}
+                </span>
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-medium ${speakerBadgeClass}">
+                  🎙️ ${escapeHtml(item.speaker)}
+                </span>
+                <a
+                  href="${ytUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-rose-500/15 text-rose-300 border border-rose-500/25 hover:bg-rose-500/25 text-xs font-medium transition"
+                  title="유튜브에서 해당 구간 바로 듣기"
+                >
+                  <span>▶</span> ${item.timestamp}
+                </a>
+              </div>
+
+              <label class="inline-flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg hover:bg-slatex-subtle transition">
+                <input
+                  type="checkbox"
+                  ${isMastered ? "checked" : ""}
+                  onchange="toggleMastered(${item.id})"
+                  class="w-4 h-4 rounded accent-emerald-500 cursor-pointer"
+                />
+                <span class="text-xs font-semibold ${isMastered ? "text-emerald-400" : "text-slatex-muted"}">
+                  암기 완료
+                </span>
+              </label>
+            </div>
+
+            <!-- Expression Title & Audio Buttons -->
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+              <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">
+                ${escapeHtml(item.expression)}
+              </h2>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button
+                  onclick="speakText(\`${fullAudioText.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                  class="px-2.5 py-1.5 rounded-lg border border-slatex-border bg-slatex-bg hover:bg-slatex-subtle text-xs font-medium text-slate-200 transition flex items-center gap-1"
+                  title="표현 + 예문 전체 발음 듣기"
+                >
+                  <span>🔊</span> 전체 듣기
+                </button>
+                <button
+                  onclick="speakText(\`${item.quote.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                  class="px-2.5 py-1.5 rounded-lg border border-slatex-border bg-slatex-bg hover:bg-slatex-subtle text-xs font-medium text-indigo-300 transition flex items-center gap-1"
+                  title="예문만 발음 듣기"
+                >
+                  <span>🗣️</span> 예문만 듣기
+                </button>
+              </div>
+            </div>
+
+            <!-- Korean Meaning & Nuance Note (Blurrable) -->
+            <div class="mt-2.5 blur-target" onclick="this.classList.toggle('revealed')">
+              <p class="text-base font-semibold text-indigo-300">
+                ${escapeHtml(item.meaning)}
+              </p>
+              <p class="text-xs sm:text-sm text-slatex-muted mt-1 leading-relaxed">
+                ${escapeHtml(item.nuance)}
+              </p>
+            </div>
+
+            <!-- Verbatim Podcast Quote Box -->
+            <div class="mt-4 p-4 rounded-xl bg-slatex-bg/90 border border-slatex-border">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                  🎧 Verbatim Quote (${escapeHtml(item.speaker)})
+                </span>
+              </div>
+              <p class="text-sm sm:text-[15px] text-slate-100 leading-relaxed font-medium">
+                “${formatQuote(item.quote, item.highlights, state.clozeMode)}”
+              </p>
+              <p class="text-xs sm:text-sm text-slatex-muted mt-2 pt-2 border-t border-slatex-border/70 blur-target" onclick="this.classList.toggle('revealed')">
+                ${escapeHtml(item.translation)}
+              </p>
+            </div>
+
+            <!-- Collapsible Personal Memo -->
+            <div class="mt-3">
+              <details ${memoText ? "open" : ""} class="group">
+                <summary class="text-xs font-medium text-slatex-muted hover:text-slate-200 cursor-pointer select-none inline-flex items-center gap-1.5">
+                  <span>📝 나만의 메모 / 응용 예문</span>
+                  ${memoText ? '<span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>' : ''}
+                </summary>
+                <div class="mt-2">
+                  <textarea
+                    rows="2"
+                    placeholder="직접 만들어 본 응용 문장이나 기억해 둘 뉘앙스를 적어보세요 (자동 저장됨)..."
+                    oninput="updateMemo(${item.id}, this.value)"
+                    class="w-full p-2.5 text-xs sm:text-sm bg-slatex-bg border border-slatex-border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition resize-y"
+                  >${escapeHtml(memoText)}</textarea>
+                </div>
+              </details>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function selectCategory(cat) {
+      state.category = cat;
+      renderCategories();
+      renderCards();
+    }
+
+    function toggleMastered(id) {
+      state.mastered[id] = !state.mastered[id];
+      saveState();
+      updateProgress();
+      renderCards();
+      if (state.mastered[id]) {
+        showToast("암기 완료로 체크했습니다.", "✅");
+      }
+    }
+
+    function updateMemo(id, val) {
+      state.memos[id] = val;
+      saveState();
+    }
+
+    function toggleHideMeaning() {
+      state.hideMeaning = !state.hideMeaning;
+      document.body.classList.toggle("hide-meaning", state.hideMeaning);
+      const btn = document.getElementById("btn-hide-meaning");
+      btn.classList.toggle("bg-indigo-500/20", state.hideMeaning);
+      btn.classList.toggle("border-indigo-500/60", state.hideMeaning);
+      btn.classList.toggle("text-indigo-300", state.hideMeaning);
+    }
+
+    function toggleClozeMode() {
+      state.clozeMode = !state.clozeMode;
+      const btn = document.getElementById("btn-cloze-mode");
+      btn.classList.toggle("bg-indigo-500/20", state.clozeMode);
+      btn.classList.toggle("border-indigo-500/60", state.clozeMode);
+      btn.classList.toggle("text-indigo-300", state.clozeMode);
+      renderCards();
+    }
+
+    function toggleHideMastered() {
+      state.hideMastered = !state.hideMastered;
+      const btn = document.getElementById("btn-hide-mastered");
+      const label = document.getElementById("hide-mastered-label");
+      label.textContent = state.hideMastered ? "미암기만 보기" : "전체 보기";
+      btn.classList.toggle("bg-emerald-500/20", state.hideMastered);
+      btn.classList.toggle("border-emerald-500/60", state.hideMastered);
+      btn.classList.toggle("text-emerald-300", state.hideMastered);
+      renderCards();
+    }
+
+    function resetFilters() {
+      state.category = "전체";
+      state.search = "";
+      state.hideMastered = false;
+      document.getElementById("search-input").value = "";
+      document.getElementById("hide-mastered-label").textContent = "전체 보기";
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.remove("bg-emerald-500/20", "border-emerald-500/60", "text-emerald-300");
+      renderCategories();
+      renderCards();
+    }
+
+    function buildMarkdownContent() {
+      const today = new Date().toISOString().slice(0, 10);
+      let md = `---\ntags:\n  - EnglishStudy\n  - HeyTablo\n  - JohnPark\n  - PodcastEnglish\ndate: ${today}\nsource: "https://www.youtube.com/watch?v=${VIDEO_ID}"\n---\n\n`;
+      md += `# 🎙️ Hey Tablo Ep. 38 — 존박 & 타블로 영어 표현 35선\n\n`;
+      md += `- **영상 제목:** John Park is like Tukutz but way SMARTER | Hey Tablo Ep. 38\n`;
+      md += `- **원본 링크:** https://www.youtube.com/watch?v=${VIDEO_ID}\n\n---\n\n`;
+
+      EXPRESSIONS.forEach(item => {
+        const checked = state.mastered[item.id] ? "x" : " ";
+        const ytLink = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const speakerTag = item.speaker.replace(/\s+/g, "");
+        const memo = state.memos[item.id] ? state.memos[item.id].trim() : "";
+
+        md += `- [${checked}] **${item.id}. ${item.expression}** ([${item.timestamp}](${ytLink})) — #${speakerTag}\n`;
+        md += `  - **분류:** #${item.category.replace(/·/g, "_")}\n`;
+        md += `  - **의미:** **${item.meaning}**\n`;
+        md += `  - **뉘앙스:** ${item.nuance}\n`;
+        md += `  - **팟캐스트 원문:** "${item.quote}"\n`;
+        md += `  - **해석:** ${item.translation}\n`;
+        if (memo) {
+          md += `  - **나의 메모:** ${memo}\n`;
+        }
+        md += `\n`;
+      });
+
+      return md;
+    }
+
+    function copyMarkdownToClipboard() {
+      const md = buildMarkdownContent();
+      const textarea = document.createElement("textarea");
+      textarea.value = md;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        showToast("마크다운(.md) 전체 내용이 클립보드에 복사되었습니다.", "📋");
+      } catch (err) {
+        showToast("복사에 실패했습니다. 내보내기 버튼을 이용해 주세요.", "⚠️");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function exportMarkdown() {
+      const today = new Date().toISOString().slice(0, 10);
+      const md = buildMarkdownContent();
+      const blob = new Blob([md], { type: "text/markdown;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `HeyTablo-Ep38-JohnPark-English-35_${today}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Obsidian용 마크다운(.md) 파일이 다운로드되었습니다.", "📥");
+    }
+
+    function openResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function confirmReset() {
+      state.mastered = {};
+      state.memos = {};
+      saveState();
+      updateProgress();
+      renderCards();
+      closeResetModal();
+      showToast("모든 학습 기록과 메모가 초기화되었습니다.", "🗑️");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      renderCategories();
+      updateProgress();
+      renderCards();
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderCards();
+      });
+    });
+  </script>
+</body>
+</html>

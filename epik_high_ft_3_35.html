@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPIK HIGH ft. 톰 홀랜드·젠데이아·제이콥 배덜런 — 실전 영어 표현 35선</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          colors: {
+            spidey: {
+              bg: '#FAF8F5',
+              card: '#FFFFFF',
+              subtle: '#F3EFEA',
+              border: '#E5DFD5',
+              ink: '#1E293B',
+              muted: '#64748B',
+              red: '#B91C1C',         // Warm crimson/spider-red editorial accent
+              redLight: '#FEF2F2',
+              navy: '#1D4ED8',
+              navyLight: '#EFF6FF',
+              amber: '#B45309',
+              amberLight: '#FEF3C7',
+              sage: '#2F6F4E',
+              sageLight: '#ECFDF5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E293B;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .blur-target {
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+    .hide-meaning .blur-target {
+      filter: blur(6px);
+      user-select: none;
+      cursor: pointer;
+    }
+    .hide-meaning .blur-target:hover,
+    .hide-meaning .blur-target.revealed {
+      filter: blur(0);
+      user-select: auto;
+    }
+    .cloze-blank {
+      display: inline-block;
+      min-width: 115px;
+      padding: 0 8px;
+      margin: 0 2px;
+      border-bottom: 2px dashed #B91C1C;
+      background-color: #FEF2F2;
+      color: transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .cloze-blank.revealed {
+      color: #991B1B;
+      background-color: #FEE2E2;
+      border-bottom-style: solid;
+      font-weight: 600;
+      user-select: auto;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-center gap-2">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg">알림 메시지</span>
+  </div>
+
+  <!-- Header & Progress Section -->
+  <header class="sticky top-0 z-30 bg-spidey-bg/95 backdrop-blur-md border-b border-spidey-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider uppercase text-spidey-red mb-1">
+            <span>EPIK HIGH • SPIDER-MAN: BRAND NEW DAY SPECIAL</span>
+            <span>•</span>
+            <a href="https://www.youtube.com/watch?v=oh9ErR3HGyQ" target="_blank" rel="noopener noreferrer" class="underline hover:text-red-900 inline-flex items-center gap-1">
+              YouTube 원본 영상 ↗
+            </a>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-spidey-ink tracking-tight">
+            스파이더맨 단골식당 가서 외상으로 밥 먹음 — 실전 영어 표현 35선
+          </h1>
+          <p class="text-xs sm:text-sm text-spidey-muted mt-0.5">
+            ft. Tom Holland, Zendaya, Jacob Batalon — 실제 인터뷰 & 식당 대화 원문 학습 노트
+          </p>
+        </div>
+
+        <!-- Export, Copy & Utility Buttons -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="copyMarkdownToClipboard()" class="px-3 py-2 rounded-xl bg-spidey-card border border-spidey-border text-spidey-ink text-xs sm:text-sm font-medium hover:bg-spidey-subtle transition flex items-center gap-1.5 shadow-2xs" title="마크다운 전체 텍스트를 클립보드에 복사">
+            <svg class="w-4 h-4 text-spidey-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            클립보드 복사 (.md)
+          </button>
+          <button onclick="exportMarkdown()" class="px-3.5 py-2 rounded-xl bg-spidey-red text-white text-xs sm:text-sm font-medium hover:bg-red-800 transition flex items-center gap-1.5 shadow-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Obsidian (.md) 내보내기
+          </button>
+          <button onclick="openResetModal()" class="px-3 py-2 rounded-xl bg-spidey-card border border-spidey-border text-spidey-muted text-xs sm:text-sm font-medium hover:bg-spidey-subtle transition" title="학습 기록 초기화">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4">
+        <div class="flex items-center justify-between text-xs font-medium text-spidey-muted mb-1.5">
+          <span>학습 진도율 (암기 완료)</span>
+          <span id="progress-text" class="text-spidey-sage font-semibold">암기 완료: 0 / 35 (0%)</span>
+        </div>
+        <div class="w-full h-2 bg-spidey-subtle rounded-full overflow-hidden border border-spidey-border/60">
+          <div id="progress-bar" class="h-full bg-spidey-sage transition-all duration-300 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controls & Filter Bar -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6">
+    <section class="bg-spidey-card border border-spidey-border rounded-2xl p-4 mb-6 shadow-2xs space-y-4">
+      <!-- Search & Study Mode Toggles -->
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-spidey-muted absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="영어 표현, 영상 원문, 화자(Tom, Zendaya, Tablo...) 또는 뜻 검색..."
+            class="w-full pl-10 pr-4 py-2.5 bg-spidey-bg border border-spidey-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-spidey-red/25 focus:border-spidey-red transition"
+          />
+        </div>
+
+        <!-- Study Modes & TTS Speed -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-tts-speed" onclick="toggleTtsSpeed()" class="px-3 py-2.5 rounded-xl border border-spidey-border bg-spidey-bg text-xs sm:text-sm font-medium text-spidey-ink hover:bg-spidey-subtle transition flex items-center gap-1" title="발음 재생 속도 전환">
+            <span>🐢/🐇</span> <span id="tts-speed-label">1.0x</span>
+          </button>
+          <button id="btn-hide-meaning" onclick="toggleHideMeaning()" class="px-3.5 py-2.5 rounded-xl border border-spidey-border bg-spidey-bg text-xs sm:text-sm font-medium text-spidey-ink hover:bg-spidey-subtle transition flex items-center gap-1.5">
+            <span>👁️</span> 뜻/해석 가리기
+          </button>
+          <button id="btn-cloze-mode" onclick="toggleClozeMode()" class="px-3.5 py-2.5 rounded-xl border border-spidey-border bg-spidey-bg text-xs sm:text-sm font-medium text-spidey-ink hover:bg-spidey-subtle transition flex items-center gap-1.5">
+            <span>✍️</span> 원문 빈칸 퀴즈
+          </button>
+          <button id="btn-hide-mastered" onclick="toggleHideMastered()" class="px-3.5 py-2.5 rounded-xl border border-spidey-border bg-spidey-bg text-xs sm:text-sm font-medium text-spidey-ink hover:bg-spidey-subtle transition flex items-center gap-1.5">
+            <span>📌</span> <span id="hide-mastered-label">전체 보기</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div id="category-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Study Guide Banner & Results Count -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 px-1">
+      <p id="result-count" class="text-xs sm:text-sm text-spidey-muted font-medium">총 35개의 표현 표시 중</p>
+      <p class="text-xs text-spidey-muted">💡 팁: <span class="font-semibold text-spidey-red">▶ 타임스탬프</span>를 누르면 유튜브 해당 대화 구간으로 바로 이동하며, <span class="font-semibold text-spidey-ink">원문 빈칸 퀴즈</span>로 실전 회상을 테스트할 수 있습니다.</p>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cards-container" class="space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 bg-spidey-card border border-spidey-border rounded-2xl">
+      <p class="text-3xl mb-2">🕸️</p>
+      <h3 class="text-base font-semibold text-spidey-ink">조건에 맞는 표현이 없습니다</h3>
+      <p class="text-sm text-spidey-muted mt-1">검색어를 지우거나 필터 설정을 초기화해 보세요.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-spidey-subtle hover:bg-spidey-border/60 rounded-xl text-xs font-medium text-spidey-ink transition">
+        필터 초기화
+      </button>
+    </div>
+  </main>
+
+  <!-- Custom Confirmation Modal -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-xs p-4">
+    <div class="bg-spidey-card border border-spidey-border rounded-2xl max-w-sm w-full p-6 shadow-xl">
+      <h3 class="text-lg font-bold text-spidey-ink">학습 기록을 초기화할까요?</h3>
+      <p class="text-sm text-spidey-muted mt-2 leading-relaxed">
+        체크한 '암기 완료' 상태와 작성하신 개인 메모가 모두 삭제됩니다. 필요하시면 먼저 Obsidian(.md) 파일로 내보내세요.
+      </p>
+      <div class="mt-5 flex justify-end gap-2">
+        <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl border border-spidey-border text-sm font-medium text-spidey-muted hover:bg-spidey-subtle transition">
+          취소
+        </button>
+        <button onclick="confirmReset()" class="px-4 py-2 rounded-xl bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition">
+          초기화하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-spidey-border bg-spidey-card mt-12 py-6 text-center text-xs text-spidey-muted">
+    <p>Source: Epik High Official YouTube — <em>스파이더맨 단골식당 가서 외상으로 밥 먹음 ft. 톰 홀랜드, 젠데이아, 제이콥 배덜런</em></p>
+  </footer>
+
+  <script>
+    const VIDEO_ID = "oh9ErR3HGyQ";
+
+    const EXPRESSIONS = [
+      {
+        id: 1,
+        expression: "all the way",
+        timestamp: "00:01:26",
+        seconds: 76,
+        speaker: "Tablo & Tom Holland",
+        category: "인사·스몰토크",
+        meaning: "먼 길까지, 멀리서 일부러",
+        nuance: "먼 거리를 마다하지 않고 찾아왔거나 끝까지 해냈음을 강조할 때 'all the way' 또는 'all this way'를 씁니다.",
+        quote: "We flew all the way here because Brand New Day is coming out. / Thanks for coming all this way.",
+        highlights: ["all the way", "all this way"],
+        ttsText: "all the way. We flew all the way here because Brand New Day is coming out. Thanks for coming all this way.",
+        translation: "《브랜드 뉴 데이》가 개봉해서 저희가 먼 길까지 날아왔어요. / 이렇게 먼 길 와주셔서 감사합니다."
+      },
+      {
+        id: 2,
+        expression: "it's been a journey",
+        timestamp: "00:01:39",
+        seconds: 99,
+        speaker: "Tablo",
+        category: "인사·스몰토크",
+        meaning: "우여곡절이 많았어 / 꽤나 긴 여정이었어",
+        nuance: "어떤 프로젝트나 이동 과정이 순탄치만은 않았지만 의미 있고 길었던 과정이었음을 함축적으로 전할 때 자주 쓰는 표현입니다.",
+        quote: "Ah, no problem. It's been a journey.",
+        highlights: ["It's been a journey"],
+        ttsText: "It's been a journey. Ah, no problem. It's been a journey.",
+        translation: "아, 천만에요. 여기까지 오는 데 꽤나 우여곡절이 많았네요."
+      },
+      {
+        id: 3,
+        expression: "be worth it",
+        timestamp: "00:01:40",
+        seconds: 100,
+        speaker: "Tablo",
+        category: "인사·스몰토크",
+        meaning: "그럴 만한 가치가 있다 / 보람이 있다",
+        nuance: "고생이나 비용을 들인 만큼 충분한 보람이나 결과가 따랐다고 말할 때 'totally worth it', 'so worth it'처럼 활용합니다.",
+        quote: "I almost died on the way here, but it was worth it cuz I get to see you guys.",
+        highlights: ["it was worth it"],
+        ttsText: "be worth it. I almost died on the way here, but it was worth it cuz I get to see you guys.",
+        translation: "여기 오는 길에 거의 죽을 뻔했지만, 여러분을 볼 수 있게 되어서 그럴 만한 가치가 있었어요."
+      },
+      {
+        id: 4,
+        expression: "in a while",
+        timestamp: "00:01:57",
+        seconds: 117,
+        speaker: "Tom Holland",
+        category: "인사·스몰토크",
+        meaning: "한동안, 오랜만에",
+        nuance: "현재완료 부정문('haven't + p.p. + in a while')과 함께 쓰여 '한동안 ~하지 못했다 / 정말 오랜만이다'라는 자연스러운 안부 인사가 됩니다.",
+        quote: "Sorry we haven't been there in a while. We miss you.",
+        highlights: ["in a while"],
+        ttsText: "in a while. Sorry we haven't been there in a while. We miss you.",
+        translation: "한동안 한국에 못 가서 죄송해요. 여러분이 그리워요."
+      },
+      {
+        id: 5,
+        expression: "come to mind",
+        timestamp: "00:02:37",
+        seconds: 157,
+        speaker: "Tablo",
+        category: "인사·스몰토크",
+        meaning: "(생각·단어가) 떠오르다",
+        nuance: "어떤 질문을 받거나 특정 상황을 마주했을 때 머릿속에 생각이나 단어가 문득 떠오른다는 뜻의 필수 관용 표현입니다.",
+        quote: "Three, two, one, and you have to say the first word that comes to mind.",
+        highlights: ["comes to mind"],
+        ttsText: "come to mind. Three, two, one, and you have to say the first word that comes to mind.",
+        translation: "셋, 둘, 하나 하면 머릿속에 제일 먼저 떠오르는 단어를 말하셔야 해요."
+      },
+      {
+        id: 6,
+        expression: "to be fair",
+        timestamp: "00:03:01",
+        seconds: 181,
+        speaker: "Zendaya",
+        category: "구어체·리액션",
+        meaning: "솔직히 말해서, 공평하게 말하자면",
+        nuance: "상대방의 입장이나 변명을 어느 정도 인정해 주거나 균형 잡힌 시각에서 덧붙일 때 원어민이 입버릇처럼 쓰는 표현입니다.",
+        quote: "To be fair, I was going to say green too.",
+        highlights: ["To be fair"],
+        ttsText: "to be fair. To be fair, I was going to say green too.",
+        translation: "공평하게 말하자면, 저도 '초록색'이라고 말하려고 했어요."
+      },
+      {
+        id: 7,
+        expression: "lock in",
+        timestamp: "00:03:10",
+        seconds: 190,
+        speaker: "Zendaya",
+        category: "인사·스몰토크",
+        meaning: "집중하다, 정신 바짝 차리다",
+        nuance: "게임, 시험, 중요한 도전을 앞두고 잡념을 버리고 완벽히 몰입하자는 뜻의 최신 북미 구어체·슬랭입니다.",
+        quote: "Okay, your turn. / Guys, lock in.",
+        highlights: ["lock in"],
+        ttsText: "lock in. Okay, your turn. Guys, lock in.",
+        translation: "좋아요, 여러분 차례예요. / 얘들아, 정신 바짝 차리고 집중하자."
+      },
+      {
+        id: 8,
+        expression: "belong with",
+        timestamp: "00:03:25",
+        seconds: 205,
+        speaker: "Zendaya & Tablo",
+        category: "인사·스몰토크",
+        meaning: "(~와) 한 팀이다, (~와) 어울리다",
+        nuance: "단순히 어떤 장소에 속한다는 'belong to'와 달리, 사람들과 마음이나 호흡이 잘 맞아 한 패·한 팀이라는 따뜻한 유대감을 나타냅니다.",
+        quote: "See, maybe I belong with you guys. / You belong with us.",
+        highlights: ["belong with"],
+        ttsText: "belong with. See, maybe I belong with you guys. You belong with us.",
+        translation: "거봐요, 아무래도 전 여러분이랑 한 팀인가 봐요. / 우리랑 딱 어울리시네요."
+      },
+      {
+        id: 9,
+        expression: "make it happen",
+        timestamp: "00:03:58",
+        seconds: 238,
+        speaker: "Zendaya",
+        category: "인사·스몰토크",
+        meaning: "해내다, 성사시키다",
+        nuance: "목표나 바람을 말로만 끝내지 않고 실제로 이루어 내자고 격려할 때 쓰는 에너지 넘치는 표현입니다.",
+        quote: "Come on guys, here we go. Really make it happen.",
+        highlights: ["make it happen"],
+        ttsText: "make it happen. Come on guys, here we go. Really make it happen.",
+        translation: "자 얘들아, 시작한다. 이번에 진짜로 성공시켜 보자."
+      },
+      {
+        id: 10,
+        expression: "that works too",
+        timestamp: "00:04:13",
+        seconds: 253,
+        speaker: "Tablo",
+        category: "구어체·리액션",
+        meaning: "그것도 말이 되네 / 그것도 괜찮지",
+        nuance: "예상했던 답이나 계획은 아니지만 상대방의 대안이나 해석도 충분히 통하고 괜찮다고 유연하게 수용할 때 씁니다.",
+        quote: "I mean, octopus, yeah, that works too.",
+        highlights: ["that works too"],
+        ttsText: "that works too. I mean, octopus, yeah, that works too.",
+        translation: "뭐, 문어라고 해도, 그래 그것도 말이 되네."
+      },
+      {
+        id: 11,
+        expression: "that's fair",
+        timestamp: "00:04:46",
+        seconds: 286,
+        speaker: "Tom Holland & Jacob Batalon",
+        category: "구어체·리액션",
+        meaning: "그건 인정 / 그 말도 일리가 있네",
+        nuance: "상대방의 반박이나 논리가 타당하다고 쿨하게 수긍할 때 쓰는 가장 자연스러운 원어민 리액션입니다.",
+        quote: "Yeah, that is actually fair. That's fair.",
+        highlights: ["that is actually fair", "That's fair"],
+        ttsText: "that's fair. Yeah, that is actually fair. That's fair.",
+        translation: "응, 그 말은 실제로 일리가 있네. 그건 인정해."
+      },
+      {
+        id: 12,
+        expression: "throw (someone) off",
+        timestamp: "00:04:50",
+        seconds: 290,
+        speaker: "Zendaya",
+        category: "인사·스몰토크",
+        meaning: "혼란스럽게 하다, 페이스를 흐트러뜨리다",
+        nuance: "예상치 못한 변수나 상대의 행동 때문에 집중력이 흐트러지거나 당황해서 박자를 놓쳤을 때 자주 씁니다.",
+        quote: "So now you're throwing me off.",
+        highlights: ["throwing me off"],
+        ttsText: "throw someone off. So now you're throwing me off.",
+        translation: "그래서 지금 너 때문에 내가 헷갈리잖아(페이스가 흐트러지잖아)."
+      },
+      {
+        id: 13,
+        expression: "mind meld",
+        timestamp: "00:05:01",
+        seconds: 301,
+        speaker: "Jacob Batalon",
+        category: "인사·스몰토크",
+        meaning: "텔레파시, 마음이 완벽히 통함",
+        nuance: "원래 《스타트렉》에서 정신을 하나로 연결하는 능력에서 유래했으며, 일상에서는 말하지 않아도 서로 생각이 통하는 텔레파시를 뜻합니다.",
+        quote: "The mind meld totally failed it.",
+        highlights: ["mind meld"],
+        ttsText: "mind meld. The mind meld totally failed it.",
+        translation: "우리 텔레파시가 완전히 실패했네요."
+      },
+      {
+        id: 14,
+        expression: "put in the hours",
+        timestamp: "00:05:41",
+        seconds: 341,
+        speaker: "Tom Holland",
+        category: "우정·관계 표현",
+        meaning: "시간과 노력을 쏟다, 공을 들이다",
+        nuance: "단순히 운이 좋은 게 아니라 오랜 시간 땀과 노력을 투자해서 실력을 쌓아야 한다는 뜻의 관용 표현입니다.",
+        quote: "You got to put in the hours.",
+        highlights: ["put in the hours"],
+        ttsText: "put in the hours. You got to put in the hours.",
+        translation: "그만큼 시간과 노력을 쏟아부어야 해."
+      },
+      {
+        id: 15,
+        expression: "get (something) down",
+        timestamp: "00:05:44",
+        seconds: 344,
+        speaker: "Jacob Batalon",
+        category: "우정·관계 표현",
+        meaning: "(~을) 완벽히 익히다, 마스터하다",
+        nuance: "안무, 대사, 기술 등을 반복 연습해 몸에 완전히 배게 익혔을 때 'get it down' 또는 'have it down pat'이라고 합니다.",
+        quote: "Come back in another 14 and we might be able to get this down.",
+        highlights: ["get this down"],
+        ttsText: "get something down. Come back in another 14 and we might be able to get this down.",
+        translation: "14년 뒤에 다시 오시면 그때쯤엔 이걸 완벽히 마스터할 수 있을지도 몰라요."
+      },
+      {
+        id: 16,
+        expression: "break down",
+        timestamp: "00:07:39",
+        seconds: 459,
+        speaker: "Tablo",
+        category: "음식·레스토랑·추천",
+        meaning: "(복잡한 내용을) 하나하나 분석해 설명하다",
+        nuance: "고장 나다는 뜻 외에, 복잡한 개념이나 요리 재료, 가사 의미 등을 이해하기 쉽게 조목조목 풀어서 설명한다는 핵심 구동사입니다.",
+        quote: "He's like breaking down the ingredients.",
+        highlights: ["breaking down"],
+        ttsText: "break down. He's like breaking down the ingredients.",
+        translation: "미쓰라가 지금 음식 재료들을 하나하나 분석해서 설명하고 있어요."
+      },
+      {
+        id: 17,
+        expression: "leave off",
+        timestamp: "00:07:56",
+        seconds: 476,
+        speaker: "Tablo",
+        category: "인사·스몰토크",
+        meaning: "(이야기·작업 등을) 중단하다, 멈추다",
+        nuance: "책, 드라마, 대화 등이 특정 지점에서 끝났거나 잠시 멈췄던 부분을 가리킬 때 'where ~ left off' 형태로 자주 씁니다.",
+        quote: "Brand New Day starts right where No Way Home left off.",
+        highlights: ["left off"],
+        ttsText: "leave off. Brand New Day starts right where No Way Home left off.",
+        translation: "《브랜드 뉴 데이》는 《노 웨이 홈》이 끝난 바로 그 지점에서 시작하죠."
+      },
+      {
+        id: 18,
+        expression: "pick up",
+        timestamp: "00:08:00",
+        seconds: 480,
+        speaker: "Tablo",
+        category: "인사·스몰토크",
+        meaning: "(중단된 지점에서 이야기를) 다시 이어가다",
+        nuance: "17번 'leave off'의 짝꿍 표현으로, 멈췄던 이야기나 시점의 바통을 이어받아 전개한다는 뜻입니다.",
+        quote: "Brand New Day picks up, and the whole world has forgotten Peter Parker.",
+        highlights: ["picks up"],
+        ttsText: "pick up. Brand New Day picks up, and the whole world has forgotten Peter Parker.",
+        translation: "《브랜드 뉴 데이》의 이야기가 이어지면서, 온 세상이 피터 파커를 잊어버린 상태가 되잖아요."
+      },
+      {
+        id: 19,
+        expression: "cruise around",
+        timestamp: "00:08:54",
+        seconds: 534,
+        speaker: "Tom Holland",
+        category: "구어체·리액션",
+        meaning: "여유롭게 돌아다니다, 드라이브하다",
+        nuance: "급한 목적지 없이 느긋하게 차를 몰고 드라이브하거나 거리를 유유자적 돌아다니는 느낌을 살려줍니다.",
+        quote: "I don't think I would do that. I would just want to just cruise around.",
+        highlights: ["cruise around"],
+        ttsText: "cruise around. I don't think I would do that. I would just want to just cruise around.",
+        translation: "전 그렇게까지는 안 할 것 같고, 그냥 여유롭게 동네를 돌아다니고 싶을 거예요."
+      },
+      {
+        id: 20,
+        expression: "take care of",
+        timestamp: "00:09:20",
+        seconds: 560,
+        speaker: "Tablo",
+        category: "음식·레스토랑·추천",
+        meaning: "(~을) 처리하다, 해결하다, 계산하다",
+        nuance: "돌봐주다는 뜻 외에, 서류 처리나 식사 비용 지불('I'll take care of the bill')처럼 책임을 지고 해결한다는 실무·일상 필수 표현입니다.",
+        quote: "Even if they forget after the 24 hours, you still have to take care of that money.",
+        highlights: ["take care of"],
+        ttsText: "take care of. Even if they forget after the 24 hours, you still have to take care of that money.",
+        translation: "24시간 뒤에 사람들이 기억을 잃더라도, 그 돈 문제는 여전히 해결해야 하잖아요."
+      },
+      {
+        id: 21,
+        expression: "put (some) thought into",
+        timestamp: "00:09:30",
+        seconds: 570,
+        speaker: "Tom Holland",
+        category: "우정·관계 표현",
+        meaning: "(~에) 깊이 고민하다, 생각을 쏟다",
+        nuance: "단순히 스쳐 지나가는 생각이 아니라 진지하게 공을 들여 고민하고 계획했다는 뉘앙스를 전할 때 씁니다.",
+        quote: "You really have put some thought into this.",
+        highlights: ["put some thought into"],
+        ttsText: "put some thought into. You really have put some thought into this.",
+        translation: "당신 이거에 대해서 정말 깊이 고민해 봤군요."
+      },
+      {
+        id: 22,
+        expression: "get back together",
+        timestamp: "00:09:47",
+        seconds: 587,
+        speaker: "Tablo",
+        category: "우정·관계 표현",
+        meaning: "다시 모이다, 재회하다",
+        nuance: "연인이 재결합한다는 뜻뿐만 아니라, 오랜만에 친구들이나 팀 멤버들이 한자리에 다시 모일 때도 자주 씁니다.",
+        quote: "So when you got back together, it was like a class reunion?",
+        highlights: ["got back together"],
+        ttsText: "get back together. So when you got back together, it was like a class reunion?",
+        translation: "그래서 다시 다 같이 모였을 때 마치 동창회 같은 느낌이었나요?"
+      },
+      {
+        id: 23,
+        expression: "keep in touch",
+        timestamp: "00:09:53",
+        seconds: 593,
+        speaker: "Tablo",
+        category: "우정·관계 표현",
+        meaning: "계속 연락하고 지내다",
+        nuance: "멀리 떨어져 있거나 바쁜 와중에도 안부를 주고받으며 인연을 이어간다는 뜻의 가장 대표적인 관계 표현입니다.",
+        quote: "Did you all keep in touch during those five years?",
+        highlights: ["keep in touch"],
+        ttsText: "keep in touch. Did you all keep in touch during those five years?",
+        translation: "그 5년 동안 다들 계속 연락하고 지내셨나요?"
+      },
+      {
+        id: 24,
+        expression: "lose touch",
+        timestamp: "00:09:54",
+        seconds: 594,
+        speaker: "Tom Holland",
+        category: "우정·관계 표현",
+        meaning: "연락이 끊기다",
+        nuance: "23번 'keep in touch'의 반대말로, 특별히 싸워서라기보다 각자 바쁘게 살다 보니 자연스레 소식이 뜸해져 연락이 끊겼을 때 씁니다.",
+        quote: "No, we just kind of lost touch.",
+        highlights: ["lost touch"],
+        ttsText: "lose touch. No, we just kind of lost touch.",
+        translation: "아니요, 그냥 자연스럽게 연락이 좀 끊겼어요."
+      },
+      {
+        id: 25,
+        expression: "on purpose",
+        timestamp: "00:10:06",
+        seconds: 606,
+        speaker: "Tom Holland",
+        category: "우정·관계 표현",
+        meaning: "일부러, 고의로",
+        nuance: "실수('by accident')와 대비되는 표현으로, 명확한 의도를 가지고 일부러 한 행동임을 강조할 때 문장 끝에 붙입니다.",
+        quote: "I deleted theirs on purpose.",
+        highlights: ["on purpose"],
+        ttsText: "on purpose. I deleted theirs on purpose.",
+        translation: "전 일부러 그 친구들 번호를 지웠어요."
+      },
+      {
+        id: 26,
+        expression: "not gonna lie",
+        timestamp: "00:10:17",
+        seconds: 617,
+        speaker: "Tablo",
+        category: "구어체·리액션",
+        meaning: "솔직히 말해서 (거짓말 안 하고)",
+        nuance: "SNS에서는 'NGL'로도 줄여 쓰며, 다소 민감하거나 의외인 속마음을 가감 없이 솔직하게 털어놓기 전에 운을 띄우는 표현입니다.",
+        quote: "I'm not gonna lie, we hated each other at the beginning.",
+        highlights: ["not gonna lie"],
+        ttsText: "not gonna lie. I'm not gonna lie, we hated each other at the beginning.",
+        translation: "거짓말 안 하고 솔직히 말해서, 저희는 처음에 서로를 싫어했어요."
+      },
+      {
+        id: 27,
+        expression: "get along",
+        timestamp: "00:10:21",
+        seconds: 621,
+        speaker: "Tablo",
+        category: "우정·관계 표현",
+        meaning: "잘 어울리다, 사이좋게 지내다",
+        nuance: "성격이나 호흡이 잘 맞아 갈등 없이 친하게 지낸다는 뜻으로, 'get along well with ~' 형태로도 자주 쓰입니다.",
+        quote: "We didn't get along. We still don't get along.",
+        highlights: ["get along"],
+        ttsText: "get along. We didn't get along. We still don't get along.",
+        translation: "우린 사이가 안 좋았어요. 지금도 여전히 안 좋아요."
+      },
+      {
+        id: 28,
+        expression: "rise above",
+        timestamp: "00:10:26",
+        seconds: 626,
+        speaker: "Tom Holland",
+        category: "우정·관계 표현",
+        meaning: "(~을) 뛰어넘다, 극복하다",
+        nuance: "개인적인 갈등, 부정적인 감정, 시련 등에 휘둘리지 않고 그보다 더 높은 차원의 가치나 실력으로 승화시킨다는 멋진 표현입니다.",
+        quote: "The talent rises above.",
+        highlights: ["rises above"],
+        ttsText: "rise above. The talent rises above.",
+        translation: "재능이 그 모든 걸 뛰어넘는 거죠."
+      },
+      {
+        id: 29,
+        expression: "work for (someone)",
+        timestamp: "00:10:28",
+        seconds: 628,
+        speaker: "Tablo",
+        category: "우정·관계 표현",
+        meaning: "(~에게) 잘 통하다, 잘 맞다",
+        nuance: "'일하다'가 아니라, 어떤 방식이나 관계가 남들이 보기엔 특이해도 당사자들에게는 효과적으로 잘 굴러가고 맞는다는 뜻입니다.",
+        quote: "Somehow it works for us.",
+        highlights: ["works for us"],
+        ttsText: "work for someone. Somehow it works for us.",
+        translation: "어떻게든 우리한테는 이 방식이 잘 통하더라고요."
+      },
+      {
+        id: 30,
+        expression: "it's a thing",
+        timestamp: "00:11:50",
+        seconds: 710,
+        speaker: "Tablo",
+        category: "구어체·리액션",
+        meaning: "유행이다, 흔히 하는 문화다",
+        nuance: "특정 행동이나 현상이 실제로 존재하며 사람들 사이에서 흔히 통용되는 문화나 트렌드임을 설명할 때 쓰는 현대 구어체입니다.",
+        quote: "And it's like a thing in Korea.",
+        highlights: ["a thing"],
+        ttsText: "it's a thing. And it's like a thing in Korea.",
+        translation: "그리고 한국에서는 그게 하나의 유행 같은 문화예요."
+      },
+      {
+        id: 31,
+        expression: "impeccable",
+        timestamp: "00:12:14",
+        seconds: 734,
+        speaker: "Tom Holland",
+        category: "음식·레스토랑·추천",
+        meaning: "흠잡을 데 없는, 완벽한",
+        nuance: "단순한 'good'이나 'great'보다 훨씬 격조 있고 세련된 형용사로, 레스토랑의 서비스, 음식 맛, 패션 센스 등을 극찬할 때 씁니다.",
+        quote: "Food is lovely, the service is impeccable, and they serve Bero.",
+        highlights: ["impeccable"],
+        ttsText: "impeccable. Food is lovely, the service is impeccable, and they serve Bero.",
+        translation: "음식도 훌륭하고, 서비스는 흠잡을 데 없이 완벽하며, 베로(논알코올 맥주)도 팔아요."
+      },
+      {
+        id: 32,
+        expression: "head over to",
+        timestamp: "00:12:50",
+        seconds: 770,
+        speaker: "Zendaya",
+        category: "음식·레스토랑·추천",
+        meaning: "(~로) 향하다, 가다",
+        nuance: "'go to'보다 훨씬 회화적이고 자연스러운 표현으로, 특정 동네, 가게, 장소로 발걸음을 옮기라고 권유하거나 이동 계획을 말할 때 씁니다.",
+        quote: "So head over to Richmond.",
+        highlights: ["head over to"],
+        ttsText: "head over to. So head over to Richmond.",
+        translation: "그러니까 리치먼드 쪽으로 한번 가보세요."
+      },
+      {
+        id: 33,
+        expression: "name-drop",
+        timestamp: "00:12:53",
+        seconds: 773,
+        speaker: "Tablo",
+        category: "음식·레스토랑·추천",
+        meaning: "(유명인의) 이름을 들먹이다, 팔다",
+        nuance: "자신의 인맥을 과시하거나 특별 대우를 받기 위해 유명인이나 지인의 이름을 슬쩍 언급하는 행동을 가리키는 동사입니다.",
+        quote: "Can we name-drop you?",
+        highlights: ["name-drop"],
+        ttsText: "name-drop. Can we name-drop you?",
+        translation: "가서 톰 홀랜드 이름 좀 팔아도 될까요?"
+      },
+      {
+        id: 34,
+        expression: "put it on (someone's) tab",
+        timestamp: "00:12:59",
+        seconds: 779,
+        speaker: "Tablo",
+        category: "음식·레스토랑·추천",
+        meaning: "(~의) 외상으로 달다, 계산서에 올리다",
+        nuance: "단골 바(bar)나 레스토랑에서 마신 술·음식 값을 한 번에 정산하기 위해 열어두는 외상 장부를 'tab'이라고 하며, 'put it on my tab'은 '내 앞으로 달아놔'라는 뜻입니다.",
+        quote: "Can we put it on your tab?",
+        highlights: ["put it on your tab"],
+        ttsText: "put it on someone's tab. Can we put it on your tab?",
+        translation: "톰 외상 장부에 달아놓고 먹어도 될까요?"
+      },
+      {
+        id: 35,
+        expression: "chug it",
+        timestamp: "00:14:28",
+        seconds: 868,
+        speaker: "Tom Holland",
+        category: "구어체·리액션",
+        meaning: "원샷하다, 단숨에 들이켜다",
+        nuance: "음료나 맥주 한 병·한 캔을 중간에 쉬지 않고 꿀꺽꿀꺽 단숨에 다 마셔버릴 때 쓰는 대표적인 영어 구어체 동사입니다.",
+        quote: "Chug it, the whole thing.",
+        highlights: ["Chug it"],
+        ttsText: "chug it. Chug it, the whole thing.",
+        translation: "원샷해, 한 병 다 한 번에 들이켜!"
+      }
+    ];
+
+    const STORAGE_KEY = "epik_spiderman_oh9ErR3HGyQ_v1";
+    let state = {
+      mastered: {},
+      memos: {},
+      category: "전체",
+      search: "",
+      hideMeaning: false,
+      clozeMode: false,
+      hideMastered: false,
+      ttsSpeed: 1.0
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.mastered = parsed.mastered || {};
+          state.memos = parsed.memos || {};
+        }
+      } catch (e) {
+        console.error("Failed to load state:", e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          mastered: state.mastered,
+          memos: state.memos
+        }));
+      } catch (e) {
+        console.error("Failed to save state:", e);
+      }
+    }
+
+    function showToast(msg, icon = "✓") {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-msg").textContent = msg;
+      document.getElementById("toast-icon").textContent = icon;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("이 브라우저는 음성 듣기를 지원하지 않습니다.", "⚠️");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = state.ttsSpeed;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function toggleTtsSpeed() {
+      state.ttsSpeed = state.ttsSpeed === 1.0 ? 0.8 : 1.0;
+      document.getElementById("tts-speed-label").textContent = `${state.ttsSpeed.toFixed(1)}x`;
+      const btn = document.getElementById("btn-tts-speed");
+      btn.classList.toggle("bg-spidey-amberLight", state.ttsSpeed === 0.8);
+      btn.classList.toggle("border-spidey-amber", state.ttsSpeed === 0.8);
+      showToast(`발음 재생 속도를 ${state.ttsSpeed.toFixed(1)}배속으로 변경했습니다.`, "🔊");
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function formatQuote(quote, highlights, clozeMode) {
+      if (!highlights || highlights.length === 0) return escapeHtml(quote);
+
+      const sorted = [...highlights].sort((a, b) => b.length - a.length);
+      const pattern = new RegExp(`(${sorted.map(escapeRegExp).join("|")})`, "gi");
+      const parts = quote.split(pattern);
+
+      return parts.map(part => {
+        const isMatch = sorted.some(h => h.toLowerCase() === part.toLowerCase());
+        if (!isMatch) return escapeHtml(part);
+
+        const safePart = escapeHtml(part);
+        if (clozeMode) {
+          return `<span class="cloze-blank" onclick="this.classList.toggle('revealed')" title="클릭해서 정답 확인">${safePart}</span>`;
+        } else {
+          return `<mark class="bg-spidey-redLight text-spidey-red font-semibold px-1.5 py-0.5 rounded-md">${safePart}</mark>`;
+        }
+      }).join("");
+    }
+
+    function renderCategories() {
+      const categories = ["전체", "인사·스몰토크", "우정·관계 표현", "음식·레스토랑·추천", "구어체·리액션"];
+      const container = document.getElementById("category-tabs");
+      container.innerHTML = categories.map(cat => {
+        const count = cat === "전체"
+          ? EXPRESSIONS.length
+          : EXPRESSIONS.filter(item => item.category === cat).length;
+        const isActive = state.category === cat;
+        const activeClasses = isActive
+          ? "bg-spidey-red text-white border-spidey-red shadow-2xs"
+          : "bg-spidey-bg text-spidey-muted border-spidey-border hover:bg-spidey-subtle hover:text-spidey-ink";
+
+        return `
+          <button
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-1.5 rounded-full border text-xs sm:text-sm font-medium whitespace-nowrap transition ${activeClasses}"
+          >
+            ${cat} <span class="opacity-80 text-xs ml-0.5">(${count})</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function updateProgress() {
+      const total = EXPRESSIONS.length;
+      const done = Object.values(state.mastered).filter(Boolean).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progress-text").textContent = `암기 완료: ${done} / ${total} (${pct}%)`;
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    function renderCards() {
+      const container = document.getElementById("cards-container");
+      const emptyState = document.getElementById("empty-state");
+      const query = state.search.trim().toLowerCase();
+
+      const filtered = EXPRESSIONS.filter(item => {
+        if (state.category !== "전체" && item.category !== state.category) return false;
+        if (state.hideMastered && state.mastered[item.id]) return false;
+        if (query) {
+          const hay = `${item.expression} ${item.meaning} ${item.quote} ${item.translation} ${item.nuance} ${item.speaker}`.toLowerCase();
+          if (!hay.includes(query)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById("result-count").textContent = `총 ${filtered.length}개의 표현 표시 중`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      container.innerHTML = filtered.map(item => {
+        const isMastered = !!state.mastered[item.id];
+        const memoText = state.memos[item.id] || "";
+        const ytUrl = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const cardBorder = isMastered ? "border-emerald-300 bg-emerald-50/20" : "border-spidey-border bg-spidey-card";
+
+        return `
+          <article class="rounded-2xl border ${cardBorder} p-5 sm:p-6 shadow-2xs transition hover:shadow-md">
+            <!-- Top Row: Badge, Category, Speaker, Timestamp, Learned Checkbox -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-spidey-subtle text-spidey-ink text-xs font-bold">
+                  ${item.id}
+                </span>
+                <span class="px-2.5 py-0.5 rounded-md bg-spidey-subtle text-spidey-muted text-xs font-medium">
+                  ${item.category}
+                </span>
+                <span class="px-2.5 py-0.5 rounded-md bg-spidey-navyLight text-spidey-navy text-xs font-medium">
+                  🎙️ ${escapeHtml(item.speaker)}
+                </span>
+                <a
+                  href="${ytUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-spidey-redLight text-spidey-red hover:bg-red-100 text-xs font-medium transition"
+                  title="유튜브에서 해당 대화 구간 바로 보기"
+                >
+                  <span>▶</span> ${item.timestamp}
+                </a>
+              </div>
+
+              <label class="inline-flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg hover:bg-spidey-subtle transition">
+                <input
+                  type="checkbox"
+                  ${isMastered ? "checked" : ""}
+                  onchange="toggleMastered(${item.id})"
+                  class="w-4 h-4 rounded accent-emerald-700 cursor-pointer"
+                />
+                <span class="text-xs font-semibold ${isMastered ? "text-spidey-sage" : "text-spidey-muted"}">
+                  암기 완료
+                </span>
+              </label>
+            </div>
+
+            <!-- Expression Title & TTS -->
+            <div class="flex items-start justify-between gap-3">
+              <h2 class="text-lg sm:text-xl font-bold text-spidey-ink tracking-tight">
+                ${escapeHtml(item.expression)}
+              </h2>
+              <button
+                onclick="speakText(\`${item.ttsText.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg border border-spidey-border bg-spidey-bg hover:bg-spidey-subtle text-xs font-medium text-spidey-ink transition flex items-center gap-1"
+                title="표현 및 예문 전체 발음 듣기"
+              >
+                <span>🔊</span> 전체 듣기
+              </button>
+            </div>
+
+            <!-- Korean Meaning & Nuance (Blurrable) -->
+            <div class="mt-2 blur-target" onclick="this.classList.toggle('revealed')">
+              <p class="text-base font-semibold text-spidey-red">
+                ${escapeHtml(item.meaning)}
+              </p>
+              <p class="text-xs sm:text-sm text-spidey-muted mt-1 leading-relaxed">
+                ${escapeHtml(item.nuance)}
+              </p>
+            </div>
+
+            <!-- Verbatim Video Quote Box -->
+            <div class="mt-4 p-4 rounded-xl bg-spidey-bg border border-spidey-border/80">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-spidey-muted">
+                  🎬 Verbatim Quote (${escapeHtml(item.speaker)})
+                </span>
+                <button
+                  onclick="speakText(\`${item.quote.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                  class="text-xs text-spidey-muted hover:text-spidey-ink font-medium inline-flex items-center gap-1 transition"
+                  title="예문만 발음 듣기"
+                >
+                  <span>🔊</span> 예문만 듣기
+                </button>
+              </div>
+              <p class="text-sm sm:text-[15px] text-spidey-ink leading-relaxed font-medium">
+                “${formatQuote(item.quote, item.highlights, state.clozeMode)}”
+              </p>
+              <p class="text-xs sm:text-sm text-spidey-muted mt-2 pt-2 border-t border-spidey-border/60 blur-target" onclick="this.classList.toggle('revealed')">
+                ${escapeHtml(item.translation)}
+              </p>
+            </div>
+
+            <!-- Collapsible Personal Memo -->
+            <div class="mt-3">
+              <details ${memoText ? "open" : ""} class="group">
+                <summary class="text-xs font-medium text-spidey-muted hover:text-spidey-ink cursor-pointer select-none inline-flex items-center gap-1">
+                  <span>📝 나만의 메모 / 응용 예문</span>
+                  ${memoText ? '<span class="w-1.5 h-1.5 rounded-full bg-spidey-red"></span>' : ''}
+                </summary>
+                <div class="mt-2">
+                  <textarea
+                    rows="2"
+                    placeholder="직접 만들어 본 응용 문장이나 기억해 둘 뉘앙스를 적어보세요 (자동 저장됨)..."
+                    oninput="updateMemo(${item.id}, this.value)"
+                    class="w-full p-2.5 text-xs sm:text-sm bg-spidey-bg border border-spidey-border rounded-xl focus:outline-none focus:border-spidey-red transition resize-y"
+                  >${escapeHtml(memoText)}</textarea>
+                </div>
+              </details>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function selectCategory(cat) {
+      state.category = cat;
+      renderCategories();
+      renderCards();
+    }
+
+    function toggleMastered(id) {
+      state.mastered[id] = !state.mastered[id];
+      saveState();
+      updateProgress();
+      renderCards();
+      if (state.mastered[id]) {
+        showToast("암기 완료로 체크했습니다.", "✅");
+      }
+    }
+
+    function updateMemo(id, val) {
+      state.memos[id] = val;
+      saveState();
+    }
+
+    function toggleHideMeaning() {
+      state.hideMeaning = !state.hideMeaning;
+      document.body.classList.toggle("hide-meaning", state.hideMeaning);
+      const btn = document.getElementById("btn-hide-meaning");
+      btn.classList.toggle("bg-spidey-redLight", state.hideMeaning);
+      btn.classList.toggle("border-spidey-red", state.hideMeaning);
+      btn.classList.toggle("text-spidey-red", state.hideMeaning);
+    }
+
+    function toggleClozeMode() {
+      state.clozeMode = !state.clozeMode;
+      const btn = document.getElementById("btn-cloze-mode");
+      btn.classList.toggle("bg-spidey-redLight", state.clozeMode);
+      btn.classList.toggle("border-spidey-red", state.clozeMode);
+      btn.classList.toggle("text-spidey-red", state.clozeMode);
+      renderCards();
+    }
+
+    function toggleHideMastered() {
+      state.hideMastered = !state.hideMastered;
+      const btn = document.getElementById("btn-hide-mastered");
+      const label = document.getElementById("hide-mastered-label");
+      label.textContent = state.hideMastered ? "미암기만 보기" : "전체 보기";
+      btn.classList.toggle("bg-spidey-sageLight", state.hideMastered);
+      btn.classList.toggle("border-spidey-sage", state.hideMastered);
+      btn.classList.toggle("text-spidey-sage", state.hideMastered);
+      renderCards();
+    }
+
+    function resetFilters() {
+      state.category = "전체";
+      state.search = "";
+      state.hideMastered = false;
+      document.getElementById("search-input").value = "";
+      document.getElementById("hide-mastered-label").textContent = "전체 보기";
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.remove("bg-spidey-sageLight", "border-spidey-sage", "text-spidey-sage");
+      renderCategories();
+      renderCards();
+    }
+
+    function buildMarkdownContent() {
+      const today = new Date().toISOString().slice(0, 10);
+      let md = `---\ntags:\n  - EnglishStudy\n  - EpikHigh\n  - SpiderMan\n  - TomHolland\n  - Zendaya\ndate: ${today}\nsource: "https://www.youtube.com/watch?v=${VIDEO_ID}"\n---\n\n`;
+      md += `# 🕸️ EPIK HIGH ft. 톰 홀랜드·젠데이아·제이콥 배덜런 — 실전 영어 표현 35선\n\n`;
+      md += `- **영상 제목:** 스파이더맨 단골식당 가서 외상으로 밥 먹음 ft. 톰 홀랜드, 젠데이아, 제이콥 배덜런\n`;
+      md += `- **원본 링크:** https://www.youtube.com/watch?v=${VIDEO_ID}\n\n---\n\n`;
+
+      EXPRESSIONS.forEach(item => {
+        const checked = state.mastered[item.id] ? "x" : " ";
+        const ytLink = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const memo = state.memos[item.id] ? state.memos[item.id].trim() : "";
+
+        md += `- [${checked}] **${item.id}. ${item.expression}** ([${item.timestamp}](${ytLink})) — *${item.speaker}*\n`;
+        md += `  - **분류:** #${item.category.replace(/·/g, "_")}\n`;
+        md += `  - **의미:** **${item.meaning}**\n`;
+        md += `  - **뉘앙스:** ${item.nuance}\n`;
+        md += `  - **영상 원문:** "${item.quote}"\n`;
+        md += `  - **해석:** ${item.translation}\n`;
+        if (memo) {
+          md += `  - **나의 메모:** ${memo}\n`;
+        }
+        md += `\n`;
+      });
+
+      return md;
+    }
+
+    function copyMarkdownToClipboard() {
+      const md = buildMarkdownContent();
+      const textarea = document.createElement("textarea");
+      textarea.value = md;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        showToast("마크다운(.md) 전체 내용이 클립보드에 복사되었습니다.", "📋");
+      } catch (err) {
+        showToast("복사에 실패했습니다. 내보내기 버튼을 이용해 주세요.", "⚠️");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function exportMarkdown() {
+      const today = new Date().toISOString().slice(0, 10);
+      const md = buildMarkdownContent();
+      const blob = new Blob([md], { type: "text/markdown;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `EpikHigh-SpiderMan-English-35_${today}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Obsidian용 마크다운(.md) 파일이 다운로드되었습니다.", "📥");
+    }
+
+    function openResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function confirmReset() {
+      state.mastered = {};
+      state.memos = {};
+      saveState();
+      updateProgress();
+      renderCards();
+      closeResetModal();
+      showToast("모든 학습 기록과 메모가 초기화되었습니다.", "🗑️");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      renderCategories();
+      updateProgress();
+      renderCards();
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderCards();
+      });
+    });
+  </script>
+</body>
+</html>

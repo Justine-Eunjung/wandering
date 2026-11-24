@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey Tablo Ep. 48 — 핵심 영어 표현 36선 학습 노트</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          colors: {
+            slatex: {
+              bg: '#0B1120',
+              surface: '#111827',
+              card: '#161F33',
+              subtle: '#1E293B',
+              border: '#283548',
+              ink: '#F1F5F9',
+              muted: '#94A3B8',
+              indigo: '#6366F1',
+              indigoHover: '#4F46E5',
+              emerald: '#10B981',
+              amber: '#F59E0B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0B1120;
+      color: #F1F5F9;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .blur-target {
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+    .hide-meaning .blur-target {
+      filter: blur(6px);
+      user-select: none;
+      cursor: pointer;
+    }
+    .hide-meaning .blur-target:hover,
+    .hide-meaning .blur-target.revealed {
+      filter: blur(0);
+      user-select: auto;
+    }
+    .cloze-blank {
+      display: inline-block;
+      min-width: 115px;
+      padding: 0 8px;
+      margin: 0 2px;
+      border-bottom: 2px dashed #818CF8;
+      background-color: rgba(99, 102, 241, 0.22);
+      color: transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .cloze-blank.revealed {
+      color: #C7D2FE;
+      background-color: rgba(99, 102, 241, 0.34);
+      border-bottom-style: solid;
+      font-weight: 600;
+      user-select: auto;
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B1120;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-slate-800 border border-slate-700 text-slate-100 text-sm px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2.5">
+    <span id="toast-icon" class="text-indigo-400 font-bold">✓</span>
+    <span id="toast-msg">알림 메시지</span>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-30 bg-slatex-bg/90 backdrop-blur-md border-b border-slatex-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider uppercase text-indigo-400 mb-1">
+            <span>HEY TABLO EP. 48</span>
+            <span class="text-slate-600">•</span>
+            <a href="https://www.youtube.com/watch?v=x0T96jO_UWI" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-300 inline-flex items-center gap-1 transition">
+              YouTube 원본 영상 열기 ↗
+            </a>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-slatex-ink tracking-tight">
+            Kicked Out Of School. Failed At My Job. Best Thing Ever
+          </h1>
+          <p class="text-xs sm:text-sm text-slatex-muted mt-0.5">
+            타블로의 인생 역전 스토리텔링 속 핵심 영어 표현 36선 &amp; 팟캐스트 원문 학습 노트
+          </p>
+        </div>
+
+        <!-- Action Buttons: Copy, Export, Reset -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="copyMarkdownToClipboard()" class="px-3 py-2 rounded-xl bg-slatex-card border border-slatex-border text-slatex-ink text-xs sm:text-sm font-medium hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-slatex-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            클립보드 복사 (.md)
+          </button>
+          <button onclick="exportMarkdown()" class="px-3.5 py-2 rounded-xl bg-slatex-indigo text-white text-xs sm:text-sm font-medium hover:bg-slatex-indigoHover transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Obsidian (.md) 내보내기
+          </button>
+          <button onclick="openResetModal()" class="px-3 py-2 rounded-xl bg-slatex-card border border-slatex-border text-slatex-muted text-xs sm:text-sm font-medium hover:text-slate-200 hover:bg-slatex-subtle transition" title="학습 기록 초기화">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4">
+        <div class="flex items-center justify-between text-xs font-medium text-slatex-muted mb-1.5">
+          <span>학습 진도율 (암기 완료)</span>
+          <span id="progress-text" class="text-emerald-400 font-semibold">암기 완료: 0 / 36 (0%)</span>
+        </div>
+        <div class="w-full h-2 bg-slatex-subtle rounded-full overflow-hidden border border-slatex-border/80">
+          <div id="progress-bar" class="h-full bg-emerald-500 transition-all duration-300 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6">
+    <!-- Filter & Study Mode Controls -->
+    <section class="bg-slatex-card border border-slatex-border rounded-2xl p-4 mb-6 shadow-md space-y-4">
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <!-- Search Box -->
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-slatex-muted absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="영어 표현, 팟캐스트 원문 예문, 또는 한국어 뜻 검색..."
+            class="w-full pl-10 pr-4 py-2.5 bg-slatex-bg border border-slatex-border rounded-xl text-sm text-slatex-ink placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition"
+          />
+        </div>
+
+        <!-- Study Toggles & TTS Speed -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-tts-speed" onclick="toggleTtsSpeed()" class="px-3 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1" title="발음 재생 속도 전환">
+            <span>🐢/🐇</span> <span id="tts-speed-label">1.0x</span>
+          </button>
+          <button id="btn-hide-meaning" onclick="toggleHideMeaning()" class="px-3.5 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <span>👁️</span> 뜻/해석 가리기
+          </button>
+          <button id="btn-cloze-mode" onclick="toggleClozeMode()" class="px-3.5 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <span>✍️</span> 원문 빈칸 퀴즈
+          </button>
+          <button id="btn-hide-mastered" onclick="toggleHideMastered()" class="px-3.5 py-2.5 rounded-xl border border-slatex-border bg-slatex-bg text-xs sm:text-sm font-medium text-slatex-ink hover:bg-slatex-subtle transition flex items-center gap-1.5">
+            <span>📌</span> <span id="hide-mastered-label">전체 보기</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div id="category-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Status Bar -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 px-1">
+      <p id="result-count" class="text-xs sm:text-sm text-slatex-muted font-medium">총 36개의 표현 표시 중</p>
+      <p class="text-xs text-slatex-muted">💡 팁: <span class="text-indigo-400 font-semibold">▶ HH:MM:SS</span> 버튼으로 유튜브 발화 구간을 바로 들을 수 있습니다.</p>
+    </div>
+
+    <!-- Responsive Card Grid -->
+    <div id="cards-container" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 bg-slatex-card border border-slatex-border rounded-2xl">
+      <p class="text-3xl mb-2">🎧</p>
+      <h3 class="text-base font-semibold text-slatex-ink">조건에 맞는 표현이 없습니다</h3>
+      <p class="text-sm text-slatex-muted mt-1">검색어를 지우거나 필터 설정을 초기화해 보세요.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-slatex-subtle hover:bg-slate-700 rounded-xl text-xs font-medium text-slatex-ink transition">
+        필터 초기화
+      </button>
+    </div>
+  </main>
+
+  <!-- Custom Reset Confirmation Modal -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/65 backdrop-blur-xs p-4">
+    <div class="bg-slatex-card border border-slatex-border rounded-2xl max-w-sm w-full p-6 shadow-2xl">
+      <h3 class="text-lg font-bold text-slatex-ink">학습 기록을 초기화할까요?</h3>
+      <p class="text-sm text-slatex-muted mt-2 leading-relaxed">
+        체크한 '암기 완료' 상태와 작성하신 개인 메모가 모두 삭제됩니다. 필요하시면 먼저 Obsidian(.md) 파일로 내보내세요.
+      </p>
+      <div class="mt-5 flex justify-end gap-2">
+        <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl border border-slatex-border text-sm font-medium text-slatex-muted hover:bg-slatex-subtle transition">
+          취소
+        </button>
+        <button onclick="confirmReset()" class="px-4 py-2 rounded-xl bg-rose-600 text-white text-sm font-medium hover:bg-rose-700 transition">
+          초기화하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-slatex-border bg-slatex-surface mt-12 py-6 text-center text-xs text-slatex-muted">
+    <p>Source: Epik High Official YouTube — <em>Kicked Out Of School. Failed At My Job. Best Thing Ever | Hey Tablo Ep. 48</em></p>
+  </footer>
+
+  <script>
+    const VIDEO_ID = "x0T96jO_UWI";
+
+    const EXPRESSIONS = [
+      {
+        id: 1,
+        expression: "get across",
+        timestamp: "00:00:19",
+        seconds: 19,
+        category: "스토리텔링·관용구",
+        meaning: "(메시지·의도를) 명확히 전달하다, 이해시키다",
+        nuance: "화자가 청중에게 핵심 주장이나 감정을 제대로 전달해 납득시키고자 할 때 쓰는 필수 구동사입니다.",
+        quote: "the general thesis that I'm trying to get across today is that sometimes setbacks, failing is the best way to find yourself right in front of success.",
+        highlights: ["get across"],
+        translation: "오늘 제가 전달하려는 핵심 주제는 때때로 좌절과 실패가 성공 바로 앞에 서 있는 자신을 발견하는 최고의 길이라는 것입니다."
+      },
+      {
+        id: 2,
+        expression: "setback",
+        timestamp: "00:00:29",
+        seconds: 29,
+        category: "좌절·역경 표현",
+        meaning: "좌절, 차질, 역경",
+        nuance: "순조롭게 진행되던 일이나 계획이 예상치 못한 장애물을 만나 뒤로 밀리거나 차질을 빚는 상황을 뜻하는 명사입니다.",
+        quote: "The common thread here is that each of these setbacks, at each of these moments of failure, I kept going though.",
+        highlights: ["setbacks"],
+        translation: "여기서 공통점은 이러한 각각의 좌절과 실패의 순간마다 제가 포기하지 않고 계속 나아갔다는 것입니다."
+      },
+      {
+        id: 3,
+        expression: "get booted out of",
+        timestamp: "00:00:56",
+        seconds: 56,
+        category: "좌절·역경 표현",
+        meaning: "(~에서) 쫓겨나다, 퇴학·해고당하다",
+        nuance: "'get kicked out of'와 같은 뜻으로, 부츠(boot)로 걷어차여 쫓겨나듯 강제로 퇴출당하는 느낌을 살린 구어체 표현입니다.",
+        quote: "The first story is how I got booted out of school in eighth grade.",
+        highlights: ["got booted out of"],
+        translation: "첫 번째 이야기는 제가 중학교 2학년(8학년) 때 학교에서 쫓겨난 일화입니다."
+      },
+      {
+        id: 4,
+        expression: "bomb (a test / an album)",
+        timestamp: "00:01:23",
+        seconds: 83,
+        category: "학교·직장·구어체",
+        meaning: "(시험·공연·앨범 등을) 완전히 망치다, 참패하다",
+        nuance: "미국 일상 회화에서 시험을 죽 쑤거나 영화·앨범이 흥행에 대실패했을 때 가장 흔히 쓰는 동사입니다.",
+        quote: "And to tell you the truth, I think I bombed it the first time, so I couldn't get in seventh grade.",
+        highlights: ["bombed"],
+        translation: "사실대로 말하자면, 첫 번째 입학시험을 완전히 망쳐서 7학년 때는 입학하지 못했어요."
+      },
+      {
+        id: 5,
+        expression: "straight up",
+        timestamp: "00:02:00",
+        seconds: 120,
+        category: "스토리텔링·관용구",
+        meaning: "완전히, 영락없이, 대놓고",
+        nuance: "비유나 묘사가 과장이 아니라 100% 그대로 똑같음을 강조할 때 쓰는 현대 북미 구어체 부사입니다.",
+        quote: "A lot of kids were staying in dormitories, so it was like straight up out of Hogwarts.",
+        highlights: ["straight up"],
+        translation: "많은 학생들이 기숙사에서 생활했기 때문에, 분위기가 완전히 호그와트에서 튀어나온 것 같았어요."
+      },
+      {
+        id: 6,
+        expression: "code of conduct",
+        timestamp: "00:02:43",
+        seconds: 163,
+        category: "학교·직장·구어체",
+        meaning: "행동 강령, 교칙, 윤리 규정",
+        nuance: "학교, 회사, 스포츠 팀 등 조직 구성원이 반드시 준수해야 할 공식적인 행동 규칙과 예절 기준을 말합니다.",
+        quote: "The code of conduct was extremely strict.",
+        highlights: ["code of conduct"],
+        translation: "그 학교의 행동 강령(교칙)은 극도로 엄격했습니다."
+      },
+      {
+        id: 7,
+        expression: "tell on (someone)",
+        timestamp: "00:02:59",
+        seconds: 179,
+        category: "학교·직장·구어체",
+        meaning: "(~의 잘못을) 일러바치다, 고자질하다",
+        nuance: "선생님이나 부모님 등 권위 있는 사람에게 다른 사람의 규칙 위반 사실을 고자질할 때 쓰는 표현입니다.",
+        quote: "They would tell on us if we stayed up too late. They would tell on us if we snuck out.",
+        highlights: ["tell on"],
+        translation: "우리가 너무 늦게까지 안 자고 깨어 있으면 일러바쳤고, 몰래 빠져나가도 고자질하곤 했어요."
+      },
+      {
+        id: 8,
+        expression: "sneak out",
+        timestamp: "00:03:07",
+        seconds: 187,
+        category: "학교·직장·구어체",
+        meaning: "몰래 빠져나가다, 몰래 외출하다",
+        nuance: "허락을 받지 않고 남들 눈에 띄지 않게 살금살금 밖으로 나가는 행동을 뜻하는 구동사입니다.",
+        quote: "They would tell on us if we snuck out.",
+        highlights: ["snuck out"],
+        translation: "우리가 기숙사를 몰래 빠져나가면 선생님께 일러바치곤 했죠."
+      },
+      {
+        id: 9,
+        expression: "one thing led to another",
+        timestamp: "00:05:23",
+        seconds: 323,
+        category: "스토리텔링·관용구",
+        meaning: "이 일 저 일 겹치다 보니, 일이 꼬리에 꼬리를 물고 이어져",
+        nuance: "중간의 복잡하고 긴 사건들을 일일이 나열하지 않고 자연스럽게 다음 결과로 넘어갈 때 쓰는 스토리텔링 만능 연결구입니다.",
+        quote: "Anyways, one thing led to another, and eventually, you know, I was kicked out.",
+        highlights: ["one thing led to another"],
+        translation: "어쨌든 이런저런 일들이 겹치다 보니, 결국 저는 퇴학을 당하게 됐어요."
+      },
+      {
+        id: 10,
+        expression: "on the spot",
+        timestamp: "00:06:24",
+        seconds: 384,
+        category: "스토리텔링·관용구",
+        meaning: "그 자리에서 즉시, 현장에서 바로",
+        nuance: "지체하거나 나중에 통보하지 않고 사건이 벌어진 바로 그 순간·현장에서 즉각 조치가 이루어짐을 뜻합니다.",
+        quote: "They don't kick you out like on the spot. You get in trouble, and then it's like summer break.",
+        highlights: ["on the spot"],
+        translation: "그 자리에서 즉시 퇴학시키지는 않아요. 먼저 문제를 일으키고 나면 곧바로 여름방학이 시작되거든요."
+      },
+      {
+        id: 11,
+        expression: "shit out of luck (SOL)",
+        timestamp: "00:06:45",
+        seconds: 405,
+        category: "좌절·역경 표현",
+        meaning: "완전히 운이 다하다, 꼼짝없이 당하다, 대책이 없다",
+        nuance: "비속어가 섞인 매우 강한 구어체 숙어로, 도저히 빠져나갈 구멍 없이 불운한 처지에 놓였음을 유머러스하거나 거칠게 표현할 때 씁니다.",
+        quote: "And then that's how they inform you that you're like shit out of luck.",
+        highlights: ["shit out of luck"],
+        translation: "그리고 바로 그런 방식으로 네가 이제 완전히 끝장났다는 걸 통보해 주는 거예요."
+      },
+      {
+        id: 12,
+        expression: "mind you",
+        timestamp: "00:07:12",
+        seconds: 432,
+        category: "스토리텔링·관용구",
+        meaning: "참고로 말하자면, 그런데 말이야",
+        nuance: "청자가 상황의 심각성이나 배경 맥락을 놓치지 않도록 중요한 전제 조건을 덧붙이며 강조할 때 쓰는 회화 표현입니다.",
+        quote: "And mind you, by this point, my parents were convinced, and so was I, that I was just a complete failure.",
+        highlights: ["mind you"],
+        translation: "그런데 참고로 이 시점에는 부모님도, 저 자신도 제가 완전히 실패작이라고 확신하고 있었어요."
+      },
+      {
+        id: 13,
+        expression: "downward spiral",
+        timestamp: "00:11:58",
+        seconds: 718,
+        category: "좌절·역경 표현",
+        meaning: "악순환, 걷잡을 수 없는 추락",
+        nuance: "나쁜 일이 또 다른 나쁜 일을 부르며 나선형으로 끝없이 아래로 추락해 가는 상황을 묘사할 때 씁니다.",
+        quote: "In eighth grade, you know, my life kind of went on a downward spiral.",
+        highlights: ["downward spiral"],
+        translation: "8학년 때 제 인생은 일종의 걷잡을 수 없는 추락의 길로 접어들었어요."
+      },
+      {
+        id: 14,
+        expression: "go down the drain",
+        timestamp: "00:11:58",
+        seconds: 718,
+        category: "좌절·역경 표현",
+        meaning: "물거품이 되다, 엉망이 되어 사라지다",
+        nuance: "하수구(drain)로 물이 휩쓸려 내려가듯, 그동안 쌓아온 노력·성적·자존감 등이 한순간에 허무하게 날아가는 모습을 비유합니다.",
+        quote: "Along with my academics, you know, just my whole self-esteem, everything just went down the drain.",
+        highlights: ["went down the drain"],
+        translation: "학업 성적과 함께 제 모든 자존감, 말 그대로 모든 것이 한순간에 물거품처럼 무너져 내렸어요."
+      },
+      {
+        id: 15,
+        expression: "twofold",
+        timestamp: "00:12:38",
+        seconds: 758,
+        category: "성장·동기부여",
+        meaning: "두 배로, 이중으로",
+        nuance: "점수나 성과, 규모 등이 기존의 두 배 수준으로 크게 뛰었을 때 쓰는 간결하고 세련된 부사·형용사입니다.",
+        quote: "I took it and I got a B, right? I jumped twofold, right, and still got a B.",
+        highlights: ["twofold"],
+        translation: "시험을 치렀고 B를 받았어요. 점수가 두 배나 껑충 뛰었는데도 여전히 B였던 거죠."
+      },
+      {
+        id: 16,
+        expression: "in sync",
+        timestamp: "00:15:21",
+        seconds: 921,
+        category: "학교·직장·구어체",
+        meaning: "박자를 맞춰, 동시에, 호흡이 딱 맞게",
+        nuance: "두 사람 이상이 속도와 리듬을 정확히 일치시켜 함께 움직이거나 말할 때 쓰는 표현입니다.",
+        quote: "The two of you have to recite the multiplication table together in sync, basically.",
+        highlights: ["in sync"],
+        translation: "기본적으로 두 사람이 박자를 딱 맞춰서 구구단을 함께 외워야 하는 방식이었어요."
+      },
+      {
+        id: 17,
+        expression: "lag behind / fall behind",
+        timestamp: "00:15:42",
+        seconds: 942,
+        category: "좌절·역경 표현",
+        meaning: "뒤처지다, 진도를 따라가지 못하다",
+        nuance: "남들의 속도나 기준에 미치지 못하고 뒤로 처지는 상황을 나타내며, 타블로는 두 동의어를 나란히 써서 뒤처짐을 강조했습니다.",
+        quote: "Obviously it's more audible and visible that I don't have it because I keep falling, lagging behind, right?",
+        highlights: ["falling, lagging behind"],
+        translation: "제가 계속 뒤처지고 박자를 놓치니까 구구단을 못 외웠다는 게 귀로도 눈으로도 너무 뻔히 드러나는 거예요."
+      },
+      {
+        id: 18,
+        expression: "tag along",
+        timestamp: "00:17:20",
+        seconds: 1040,
+        category: "학교·직장·구어체",
+        meaning: "(별다른 계획 없이) 졸졸 따라가다, 동행하다",
+        nuance: "주도적으로 가는 것이 아니라 형, 부모님, 친구들이 가는 곳에 어린아이나 일행 자격으로 함께 따라붙어 갈 때 씁니다.",
+        quote: "Shortly after we moved to Canada, I was just a little kid, so I had to tag along.",
+        highlights: ["tag along"],
+        translation: "캐나다로 이민 간 직후에 저는 아직 어린아이였기 때문에 형들을 따라다녀야 했어요."
+      },
+      {
+        id: 19,
+        expression: "child prodigy",
+        timestamp: "00:18:08",
+        seconds: 1088,
+        category: "성장·동기부여",
+        meaning: "신동, 천재 아이",
+        nuance: "어린 나이에 성인 수준의 비범한 재능이나 학업 성취를 보이는 아이를 가리키는 표현입니다.",
+        quote: "During math class, I had somehow gone from not being able to do the multiplication table to being a child prodigy.",
+        highlights: ["child prodigy"],
+        translation: "수학 시간 동안 저는 구구단도 못 외우던 아이에서 어쩌다 보니 수학 신동이 되어 있었어요."
+      },
+      {
+        id: 20,
+        expression: "even out",
+        timestamp: "00:19:24",
+        seconds: 1164,
+        category: "성장·동기부여",
+        meaning: "격차가 줄어들어 비슷해지다, 평준화되다",
+        nuance: "처음에는 앞서거나 뒤처지던 차이가 시간이 지나면서 고르게 맞춰져 평평해지는 과정을 뜻합니다.",
+        quote: "Fourth grade came and everybody started doing multiplication tables, and then everything evened out.",
+        highlights: ["evened out"],
+        translation: "4학년이 되자 모든 아이들이 구구단을 배우기 시작했고, 그러면서 모든 격차가 비슷하게 맞춰졌어요."
+      },
+      {
+        id: 21,
+        expression: "belittle",
+        timestamp: "00:20:00",
+        seconds: 1200,
+        category: "좌절·역경 표현",
+        meaning: "깎아내리다, 하찮게 여기다, 무시하다",
+        nuance: "누군가의 노력이나 능력을 의도적으로 작고 보잘것없는 것(little)처럼 취급하며 자존감을 꺾는 행동을 뜻합니다.",
+        quote: "I sucked, and he kept belittling me every time I would do it.",
+        highlights: ["belittling"],
+        translation: "제가 연주를 엉망으로 했고, 그 선생님은 제가 연주할 때마다 계속 저를 깎아내리고 무시했어요."
+      },
+      {
+        id: 22,
+        expression: "see through",
+        timestamp: "00:21:07",
+        seconds: 1267,
+        category: "성장·동기부여",
+        meaning: "(겉모습·실패 너머의 본질을) 꿰뚫어 보다",
+        nuance: "거짓말을 간파한다는 뜻 외에, 겉으로 드러난 실패나 부족함 너머에 숨겨진 진정한 잠재력을 알아본다는 긍정적 의미로도 쓰입니다.",
+        quote: "When my self-esteem is at its lowest, this teacher somehow sees through all of the failure and sees a kernel of potential.",
+        highlights: ["sees through"],
+        translation: "제 자존감이 바닥을 치고 있을 때, 이 선생님은 어떻게든 그 모든 실패 너머를 꿰뚫어 보고 작은 잠재력의 씨앗을 발견해 주셨어요."
+      },
+      {
+        id: 23,
+        expression: "of all places",
+        timestamp: "00:23:09",
+        seconds: 1389,
+        category: "스토리텔링·관용구",
+        meaning: "하필이면 그곳에, 수많은 곳 중에서 놀랍게도",
+        nuance: "전혀 예상치 못했던 우연한 장소에서 누군가를 만나거나 인연이 닿았을 때 놀라움을 담아 강조하는 표현입니다.",
+        quote: "She actually went back to the States. But of all places, she lives in Palo Alto.",
+        highlights: ["of all places"],
+        translation: "선생님은 사실 미국으로 돌아가셨는데, 세상에 수많은 곳 중에 하필 제가 대학을 다닌 팔로알토에 살고 계셨어요."
+      },
+      {
+        id: 24,
+        expression: "rave reviews",
+        timestamp: "00:28:40",
+        seconds: 1720,
+        category: "성장·동기부여",
+        meaning: "극찬, 열광적인 호평",
+        nuance: "평론가나 대중이 앨범, 영화, 공연 등에 대해 열광적으로 칭찬을 쏟아내는 평가를 가리키는 관용어입니다.",
+        quote: "Album comes out. It had rave reviews and the hip-hop scene loved it, but no one was buying the album.",
+        highlights: ["rave reviews"],
+        translation: "앨범이 발매되었고 평단의 극찬과 힙합 씬의 사랑을 받았지만, 정작 아무도 앨범을 사지는 않았어요."
+      },
+      {
+        id: 25,
+        expression: "recoup the costs",
+        timestamp: "00:29:49",
+        seconds: 1789,
+        category: "학교·직장·구어체",
+        meaning: "제작비·투자 비용을 회수하다",
+        nuance: "비즈니스나 엔터테인먼트 업계에서 프로젝트에 투입된 초기 자본과 손실을 매출로 메워 본전을 되찾는다는 실무 표현입니다.",
+        quote: "The album actually sold like 10,000 copies, which honestly isn't that bad considering, but it was not nearly enough to recoup the costs.",
+        highlights: ["recoup the costs"],
+        translation: "앨범이 실제로 1만 장 정도 팔렸는데 상황을 고려하면 나쁘지 않은 수치였지만, 제작비를 회수하기에는 턱없이 부족했어요."
+      },
+      {
+        id: 26,
+        expression: "underwater (financially)",
+        timestamp: "00:31:00",
+        seconds: 1860,
+        category: "좌절·역경 표현",
+        meaning: "적자 상태인, 빚에 허덕이는",
+        nuance: "수면 아래로 잠겨 숨을 못 쉬는 상태처럼, 손익분기점을 넘기지 못해 마이너스 적자 상태에 머물러 있음을 뜻하는 경제·구어 표현입니다.",
+        quote: "Okay, the album, well, you guys know it didn't do that well, so you guys are still underwater.",
+        highlights: ["underwater"],
+        translation: "자, 너희도 알다시피 이번 앨범이 그리 잘되지 않아서 너희는 아직도 적자 상태야."
+      },
+      {
+        id: 27,
+        expression: "blurt out",
+        timestamp: "00:32:41",
+        seconds: 1961,
+        category: "스토리텔링·관용구",
+        meaning: "불쑥 내뱉다, 얼떨결에 소리치다",
+        nuance: "미리 계산하거나 깊이 생각할 틈도 없이 감정이 북받쳐 입 밖으로 말이 불쑥 튀어나오는 순간을 생생하게 묘사합니다.",
+        quote: "I don't know what came into me, but I just blurted out, 'Then we will produce the entire album ourselves at zero cost.'",
+        highlights: ["blurted out"],
+        translation: "그때 저한테 무슨 바람이 들었는지 모르겠지만, 저는 그냥 '그렇다면 우리가 0원의 비용으로 앨범 전체를 직접 제작하겠습니다'라고 불쑥 내뱉어 버렸어요."
+      },
+      {
+        id: 28,
+        expression: "take shifts / graveyard shift",
+        timestamp: "00:33:56",
+        seconds: 2036,
+        category: "학교·직장·구어체",
+        meaning: "교대 근무를 하다 / 심야 근무조(새벽 타임)",
+        nuance: "한정된 자원이나 업무 시간을 여러 명이 번갈아 맡는 것을 'take shifts'라고 하며, 모두가 잠든 한밤중~새벽 시간대 근무를 'graveyard shift'라고 부릅니다.",
+        quote: "You would have to take shifts using the computer... because it wasn't my computer, my shift was the graveyard shift.",
+        highlights: ["take shifts", "graveyard shift"],
+        translation: "컴퓨터 한 대를 교대로 돌아가며 써야 했는데, 제 컴퓨터가 아니었기 때문에 제 차례는 늘 한밤중 심야 타임이었어요."
+      },
+      {
+        id: 29,
+        expression: "couch surfing",
+        timestamp: "00:34:48",
+        seconds: 2088,
+        category: "좌절·역경 표현",
+        meaning: "지인 집 소파를 전전하며 신세 지는 생활",
+        nuance: "고정된 집이나 숙소가 없어 친구나 지인의 집 소파에서 며칠씩 묵으며 여기저기 옮겨 다니는 생활을 뜻합니다.",
+        quote: "This was at the period where I was like couch surfing at people's houses 'cause I had no place to stay.",
+        highlights: ["couch surfing"],
+        translation: "그때가 제가 머물 곳이 없어서 다른 사람들 집 소파를 전전하며 신세를 지던 시기였거든요."
+      },
+      {
+        id: 30,
+        expression: "pull it off",
+        timestamp: "00:38:32",
+        seconds: 2312,
+        category: "성장·동기부여",
+        meaning: "(어려운 일을) 멋지게 해내다, 성공시키다",
+        nuance: "남들이 불가능하다고 보거나 성공 확률이 낮았던 일을 끝내 성사시켰을 때 쓰는 성취감 가득한 구동사입니다.",
+        quote: "We took it to the company and we're like, 'We actually pulled it off, so release it for us.'",
+        highlights: ["pulled it off"],
+        translation: "우리는 완성된 앨범을 회사에 가져가서 '우리가 진짜로 해냈으니 발매해 주세요'라고 말했어요."
+      },
+      {
+        id: 31,
+        expression: "put one's back against the wall",
+        timestamp: "00:40:53",
+        seconds: 2453,
+        category: "좌절·역경 표현",
+        meaning: "벼랑 끝에 몰아세우다, 퇴로를 차단하다",
+        nuance: "뒤는 벽으로 막혀 있고 더 이상 물러설 곳이 없는 극한의 압박 상황에 몰렸을 때 쓰는 관용구입니다.",
+        quote: "They put our backs to the wall, and I was just crazy enough to say I can do it.",
+        highlights: ["put our backs to the wall"],
+        translation: "회사가 우리를 벼랑 끝으로 몰아세웠고, 저는 할 수 있다고 말할 만큼 충분히 무모했죠."
+      },
+      {
+        id: 32,
+        expression: "look down on",
+        timestamp: "00:49:05",
+        seconds: 2945,
+        category: "좌절·역경 표현",
+        meaning: "깔보다, 무시하다, 얕잡아 보다",
+        nuance: "상대방의 실력이나 가치를 낮게 평가하며 위에서 내려다보듯 무시하는 태도를 뜻합니다.",
+        quote: "I'm sure that they weren't like looking down on us, but wasn't as confident that Epik High could sell it out.",
+        highlights: ["looking down on"],
+        translation: "분명 우리를 깔본 건 아니었겠지만, 에픽하이가 그 공연장을 매진시킬 수 있을지 확신이 없었던 거죠."
+      },
+      {
+        id: 33,
+        expression: "judgment call",
+        timestamp: "00:49:56",
+        seconds: 2996,
+        category: "학교·직장·구어체",
+        meaning: "주관적 판단에 따른 결정",
+        nuance: "명확한 정답이나 공식이 없는 상황에서 책임자가 경험과 데이터를 바탕으로 내려야 하는 신중한 결정을 뜻합니다.",
+        quote: "Maybe they're looking at some data or something that we don't have access to, and maybe they're making a judgment call here.",
+        highlights: ["judgment call"],
+        translation: "아마 그쪽에서는 우리가 접근할 수 없는 데이터를 보고 종합적인 판단에 따른 결정을 내린 걸 수도 있어요."
+      },
+      {
+        id: 34,
+        expression: "shit bricks",
+        timestamp: "00:52:17",
+        seconds: 3137,
+        category: "좌절·역경 표현",
+        meaning: "극도로 긴장하다, 겁에 질려 식은땀을 흘리다",
+        nuance: "너무 무섭거나 압박감이 심해 몸이 굳을 정도로 긴장한 상태를 표현하는 거칠지만 생생한 영어 슬랭입니다.",
+        quote: "After we got it, another week of me like shitting bricks because now that we have it, we got to sell three nights in January.",
+        highlights: ["shitting bricks"],
+        translation: "대관을 따내고 나서도 또 일주일 동안 극도로 긴장해서 식은땀을 흘렸어요. 이제 자리를 얻었으니 1월에 3일 치 공연을 매진시켜야 했거든요."
+      },
+      {
+        id: 35,
+        expression: "common thread",
+        timestamp: "00:56:05",
+        seconds: 3365,
+        category: "스토리텔링·관용구",
+        meaning: "공통분모, 일관되게 흐르는 핵심 주제",
+        nuance: "여러 개의 다른 이야기나 사건들을 하나로 꿰어 주는 공통된 핵심 요소(실)를 비유할 때 쓰는 세련된 명사구입니다.",
+        quote: "The common thread here is that each of these setbacks, at each of these moments of failure, I kept going though.",
+        highlights: ["common thread"],
+        translation: "이 모든 이야기들을 관통하는 공통분모는, 각각의 좌절과 실패의 순간마다 제가 멈추지 않고 계속 나아갔다는 점입니다."
+      },
+      {
+        id: 36,
+        expression: "a blessing in disguise",
+        timestamp: "00:56:53",
+        seconds: 3413,
+        category: "성장·동기부여",
+        meaning: "전화위복, 변장한 축복",
+        nuance: "처음에는 불행이나 실패처럼 보였지만, 결과적으로는 더 큰 행운과 성장의 계기가 되어준 사건을 가리키는 가장 유명한 영어 속담입니다.",
+        quote: "So I believe that failures can sometimes be a blessing in disguise, but I also believe that you need to keep going.",
+        highlights: ["a blessing in disguise"],
+        translation: "그래서 저는 실패가 때때로 전화위복(변장한 축복)이 될 수 있다고 믿지만, 동시에 계속해서 앞으로 나아가야만 한다고 믿습니다."
+      }
+    ];
+
+    const STORAGE_KEY = "heytablo_ep48_v2";
+    let state = {
+      mastered: {},
+      memos: {},
+      category: "전체",
+      search: "",
+      hideMeaning: false,
+      clozeMode: false,
+      hideMastered: false,
+      ttsSpeed: 1.0
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.mastered = parsed.mastered || {};
+          state.memos = parsed.memos || {};
+        }
+      } catch (e) {
+        console.error("Failed to load state:", e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          mastered: state.mastered,
+          memos: state.memos
+        }));
+      } catch (e) {
+        console.error("Failed to save state:", e);
+      }
+    }
+
+    function showToast(msg, icon = "✓") {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-msg").textContent = msg;
+      document.getElementById("toast-icon").textContent = icon;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+
+    function speakText(text) {
+      try {
+        if (!("speechSynthesis" in window)) {
+          showToast("이 브라우저는 음성 듣기(TTS)를 지원하지 않습니다.", "⚠️");
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.rate = state.ttsSpeed;
+
+        const voices = window.speechSynthesis.getVoices();
+        if (voices && voices.length > 0) {
+          const enVoice = voices.find(v => v.lang === "en-US" && !v.localService) ||
+                          voices.find(v => v.lang.startsWith("en-"));
+          if (enVoice) utterance.voice = enVoice;
+        }
+
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.error("TTS error:", err);
+        showToast("음성 재생 중 오류가 발생했습니다.", "⚠️");
+      }
+    }
+
+    function toggleTtsSpeed() {
+      state.ttsSpeed = state.ttsSpeed === 1.0 ? 0.8 : 1.0;
+      document.getElementById("tts-speed-label").textContent = `${state.ttsSpeed.toFixed(1)}x`;
+      const btn = document.getElementById("btn-tts-speed");
+      btn.classList.toggle("bg-amber-500/20", state.ttsSpeed === 0.8);
+      btn.classList.toggle("border-amber-500/60", state.ttsSpeed === 0.8);
+      btn.classList.toggle("text-amber-300", state.ttsSpeed === 0.8);
+      showToast(`발음 재생 속도를 ${state.ttsSpeed.toFixed(1)}배속으로 변경했습니다.`, "🔊");
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function formatQuote(quote, highlights, clozeMode) {
+      if (!highlights || highlights.length === 0) return escapeHtml(quote);
+
+      const sorted = [...highlights].sort((a, b) => b.length - a.length);
+      const pattern = new RegExp(`(${sorted.map(escapeRegExp).join("|")})`, "gi");
+      const parts = quote.split(pattern);
+
+      return parts.map(part => {
+        const isMatch = sorted.some(h => h.toLowerCase() === part.toLowerCase());
+        if (!isMatch) return escapeHtml(part);
+
+        const safePart = escapeHtml(part);
+        if (clozeMode) {
+          return `<span class="cloze-blank" onclick="this.classList.toggle('revealed')" title="클릭해서 정답 확인">${safePart}</span>`;
+        } else {
+          return `<mark class="bg-indigo-500/25 text-indigo-300 border border-indigo-500/30 font-semibold px-1.5 py-0.5 rounded-md">${safePart}</mark>`;
+        }
+      }).join("");
+    }
+
+    function renderCategories() {
+      const categories = ["전체", "좌절·역경 표현", "성장·동기부여", "학교·직장·구어체", "스토리텔링·관용구"];
+      const container = document.getElementById("category-tabs");
+      container.innerHTML = categories.map(cat => {
+        const count = cat === "전체"
+          ? EXPRESSIONS.length
+          : EXPRESSIONS.filter(item => item.category === cat).length;
+        const isActive = state.category === cat;
+        const activeClasses = isActive
+          ? "bg-slatex-indigo text-white border-indigo-500 shadow-sm"
+          : "bg-slatex-bg text-slatex-muted border-slatex-border hover:bg-slatex-subtle hover:text-slatex-ink";
+
+        return `
+          <button
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-1.5 rounded-full border text-xs sm:text-sm font-medium whitespace-nowrap transition ${activeClasses}"
+          >
+            ${cat} <span class="opacity-80 text-xs ml-0.5">(${count})</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function updateProgress() {
+      const total = EXPRESSIONS.length;
+      const done = Object.values(state.mastered).filter(Boolean).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progress-text").textContent = `암기 완료: ${done} / ${total} (${pct}%)`;
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    function renderCards() {
+      const container = document.getElementById("cards-container");
+      const emptyState = document.getElementById("empty-state");
+      const query = state.search.trim().toLowerCase();
+
+      const filtered = EXPRESSIONS.filter(item => {
+        if (state.category !== "전체" && item.category !== state.category) return false;
+        if (state.hideMastered && state.mastered[item.id]) return false;
+        if (query) {
+          const hay = `${item.expression} ${item.meaning} ${item.quote} ${item.translation} ${item.nuance}`.toLowerCase();
+          if (!hay.includes(query)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById("result-count").textContent = `총 ${filtered.length}개의 표현 표시 중`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      container.innerHTML = filtered.map(item => {
+        const isMastered = !!state.mastered[item.id];
+        const memoText = state.memos[item.id] || "";
+        const ytUrl = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const cardBorder = isMastered
+          ? "border-emerald-500/45 bg-emerald-950/15"
+          : "border-slatex-border bg-slatex-card";
+        const fullAudioText = `${item.expression}. ${item.quote}`;
+
+        return `
+          <article class="rounded-2xl border ${cardBorder} p-5 sm:p-6 shadow-md transition hover:border-slate-600 flex flex-col justify-between">
+            <div>
+              <!-- Top Row: Badge, Category, Timestamp, Mastered Checkbox -->
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-slatex-subtle text-slate-200 text-xs font-bold border border-slate-700">
+                    ${item.id}
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-md bg-slatex-subtle text-slatex-muted text-xs font-medium border border-slate-700/70">
+                    ${item.category}
+                  </span>
+                  <a
+                    href="${ytUrl}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-rose-500/15 text-rose-300 border border-rose-500/25 hover:bg-rose-500/25 text-xs font-medium transition"
+                    title="유튜브에서 해당 구간 바로 듣기"
+                  >
+                    <span>▶</span> ${item.timestamp}
+                  </a>
+                </div>
+
+                <label class="inline-flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg hover:bg-slatex-subtle transition">
+                  <input
+                    type="checkbox"
+                    ${isMastered ? "checked" : ""}
+                    onchange="toggleMastered(${item.id})"
+                    class="w-4 h-4 rounded accent-emerald-500 cursor-pointer"
+                  />
+                  <span class="text-xs font-semibold ${isMastered ? "text-emerald-400" : "text-slatex-muted"}">
+                    암기 완료
+                  </span>
+                </label>
+              </div>
+
+              <!-- Expression Title & Audio Buttons -->
+              <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
+                <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">
+                  ${escapeHtml(item.expression)}
+                </h2>
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <button
+                    onclick="speakText(\`${fullAudioText.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                    class="px-2.5 py-1.5 rounded-lg border border-slatex-border bg-slatex-bg hover:bg-slatex-subtle text-xs font-medium text-slate-200 transition flex items-center gap-1"
+                    title="표현 + 예문 전체 발음 듣기"
+                  >
+                    <span>🔊</span> 전체 듣기
+                  </button>
+                  <button
+                    onclick="speakText(\`${item.quote.replace(/`/g, "\\`").replace(/"/g, '&quot;')}\`)"
+                    class="px-2.5 py-1.5 rounded-lg border border-slatex-border bg-slatex-bg hover:bg-slatex-subtle text-xs font-medium text-indigo-300 transition flex items-center gap-1"
+                    title="예문만 발음 듣기"
+                  >
+                    <span>🗣️</span> 예문만 듣기
+                  </button>
+                </div>
+              </div>
+
+              <!-- Korean Meaning & Nuance Note (Blurrable) -->
+              <div class="mt-2.5 blur-target" onclick="this.classList.toggle('revealed')">
+                <p class="text-base font-semibold text-indigo-300">
+                  ${escapeHtml(item.meaning)}
+                </p>
+                <p class="text-xs sm:text-sm text-slatex-muted mt-1 leading-relaxed">
+                  ${escapeHtml(item.nuance)}
+                </p>
+              </div>
+
+              <!-- Verbatim Podcast Quote Box -->
+              <div class="mt-4 p-4 rounded-xl bg-slatex-bg/90 border border-slatex-border">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                    🎙️ Tablo's Verbatim Quote
+                  </span>
+                </div>
+                <p class="text-sm sm:text-[15px] text-slate-100 leading-relaxed font-medium">
+                  “${formatQuote(item.quote, item.highlights, state.clozeMode)}”
+                </p>
+                <p class="text-xs sm:text-sm text-slatex-muted mt-2 pt-2 border-t border-slatex-border/70 blur-target" onclick="this.classList.toggle('revealed')">
+                  ${escapeHtml(item.translation)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Collapsible Personal Memo -->
+            <div class="mt-3 pt-1">
+              <details ${memoText ? "open" : ""} class="group">
+                <summary class="text-xs font-medium text-slatex-muted hover:text-slate-200 cursor-pointer select-none inline-flex items-center gap-1.5">
+                  <span>📝 나만의 메모 / 응용 예문</span>
+                  ${memoText ? '<span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>' : ''}
+                </summary>
+                <div class="mt-2">
+                  <textarea
+                    rows="2"
+                    placeholder="직접 만들어 본 응용 문장이나 기억해 둘 뉘앙스를 적어보세요 (자동 저장됨)..."
+                    oninput="updateMemo(${item.id}, this.value)"
+                    class="w-full p-2.5 text-xs sm:text-sm bg-slatex-bg border border-slatex-border rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition resize-y"
+                  >${escapeHtml(memoText)}</textarea>
+                </div>
+              </details>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function selectCategory(cat) {
+      state.category = cat;
+      renderCategories();
+      renderCards();
+    }
+
+    function toggleMastered(id) {
+      state.mastered[id] = !state.mastered[id];
+      saveState();
+      updateProgress();
+      renderCards();
+      if (state.mastered[id]) {
+        showToast("암기 완료로 체크했습니다.", "✅");
+      }
+    }
+
+    function updateMemo(id, val) {
+      state.memos[id] = val;
+      saveState();
+    }
+
+    function toggleHideMeaning() {
+      state.hideMeaning = !state.hideMeaning;
+      document.body.classList.toggle("hide-meaning", state.hideMeaning);
+      const btn = document.getElementById("btn-hide-meaning");
+      btn.classList.toggle("bg-indigo-500/20", state.hideMeaning);
+      btn.classList.toggle("border-indigo-500/60", state.hideMeaning);
+      btn.classList.toggle("text-indigo-300", state.hideMeaning);
+    }
+
+    function toggleClozeMode() {
+      state.clozeMode = !state.clozeMode;
+      const btn = document.getElementById("btn-cloze-mode");
+      btn.classList.toggle("bg-indigo-500/20", state.clozeMode);
+      btn.classList.toggle("border-indigo-500/60", state.clozeMode);
+      btn.classList.toggle("text-indigo-300", state.clozeMode);
+      renderCards();
+    }
+
+    function toggleHideMastered() {
+      state.hideMastered = !state.hideMastered;
+      const btn = document.getElementById("btn-hide-mastered");
+      const label = document.getElementById("hide-mastered-label");
+      label.textContent = state.hideMastered ? "미암기만 보기" : "전체 보기";
+      btn.classList.toggle("bg-emerald-500/20", state.hideMastered);
+      btn.classList.toggle("border-emerald-500/60", state.hideMastered);
+      btn.classList.toggle("text-emerald-300", state.hideMastered);
+      renderCards();
+    }
+
+    function resetFilters() {
+      state.category = "전체";
+      state.search = "";
+      state.hideMastered = false;
+      document.getElementById("search-input").value = "";
+      document.getElementById("hide-mastered-label").textContent = "전체 보기";
+      const btn = document.getElementById("btn-hide-mastered");
+      btn.classList.remove("bg-emerald-500/20", "border-emerald-500/60", "text-emerald-300");
+      renderCategories();
+      renderCards();
+    }
+
+    function buildMarkdownContent() {
+      const today = new Date().toISOString().slice(0, 10);
+      let md = `---\ntags:\n  - EnglishStudy\n  - HeyTablo\n  - PodcastEnglish\ndate: ${today}\nsource: "https://www.youtube.com/watch?v=${VIDEO_ID}"\n---\n\n`;
+      md += `# 🎙️ Hey Tablo Ep. 48 — 핵심 영어 표현 36선\n\n`;
+      md += `- **영상 제목:** Kicked Out Of School. Failed At My Job. Best Thing Ever | Hey Tablo Ep. 48\n`;
+      md += `- **원본 링크:** https://www.youtube.com/watch?v=${VIDEO_ID}\n\n---\n\n`;
+
+      EXPRESSIONS.forEach(item => {
+        const checked = state.mastered[item.id] ? "x" : " ";
+        const ytLink = `https://www.youtube.com/watch?v=${VIDEO_ID}&t=${item.seconds}s`;
+        const memo = state.memos[item.id] ? state.memos[item.id].trim() : "";
+
+        md += `- [${checked}] **${item.id}. ${item.expression}** ([${item.timestamp}](${ytLink}))\n`;
+        md += `  - **분류:** #${item.category.replace(/·/g, "_")}\n`;
+        md += `  - **의미:** **${item.meaning}**\n`;
+        md += `  - **뉘앙스:** ${item.nuance}\n`;
+        md += `  - **팟캐스트 원문:** "${item.quote}"\n`;
+        md += `  - **해석:** ${item.translation}\n`;
+        if (memo) {
+          md += `  - **나의 메모:** ${memo}\n`;
+        }
+        md += `\n`;
+      });
+
+      return md;
+    }
+
+    function copyMarkdownToClipboard() {
+      const md = buildMarkdownContent();
+      const textarea = document.createElement("textarea");
+      textarea.value = md;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        showToast("마크다운(.md) 전체 내용이 클립보드에 복사되었습니다.", "📋");
+      } catch (err) {
+        showToast("복사에 실패했습니다. 내보내기 버튼을 이용해 주세요.", "⚠️");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function exportMarkdown() {
+      const today = new Date().toISOString().slice(0, 10);
+      const md = buildMarkdownContent();
+      const blob = new Blob([md], { type: "text/markdown;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `HeyTablo-Ep48-English-36_${today}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Obsidian용 마크다운(.md) 파일이 다운로드되었습니다.", "📥");
+    }
+
+    function openResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeResetModal() {
+      const modal = document.getElementById("reset-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function confirmReset() {
+      state.mastered = {};
+      state.memos = {};
+      saveState();
+      updateProgress();
+      renderCards();
+      closeResetModal();
+      showToast("모든 학습 기록과 메모가 초기화되었습니다.", "🗑️");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.getVoices();
+      }
+      loadState();
+      renderCategories();
+      updateProgress();
+      renderCards();
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderCards();
+      });
+    });
+  </script>
+</body>
+</html>
